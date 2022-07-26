@@ -2,11 +2,20 @@
   min-height: 100vh;
 }
 
+
+
 .layout header {
-    padding: 10px;
+    padding: 15px 15px 10px 15px;
     display: flex;
-    align-items: flex-end;
-    
+    align-items: center;
+}
+
+.layout header > * {
+    margin-left: 20px;
+}
+
+.layout header > *:first-child {
+    margin-left: inherit;
 }
 
 .layout header h1 {
@@ -14,8 +23,8 @@
 }
 
 .layout header nav {
-    margin-left: 15px;
     flex: 1;
+    user-select: none;
 }
 
 .layout header nav li {
@@ -31,17 +40,4 @@
 
 .layout main {
     padding: 5px 10px;
-}
-
-.layout .locale {
-    margin: 0px 20px 0px 0px;
-}
-
-.layout .locale *:first-child {
-    padding-right: 5px;
-}
-
-.layout .locale *:last-child:hover {
-    font-weight: bold;
-    cursor: pointer;
 }

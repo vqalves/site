@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { GlobalContext, GlobalContextData, GlobalContextHolder } from '../contexts/global-context'
+import { GlobalContext, GlobalContextData, GlobalContextHolder } from '../contexts/global.context'
 import React from 'react';
 
 export default function App({ Component, pageProps }: AppProps) {

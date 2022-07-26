@@ -1,15 +1,13 @@
 import Link from "next/link";
-import Router, { useRouter } from "next/router";
 import React from "react";
-import { GlobalContext } from "../contexts/global-context";
+import { GlobalContext } from "../contexts/global.context";
 import { LocaleContent, LocaleType } from "../models/locale";
-import styles from "./layout.module.css";
-
-export enum LayoutMenu {
-    aboutMe,
-    articles,
-    projects
-}
+import LayoutMenu from "../models/menu";
+import { useDefaultPageElements } from "../models/page";
+import SiteTheme from "../models/site.theme";
+import styles from "../styles/layout.module.css";
+import LocaleButton from "./locale.button";
+import ThemeButton from "./theme.button";
 
 const content = {
     menuAbout: new LocaleContent({
@@ -34,17 +32,16 @@ interface LayoutProps {
 }
 
 export default function Layout(props: LayoutProps) {
-    const router = useRouter();
-    const translator = LocaleType.getLocaleTypeByCode(router.locale);
+    const { router, translator, ts } = useDefaultPageElements();
 
     var global = React.useContext(GlobalContext);
     
-    function handleThemeSwitch() {
-        global.data.theme = global?.data.theme == "light" ? "dark" : "light";
+    function handleThemeChanged(newTheme: SiteTheme) {
+        global.data.theme = newTheme;
         global.update(global.data)
     }
 
-    function handleLocaleSwitch(newLocale: LocaleType) {
+    function handleLocaleChanged(newLocale: LocaleType) {
         router.push(router.asPath, undefined, { locale: newLocale.code });
     }
 
@@ -54,41 +51,35 @@ export default function Layout(props: LayoutProps) {
         }
     }
 
-    function ts(text: LocaleContent) : string {
-        return translator.getContent(text);
-    }
-
     return (
-        <div className={`${global.data.theme} ${styles.layout}`}>
-            <header className="bottom-border">
-                <h1>
-                    Vinicius Quinafelex Alves
-                </h1>
+        <>
+            {/* 
+            <Head>
+                <link rel="canonical" href={`/${router.locale}${router.asPath}`}/>
+            </Head>
+            */}
 
-                <nav>
-                    <ul>
-                        <li className={getMenuClass(LayoutMenu.aboutMe)}><Link href="/" locale={router.locale}>{ts(content.menuAbout)}</Link></li>
-                        <li className={getMenuClass(LayoutMenu.articles)}><Link href="/articles" locale={router.locale}>{ts(content.menuArticles)}</Link></li>
-                        <li className={getMenuClass(LayoutMenu.projects)}><Link href="/projects" locale={router.locale}>{ts(content.menuProjects)}</Link></li>
-                    </ul>
-                </nav>
+            <div className={`${global.data.theme.code} ${styles.layout}`}>
+                <header className="bottom-border">
+                    <h1>
+                        Vinicius Quinafelex Alves
+                    </h1>
 
-                <div className={styles.locale}>
-                    <span>🌐</span>
-                    {
-                        LocaleType
-                            .allLocales()
-                            .filter(e => e.code != translator.code)
-                            .map(e => {
-                                return <span key={e.code} onClick={() => { handleLocaleSwitch(e); }}>{e.name}</span>
-                            })
-                    }
-                </div>
+                    <nav>
+                        <ul>
+                            <li className={getMenuClass(LayoutMenu.aboutMe)}><Link href="/" locale={router.locale}>{ts(content.menuAbout)}</Link></li>
+                            <li className={getMenuClass(LayoutMenu.articles)}><Link href="/articles" locale={router.locale}>{ts(content.menuArticles)}</Link></li>
+                            <li className={getMenuClass(LayoutMenu.projects)}><Link href="/projects" locale={router.locale}>{ts(content.menuProjects)}</Link></li>
+                        </ul>
+                    </nav>
 
-                <button onClick={handleThemeSwitch}>Toggle</button>
-            </header>
+                    <LocaleButton currentLocale={translator} onLocaleChange={handleLocaleChanged}></LocaleButton>
 
-            <main>{props.children}</main>
-        </div>
+                    <ThemeButton currentTheme={global.data.theme} onThemeChange={handleThemeChanged} />
+                </header>
+
+                <main>{props.children}</main>
+            </div>
+        </>
     )
 } 

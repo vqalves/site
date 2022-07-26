@@ -1,0 +1,8 @@
+.locale_button *:first-child {
+  padding-right: 5px;
+}
+
+.locale_button *:last-child:hover {
+  font-weight: bold;
+  cursor: pointer;
+}

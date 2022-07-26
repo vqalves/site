@@ -3,33 +3,53 @@
   margin: 0px;
 }
 
-.dark, .light {
-  transition: color 0.8s, background-color 0.8s;
-}
-
-.dark {
-  background-color: #000;
-  color: #fff;
-}
-
 body {
   font-family: Roboto, Arial;
   margin-top: -5px;
 }
 
-a {
-  text-decoration: none;
-  color: #0070f3
+/* Main themes */
+.dark, .light {
+  transition: color 0.8s, background-color 0.8s;
+}
+
+.dark {
+  background-color: #0e1111;
+  color: #fff;
 }
 
 .light {
   color: #000;
 }
 
+/* Element "a" */
+a {
+  text-decoration: none;
+  color: #0070f3
+}
+
+.dark a {
+  color: #fff
+}
+
+/* Class "bottom-border" */
 .bottom-border {
   border-bottom: 1px solid #000;
 }
 
 .dark .bottom-border {
   border-bottom-color: #fff;
+}
+
+/* Class "icon-button" */
+.icon-button {
+  padding: 2px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid #000;
+}
+
+.dark .icon-button {
+  border-color: #fff;
 }

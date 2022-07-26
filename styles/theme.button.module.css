@@ -1,0 +1,16 @@
+.theme_button {
+  padding: 2px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.theme_button.to_light {
+    background-color: #fff;
+    color: #000;
+}
+
+.theme_button.to_dark {
+    background-color: #000;
+    color: #fff;
+}

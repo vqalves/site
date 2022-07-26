@@ -1,7 +1,8 @@
 import React from "react"
+import SiteTheme from "../models/site.theme";
 
 export class GlobalContextData {
-    theme: string = "light";
+    theme: SiteTheme = SiteTheme.light;
 }
 
 export class GlobalContextHolder {

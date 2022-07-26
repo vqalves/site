@@ -1,6 +1,7 @@
 import Head from "next/head";
-import Layout, { LayoutMenu } from "../components/layout";
+import Layout from "../components/layout";
 import content from "../contents/main.content";
+import LayoutMenu from "../models/menu";
 import { useDefaultPageElements } from "../models/page";
 
 export default function Home() {
