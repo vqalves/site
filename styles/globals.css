@@ -25,3 +25,11 @@ a {
 .light {
   color: #000;
 }
+
+.bottom-border {
+  border-bottom: 1px solid #000;
+}
+
+.dark .bottom-border {
+  border-bottom-color: #fff;
+}

@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Layout, { LayoutMenu } from "../components/layout";
-import content from "../contents/articles.content";
+import content from "../contents/projects.content";
 import { useDefaultPageElements } from "../models/page";
 
-export default function Articles() {
+export default function Projects() {
     const { ts } = useDefaultPageElements();
 
     return (
@@ -13,9 +13,9 @@ export default function Articles() {
                 <meta name="description" content={ts(content.description)} />
             </Head>
 
-            <Layout selectedMenu={LayoutMenu.articles}>
+            <Layout selectedMenu={LayoutMenu.projects}>
                 <div>
-                    {ts(content.presentationText)}
+                    {ts(content.projects)}
                 </div>
             </Layout>
         </>

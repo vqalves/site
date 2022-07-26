@@ -3,9 +3,10 @@
 }
 
 .layout header {
-    margin: 5px;
+    padding: 10px;
     display: flex;
     align-items: flex-end;
+    
 }
 
 .layout header h1 {
@@ -30,4 +31,17 @@
 
 .layout main {
     padding: 5px 10px;
+}
+
+.layout .locale {
+    margin: 0px 20px 0px 0px;
+}
+
+.layout .locale *:first-child {
+    padding-right: 5px;
+}
+
+.layout .locale *:last-child:hover {
+    font-weight: bold;
+    cursor: pointer;
 }

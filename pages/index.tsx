@@ -1,17 +1,21 @@
 import Head from "next/head";
 import Layout, { LayoutMenu } from "../components/layout";
+import content from "../contents/main.content";
+import { useDefaultPageElements } from "../models/page";
 
 export default function Home() {
+  const { ts } = useDefaultPageElements();
+
   return (
     <>
         <Head>
-            <title>VQA - About me</title>
-            <meta name="description" content="Get to know a bit more about me" />
+            <title>{ts(content.title)} | Vinicius Quinafelex Alves</title>
+            <meta name="description" content={ts(content.description)} />
         </Head>
         
         <Layout selectedMenu={LayoutMenu.aboutMe}>
             <div>
-                This is about me!
+                {ts(content.about)}
             </div>
         </Layout>
     </>
