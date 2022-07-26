@@ -4,8 +4,6 @@ import { GlobalContext, GlobalContextData, GlobalContextHolder } from '../contex
 import React from 'react';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const context = React.useContext(GlobalContext);
-
   const [state, setState] = React.useState(new GlobalContextHolder({
     data: new GlobalContextData(),
     update: handleGlobalContextUpdate

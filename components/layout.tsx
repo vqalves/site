@@ -3,8 +3,15 @@ import React from "react";
 import { GlobalContext } from "../contexts/global-context";
 import styles from "./layout.module.css";
 
+export enum LayoutMenu {
+    aboutMe,
+    articles,
+    portfolio
+}
+
 interface LayoutProps {
     children: React.ReactNode
+    selectedMenu: LayoutMenu | null
 }
 
 export default function Layout(props: LayoutProps) {
@@ -17,18 +24,24 @@ export default function Layout(props: LayoutProps) {
         global.update(global.data)
     }
 
+    function getMenuClass(menuType: LayoutMenu): string | undefined {
+        if(props.selectedMenu == menuType) {
+            return styles.li_selected;
+        }
+    }
+
     return (
-        <div className={global.data.theme}>
-            <header className={styles.top_header}>
+        <div className={`${global.data.theme} ${styles.layout}`}>
+            <header>
                 <h1>
                     Vinicius Quinafelex Alves
                 </h1>
 
                 <nav>
                     <ul>
-                        <li className={styles.li_selected}><Link href="/about-me">About me</Link></li>
-                        <li><Link href="/articles">Articles</Link></li>
-                        <li><Link href="/portfolio">Portfolio</Link></li>
+                        <li className={getMenuClass(LayoutMenu.aboutMe)}><Link href="/about-me">About me</Link></li>
+                        <li className={getMenuClass(LayoutMenu.articles)}><Link href="/articles">Articles</Link></li>
+                        <li className={getMenuClass(LayoutMenu.portfolio)}><Link href="/portfolio">Portfolio</Link></li>
                     </ul>
                 </nav>
 

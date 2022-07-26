@@ -1,24 +1,33 @@
-.top_header {
+.layout {
+  min-height: 100vh;
+}
+
+.layout header {
     margin: 5px;
     display: flex;
     align-items: flex-end;
 }
 
-.top_header h1 {
+.layout header h1 {
     font-size: 1.4rem;
 }
 
-.top_header nav {
+.layout header nav {
     margin-left: 15px;
+    flex: 1;
 }
 
-.top_header nav li {
+.layout header nav li {
     display: inline;
     margin-left: 15px;
     text-decoration: none;
 }
 
-.top_header nav .li_selected {
+.layout header nav .li_selected {
     font-weight: bold;
     text-decoration: underline;
+}
+
+.layout main {
+    padding: 5px 10px;
 }

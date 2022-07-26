@@ -3,6 +3,10 @@
   margin: 0px;
 }
 
+.dark, .light {
+  transition: color 0.8s, background-color 0.8s;
+}
+
 .dark {
   background-color: #000;
   color: #fff;
@@ -15,12 +19,9 @@ body {
 
 a {
   text-decoration: none;
+  color: #0070f3
 }
 
 .light {
   color: #000;
-}
-
-.dark a {
-  color: #0070f3
 }
