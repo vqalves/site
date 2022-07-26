@@ -6,7 +6,7 @@ import styles from "./layout.module.css";
 export enum LayoutMenu {
     aboutMe,
     articles,
-    portfolio
+    jobs
 }
 
 interface LayoutProps {
@@ -39,9 +39,9 @@ export default function Layout(props: LayoutProps) {
 
                 <nav>
                     <ul>
-                        <li className={getMenuClass(LayoutMenu.aboutMe)}><Link href="/about-me">About me</Link></li>
+                        <li className={getMenuClass(LayoutMenu.aboutMe)}><Link href="/">About me</Link></li>
                         <li className={getMenuClass(LayoutMenu.articles)}><Link href="/articles">Articles</Link></li>
-                        <li className={getMenuClass(LayoutMenu.portfolio)}><Link href="/portfolio">Portfolio</Link></li>
+                        <li className={getMenuClass(LayoutMenu.jobs)}><Link href="/jobs">Jobs</Link></li>
                     </ul>
                 </nav>
 
