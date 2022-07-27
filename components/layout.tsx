@@ -1,38 +1,23 @@
 import Link from "next/link";
 import React from "react";
 import { GlobalContext } from "../contexts/global.context";
-import { LocaleContent, LocaleType } from "../models/locale";
+import { LocaleType } from "../models/locale";
 import LayoutMenu from "../models/menu";
 import { useDefaultPageElements } from "../models/page";
 import SiteTheme from "../models/site.theme";
 import styles from "../styles/layout.module.css";
 import LocaleButton from "./locale.button";
 import ThemeButton from "./theme.button";
+import content from "../contents/layout.content";
 
-const content = {
-    menuAbout: new LocaleContent({
-        en: "About me",
-        pt: "Sobre mim"
-    }),
-
-    menuArticles: new LocaleContent({
-        en: "Articles",
-        pt: "Artigos"
-    }),
-
-    menuProjects: new LocaleContent({
-        en: "Projects",
-        pt: "Projetos"
-    })
-}
-
-interface LayoutProps {
+export interface LayoutProps {
     children: React.ReactNode
-    selectedMenu: LayoutMenu | null
+    selectedMenu: LayoutMenu
 }
 
 export default function Layout(props: LayoutProps) {
     const { router, translator, ts } = useDefaultPageElements();
+    const [ openDrawer, setOpenDrawer ] = React.useState(false);
 
     var global = React.useContext(GlobalContext);
     
@@ -51,6 +36,18 @@ export default function Layout(props: LayoutProps) {
         }
     }
 
+    function handleOpenDrawerClick() {
+        setOpenDrawer(true);
+    }
+
+    function handleCloseDrawerClick() {
+        setOpenDrawer(false);
+    }
+
+    function handleDrawerContentClick(e: React.MouseEvent) {
+        e.stopPropagation();
+    }
+
     return (
         <>
             {/* 
@@ -60,22 +57,55 @@ export default function Layout(props: LayoutProps) {
             */}
 
             <div className={`${global.data.theme.code} ${styles.layout}`}>
+                <div className={`${openDrawer ? "" : "display-none"} ${styles.drawer} translucent-background`} onClick={handleCloseDrawerClick}>
+                    <div className={`${global.data.theme.code} ${styles.drawer_content}`} onClick={handleDrawerContentClick}>
+                        <div className={`${styles.drawer_title}`}>Menu</div>
+
+                        <nav>
+                            <div className={`${styles.drawer_item} top-border`}><Link href="/" locale={router.locale}>{ts(LayoutMenu.aboutMe.name)}</Link></div>
+                            <div className={`${styles.drawer_item} top-border`}><Link href="/articles" locale={router.locale}>{ts(LayoutMenu.articles.name)}</Link></div>
+                            <div className={`${styles.drawer_item} top-border`}><Link href="/projects" locale={router.locale}>{ts(LayoutMenu.projects.name)}</Link></div>
+                        </nav>
+
+                        <div className={`${styles.drawer_item} ${styles.drawer_item_subcontent} top-border`}>
+                            <span>{ts(content.language)}</span>
+                            <LocaleButton currentLocale={translator} onLocaleChange={handleLocaleChanged}></LocaleButton>
+                        </div>
+                        
+                        <div className={`${styles.drawer_item} ${styles.drawer_item_subcontent} top-border`}>
+                            <span>{ts(content.theme)}</span>
+                            <ThemeButton currentTheme={global.data.theme} onThemeChange={handleThemeChanged} />
+                        </div>
+                    </div>
+                </div>
+
                 <header className="bottom-border">
-                    <h1>
-                        Vinicius Quinafelex Alves
-                    </h1>
+                    <div className={`${styles.mobile_header} mobile-only`}>
+                        <div className={`${styles.drawer_button}`} onClick={handleOpenDrawerClick}>≡</div>
 
-                    <nav>
-                        <ul>
-                            <li className={getMenuClass(LayoutMenu.aboutMe)}><Link href="/" locale={router.locale}>{ts(content.menuAbout)}</Link></li>
-                            <li className={getMenuClass(LayoutMenu.articles)}><Link href="/articles" locale={router.locale}>{ts(content.menuArticles)}</Link></li>
-                            <li className={getMenuClass(LayoutMenu.projects)}><Link href="/projects" locale={router.locale}>{ts(content.menuProjects)}</Link></li>
-                        </ul>
-                    </nav>
+                        <nav>
+                            {ts(props.selectedMenu.name)}
+                        </nav>
+                    </div>
+                    
+                    <div className={`${styles.desktop_header} desktop-only`}>
+                        <h1>
+                            Vinicius Quinafelex Alves
+                        </h1>
 
-                    <LocaleButton currentLocale={translator} onLocaleChange={handleLocaleChanged}></LocaleButton>
+                        <nav>
+                            <ul>
+                                <li className={getMenuClass(LayoutMenu.aboutMe)}><Link href="/" locale={router.locale}>{ts(LayoutMenu.aboutMe.name)}</Link></li>
+                                <li className={getMenuClass(LayoutMenu.articles)}><Link href="/articles" locale={router.locale}>{ts(LayoutMenu.articles.name)}</Link></li>
+                                <li className={getMenuClass(LayoutMenu.projects)}><Link href="/projects" locale={router.locale}>{ts(LayoutMenu.projects.name)}</Link></li>
+                            </ul>
+                        </nav>
 
-                    <ThemeButton currentTheme={global.data.theme} onThemeChange={handleThemeChanged} />
+                        <LocaleButton currentLocale={translator} onLocaleChange={handleLocaleChanged}></LocaleButton>
+
+                        <ThemeButton currentTheme={global.data.theme} onThemeChange={handleThemeChanged} />
+                    </div>
+                    
                 </header>
 
                 <main>{props.children}</main>

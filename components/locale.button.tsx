@@ -4,12 +4,12 @@ import styles from "../styles/locale.button.module.css";
 export interface LocaleButtonProps {
     currentLocale: LocaleType;
     onLocaleChange: (newLocale: LocaleType) => void;
+    className?: string | undefined;
 }
 
 export default function LocaleButton(props: LocaleButtonProps) {
-
     return (
-        <div className={`${styles.locale_button} icon-button`}>
+        <div className={`${props.className} ${styles.locale_button} icon-button`}>
             <span>🌐</span>
             {
                 LocaleType
