@@ -32,6 +32,10 @@
   list-style-type: none;
 }
 
+.tech_stack {
+  margin-top: 10px;
+}
+
 .tech_stack_category {
   font-weight: bold;
   margin-top: 10px;
@@ -49,3 +53,37 @@
 .roles p {
   margin-top: 20px;
 }
+
+@media only screen and (max-width: 800px) {
+  .project_card {
+    flex-direction: column;
+  }
+
+  .project_card > *:first-child {
+    width: auto;
+  }
+
+  .tech_stack {
+    display: flex;
+    padding-bottom: 15px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+
+  .tech_stack > * {
+    padding-left: 20px;
+    padding-right: 50px;
+    border-left-width: 1px;
+    border-left-style: solid;
+  }
+
+  .tech_stack > *:first-child {
+    padding-left: 0px;
+    border-left-width: 0px;
+  }
+
+  .tech_stack_category {
+    margin-top: 0px;
+  }
+}
+
