@@ -5,7 +5,7 @@
 }
 
 .project_card > *:first-child {
-  width: 150px;
+  min-width: 150px;
 }
 
 .project_name {
@@ -86,4 +86,3 @@
     margin-top: 0px;
   }
 }
-

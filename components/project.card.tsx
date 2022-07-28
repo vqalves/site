@@ -31,25 +31,21 @@ function ProjectTechStack({ project } : { project: Project }) {
         return (
             <>
                 {
-                    Array.from(map.entries()).map(e => {
-                        var techGroup = e[0];
+                    Array.from(map.entries()).map((e, index) => {
+                        var group = e[0];
                         var techs = e[1];
 
-                        return _renderTechGroup(techGroup, techs);
+                        return (
+                            <ul key={index}>
+                                <li className={styles.tech_stack_category}>{ts(group.name)}</li>
+                                <li>
+                                    {_renderTechsOfGroup(techs)}
+                                </li>
+                            </ul>
+                        );
                     })
                 }
             </>
-        )
-    }
-
-    function _renderTechGroup(group: ProjectTechGroup, techs: ProjectTech[]) {
-        return (
-            <ul>
-                <li className={styles.tech_stack_category}>{ts(group.name)}</li>
-                <li>
-                    {_renderTechsOfGroup(techs)}
-                </li>
-            </ul>
         )
     }
 
