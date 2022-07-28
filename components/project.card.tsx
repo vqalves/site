@@ -57,8 +57,8 @@ function ProjectTechStack({ project } : { project: Project }) {
         return (
             <ul>
                 {
-                    techs.map(tech => {
-                        return (<li>{ts(tech.name)}</li>);
+                    techs.map((tech, index) => {
+                        return (<li key={index}>{ts(tech.name)}</li>);
                     })
                 }
             </ul>
@@ -79,7 +79,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
     function _renderProjectLink() {
         if(project.link) {
-            return <a target="_blank" href={project.link}>{project.link}</a>
+            return <a target="_blank" rel="noreferrer" href={project.link}>{project.link}</a>
         }
 
         return null;
@@ -100,8 +100,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 
                 <div className={styles.roles}>
                     {
-                        project.roles.map(role => {
-                            return (<p><span>{ts(role.type.name)}</span>: {ts(role.description)}</p>)
+                        project.roles.map((role, index) => {
+                            return (<p key={index}><span>{ts(role.type.name)}</span>: {ts(role.description)}</p>)
                         })
                     }
                 </div>

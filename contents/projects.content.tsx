@@ -1,12 +1,12 @@
-import { LocaleContent } from "../models/locale";
+import { LocaleContentAny, LocaleContentText } from "../models/locale";
 
 const ProjectsContent = {
-    title: new LocaleContent({
+    title: new LocaleContentText({
       en: "Projects",
       pt: "Projetos"
     }),
   
-    description: new LocaleContent({
+    description: new LocaleContentAny({
       en: "Projects I've worked on previously",
       pt: "Projetos que já trabalhei"
     })

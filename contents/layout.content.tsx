@@ -1,12 +1,12 @@
-import { LocaleContent } from "../models/locale";
+import { LocaleContentAny } from "../models/locale";
 
 const LayoutContent = {
-    language: new LocaleContent({
+    language: new LocaleContentAny({
       en: "Language",
       pt: "Idioma"
     }),
   
-    theme: new LocaleContent({
+    theme: new LocaleContentAny({
       en: "Theme",
       pt: "Tema"
     }),

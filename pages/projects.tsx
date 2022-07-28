@@ -20,11 +20,10 @@ export default function Projects() {
                 {
                     ProjectModels
                         .listAll()
-                        .map((project) => {
-                            return <ProjectCard project={project}></ProjectCard>
+                        .map((project, index) => {
+                            return <ProjectCard key={index} project={project}></ProjectCard>
                         })
                 }
-                
             </Layout>
         </>
     )

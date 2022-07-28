@@ -1,30 +1,30 @@
-import { LocaleContent } from "./locale"
+import { LocaleContentAny } from "./locale"
 
 export default class LayoutMenu {
     static aboutMe: LayoutMenu = new LayoutMenu({
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "About me",
             pt: "Sobre mim"
         })
     });
 
     static articles: LayoutMenu = new LayoutMenu({
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "Articles",
             pt: "Artigos"
         })
     });
 
     static projects: LayoutMenu = new LayoutMenu({
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "Projects",
             pt: "Projetos"
         })
     });
 
-    name: LocaleContent;
+    readonly name: LocaleContentAny;
 
-    constructor({ name }: { name: LocaleContent }) {
+    constructor({ name }: { name: LocaleContentAny }) {
         this.name = name;
     }
 }

@@ -1,22 +1,22 @@
-import { LocaleContent } from "./locale"
+import { LocaleContentAny } from "./locale"
 
 export class ProjectTechGroup {
     static readonly backend: ProjectTechGroup = new ProjectTechGroup({
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "Backend",
             pt: "Backend"
         })
     });
 
     static readonly frontend: ProjectTechGroup = new ProjectTechGroup({
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "Frontend",
             pt: "Frontend"
         })
     });
 
     static readonly mobile: ProjectTechGroup = new ProjectTechGroup({
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "Mobile",
             pt: "Mobile"
         })
@@ -26,16 +26,16 @@ export class ProjectTechGroup {
         return [ this.backend, this.frontend, this.mobile ];
     }
 
-    name: LocaleContent;
+    readonly name: LocaleContentAny;
 
-    constructor({ name } : { name : LocaleContent}) {
+    constructor({ name } : { name : LocaleContentAny}) {
         this.name = name;
     }
 }
 
 export default class ProjectTech {
     static readonly netCore: ProjectTech = new ProjectTech({
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: ".NET Core",
             pt: ".NET Core"
         }),
@@ -44,7 +44,7 @@ export default class ProjectTech {
     });
 
     static readonly sqlServer: ProjectTech = new ProjectTech({
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "SQL Server",
             pt: "SQL Server"
         }),
@@ -53,7 +53,7 @@ export default class ProjectTech {
     });
 
     static readonly rabbitMQ: ProjectTech = new ProjectTech({
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "RabbitMQ",
             pt: "RabbitMQ"
         }),
@@ -62,7 +62,7 @@ export default class ProjectTech {
     });
 
     static readonly reactJs: ProjectTech = new ProjectTech({
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "ReactJS",
             pt: "ReactJS"
         }),
@@ -71,7 +71,7 @@ export default class ProjectTech {
     });
 
     static readonly flutterWeb: ProjectTech = new ProjectTech({
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "Flutter Web",
             pt: "Flutter Web"
         }),
@@ -80,7 +80,7 @@ export default class ProjectTech {
     });
 
     static readonly flutterMobile: ProjectTech = new ProjectTech({
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "Flutter",
             pt: "Flutter"
         }),
@@ -89,7 +89,7 @@ export default class ProjectTech {
     });
 
     static readonly android: ProjectTech = new ProjectTech({
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "Android native",
             pt: "Android native"
         }),
@@ -97,10 +97,10 @@ export default class ProjectTech {
         techGroup: ProjectTechGroup.mobile
     });
 
-    name: LocaleContent;
-    techGroup: ProjectTechGroup;
+    readonly name: LocaleContentAny;
+    readonly techGroup: ProjectTechGroup;
 
-    constructor({ name, techGroup } : { name : LocaleContent, techGroup : ProjectTechGroup}) {
+    constructor({ name, techGroup } : { name : LocaleContentAny, techGroup : ProjectTechGroup}) {
         this.name = name;
         this.techGroup = techGroup;
     }

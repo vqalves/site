@@ -1,17 +1,17 @@
-import { LocaleContent } from "../models/locale";
+import { LocaleContentAny, LocaleContentText } from "../models/locale";
 
 const ArticlesContent = {
-    title: new LocaleContent({
+    title: new LocaleContentText({
       en: "Articles",
       pt: "Artigos"
     }),
   
-    description: new LocaleContent({
+    description: new LocaleContentAny({
       en: "Content and studies for myself and others",
       pt: "Conteúdos e estudos para mim e para outros"
     }),
   
-    presentationText: new LocaleContent({
+    presentationText: new LocaleContentAny({
       en: "A few articles...",
       pt: "Lista de artigos..."
     })

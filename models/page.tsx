@@ -5,7 +5,7 @@ export function useDefaultPageElements() {
     const router = useRouter();
     const translator = LocaleType.getLocaleTypeByCode(router.locale);
 
-    function translate(content: LocaleContent): string {
+    function translate<T>(content: LocaleContent<T>): T {
         return translator.getContent(content);
     }
 

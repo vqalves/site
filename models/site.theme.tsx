@@ -1,9 +1,9 @@
-import { LocaleContent } from "./locale";
+import { LocaleContentAny } from "./locale";
 
 export default class SiteTheme {
     static light: SiteTheme = new SiteTheme({
         code: "light",
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "Light mode",
             pt: "Fundo claro"
         })
@@ -11,16 +11,16 @@ export default class SiteTheme {
 
     static dark: SiteTheme = new SiteTheme({
         code: "dark",
-        name: new LocaleContent({
+        name: new LocaleContentAny({
             en: "Dark mode",
             pt: "Fundo escuro"
         })
     });
 
-    code: string;
-    name: LocaleContent;
+    readonly code: string;
+    readonly name: LocaleContentAny;
 
-    constructor({ code, name }: { code: string, name: LocaleContent })
+    constructor({ code, name }: { code: string, name: LocaleContentAny })
     {
         this.code = code;
         this.name = name;

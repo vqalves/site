@@ -1,13 +1,13 @@
-export class LocaleContent {
-    "pt-BR": any;
-    "en-US": any;
+export abstract class LocaleContent<T> {
+    readonly "pt-BR": T;
+    readonly "en-US": T;
 
-    constructor({en, pt} : { en: any, pt: any }) {
+    constructor({en, pt} : { en: T, pt: T }) {
         this["pt-BR"] = pt;
         this["en-US"] = en;
     }
 
-    getContent(locale: string | undefined) : any {
+    getContent(locale: string | undefined) : T {
         locale ??= "en-US";
 
         switch(locale) {
@@ -15,6 +15,28 @@ export class LocaleContent {
             case "en-US": return this["en-US"];
         }
 
+        return this.getDefaultValue();
+    }
+
+    abstract getDefaultValue(): T;
+}
+
+export class LocaleContentAny extends LocaleContent<any> {
+    constructor({en, pt} : { en: any, pt: any }) {
+        super({en: en, pt: pt});    
+    }
+
+    getDefaultValue() {
+        return "";
+    }
+}
+
+export class LocaleContentText extends LocaleContent<string> {
+    constructor({en, pt} : { en: string, pt: string }) {
+        super({en: en, pt: pt});    
+    }
+
+    getDefaultValue() {
         return "";
     }
 }
@@ -45,11 +67,11 @@ export class LocaleType {
         return locale;
     }
 
-    code: string;
-    name: string;
-    getContent: (content: LocaleContent) => string;
+    readonly code: string;
+    readonly name: string;
+    readonly getContent: <T>(content: LocaleContent<T>) => T;
 
-    constructor({code, name, getContent}: {code: string, name: string, getContent: (content: LocaleContent) => string}) {
+    constructor({code, name, getContent }: {code: string, name: string, getContent: <T>(content: LocaleContent<T>) => T}) {
         this.code = code;
         this.name = name;
         this.getContent = getContent;

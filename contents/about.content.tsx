@@ -1,17 +1,17 @@
-import { LocaleContent } from "../models/locale";
+import { LocaleContentAny, LocaleContentText } from "../models/locale";
 
 const AboutContent = {
-  title: new LocaleContent({
+  title: new LocaleContentText({
     en: "About me",
     pt: "Sobre mim"
   }),
 
-  description: new LocaleContent({
+  description: new LocaleContentAny({
     en: "Working as a fullstack developer since 2009, specialized backend in .NET Core and frontend in ReactJS and VanillaJS, and some mobile projects with Android native and Flutter. Check my articles for some code experimentation!",
     pt: "Trabalhando como desenvolvedor fullstack desde 2009, backend especializado em .NET Core e frontend em ReactJS e VanillaJS, e alguns projetos mobile com Android nativo e Flutter. Cheque meus artigos de experimentação de código!"
   }),
 
-  about: new LocaleContent({
+  about: new LocaleContentAny({
     en: (<>
       <p>Working as a fullstack developer since 2009, specialized backend in .NET Core and frontend in ASP.NET, ReactJS and VanillaJS. Developed some mobile projects in Android native and Flutter.</p>
       <p>I believe working with tech is a wonderful gateway for making people's lives easier and work smarter, and a great source of entertainment for myself!</p>
