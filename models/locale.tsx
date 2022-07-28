@@ -1,13 +1,13 @@
 export class LocaleContent {
-    "pt-BR": string;
-    "en-US": string;
+    "pt-BR": any;
+    "en-US": any;
 
-    constructor({en, pt} : { en: string, pt: string }) {
+    constructor({en, pt} : { en: any, pt: any }) {
         this["pt-BR"] = pt;
         this["en-US"] = en;
     }
 
-    getContent(locale: string | undefined) : string {
+    getContent(locale: string | undefined) : any {
         locale ??= "en-US";
 
         switch(locale) {

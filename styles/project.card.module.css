@@ -1,0 +1,51 @@
+.project_card  {
+  border-width: 1px;
+  border-style: solid;
+  display: flex;
+}
+
+.project_card > *:first-child {
+  width: 150px;
+}
+
+.project_name {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.project_card > div {
+  padding: 10px;
+  border-left-width: 1px;
+  border-left-style: solid;
+}
+
+.project_info { 
+  flex: 1;
+}
+
+.project_card > div:first-child {
+  border-left: none;
+}
+
+.project_card li,
+.project_card ul {
+  list-style-type: none;
+}
+
+.tech_stack_category {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.project_description {
+  margin-bottom: 10px;
+}
+
+.roles p span:first-child {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.roles p {
+  margin-top: 20px;
+}

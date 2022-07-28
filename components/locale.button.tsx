@@ -9,7 +9,7 @@ export interface LocaleButtonProps {
 
 export default function LocaleButton(props: LocaleButtonProps) {
     return (
-        <div className={`${props.className} ${styles.locale_button} icon-button`}>
+        <div className={`${props.className ?? ""} ${styles.locale_button} icon-button`}>
             <span>🌐</span>
             {
                 LocaleType

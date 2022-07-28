@@ -14,7 +14,7 @@ export default function ThemeButton(props: ThemeButtonProps) {
     if(props.currentTheme == SiteTheme.light) {
         return (
             <div 
-                className={`${props.className} ${styles.theme_button} ${styles.to_dark}`} 
+                className={`${props.className ?? ""} ${styles.theme_button} ${styles.to_dark}`} 
                 onClick={() => { props.onThemeChange(SiteTheme.dark) }}>
                     🌙 {ts(SiteTheme.dark.name)}
             </div>
@@ -22,7 +22,7 @@ export default function ThemeButton(props: ThemeButtonProps) {
     } else {
         return (
             <div 
-                className={`${props.className} ${styles.theme_button} ${styles.to_light}`} 
+                className={`${props.className ?? ""} ${styles.theme_button} ${styles.to_light}`} 
                 onClick={() => { props.onThemeChange(SiteTheme.light) }}>
                     🌅 {ts(SiteTheme.light.name)}
             </div>

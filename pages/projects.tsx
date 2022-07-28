@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Layout from "../components/layout";
+import ProjectCard from "../components/project.card";
 import content from "../contents/projects.content";
 import LayoutMenu from "../models/menu";
+import ProjectModels from "../models/project";
 import { useDefaultPageElements } from "../models/page";
 
 export default function Projects() {
@@ -15,9 +17,14 @@ export default function Projects() {
             </Head>
 
             <Layout selectedMenu={LayoutMenu.projects}>
-                <div>
-                    {ts(content.projects)}
-                </div>
+                {
+                    ProjectModels
+                        .listAll()
+                        .map((project) => {
+                            return <ProjectCard project={project}></ProjectCard>
+                        })
+                }
+                
             </Layout>
         </>
     )

@@ -9,6 +9,7 @@ import styles from "../styles/layout.module.css";
 import LocaleButton from "./locale.button";
 import ThemeButton from "./theme.button";
 import content from "../contents/layout.content";
+import Head from "next/head";
 
 export interface LayoutProps {
     children: React.ReactNode
@@ -50,14 +51,8 @@ export default function Layout(props: LayoutProps) {
 
     return (
         <>
-            {/* 
-            <Head>
-                <link rel="canonical" href={`/${router.locale}${router.asPath}`}/>
-            </Head>
-            */}
-
             <div className={`${global.data.theme.code} ${styles.layout}`}>
-                <div className={`${openDrawer ? "" : "display-none"} ${styles.drawer} translucent-background`} onClick={handleCloseDrawerClick}>
+                <div className={`${openDrawer ? "" : "display-none"} ${styles.drawer} translucent-background mobile-only`} onClick={handleCloseDrawerClick}>
                     <div className={`${global.data.theme.code} ${styles.drawer_content}`} onClick={handleDrawerContentClick}>
                         <div className={`${styles.drawer_title}`}>Menu</div>
 
@@ -108,7 +103,11 @@ export default function Layout(props: LayoutProps) {
                     
                 </header>
 
-                <main>{props.children}</main>
+                <main>
+                    <div className={`${global.data.theme.code} ${styles.main_margin}`}>
+                        {props.children}
+                    </div>    
+                </main>
             </div>
         </>
     )
