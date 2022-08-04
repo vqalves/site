@@ -77,8 +77,8 @@
   }
 
   .tech_stack > * {
-    padding-left: 20px;
-    padding-right: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
     border-left-width: 1px;
     border-left-style: solid;
   }
