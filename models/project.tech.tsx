@@ -34,6 +34,15 @@ export class ProjectTechGroup {
 }
 
 export default class ProjectTech {
+    static readonly netFramework: ProjectTech = new ProjectTech({
+        name: new LocaleContentAny({
+            en: ".NET Framework",
+            pt: ".NET Framework"
+        }),
+
+        techGroup: ProjectTechGroup.backend
+    });
+
     static readonly netCore: ProjectTech = new ProjectTech({
         name: new LocaleContentAny({
             en: ".NET Core",
@@ -47,6 +56,24 @@ export default class ProjectTech {
         name: new LocaleContentAny({
             en: "SQL Server",
             pt: "SQL Server"
+        }),
+
+        techGroup: ProjectTechGroup.backend
+    });
+
+    static readonly sqlite: ProjectTech = new ProjectTech({
+        name: new LocaleContentAny({
+            en: "SQLite",
+            pt: "SQLite"
+        }),
+
+        techGroup: ProjectTechGroup.backend
+    });
+
+    static readonly mysql: ProjectTech = new ProjectTech({
+        name: new LocaleContentAny({
+            en: "MySQL",
+            pt: "MySQL"
         }),
 
         techGroup: ProjectTechGroup.backend
@@ -74,6 +101,24 @@ export default class ProjectTech {
         name: new LocaleContentAny({
             en: "Flutter Web",
             pt: "Flutter Web"
+        }),
+
+        techGroup: ProjectTechGroup.frontend
+    });
+
+    static readonly jquery: ProjectTech = new ProjectTech({
+        name: new LocaleContentAny({
+            en: "jQuery",
+            pt: "jQuery"
+        }),
+
+        techGroup: ProjectTechGroup.frontend
+    });
+
+    static readonly bootstrap: ProjectTech = new ProjectTech({
+        name: new LocaleContentAny({
+            en: "Bootstrap",
+            pt: "Bootstrap"
         }),
 
         techGroup: ProjectTechGroup.frontend

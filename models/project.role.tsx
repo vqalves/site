@@ -29,6 +29,13 @@ export class ProjectRoleType {
         })
     });
 
+    static readonly mobile: ProjectRoleType = new ProjectRoleType({
+        name: new LocaleContentAny({
+            en: "Mobile developer",
+            pt: "Mobile developer"
+        })
+    });
+
     static readonly privacyCompliance: ProjectRoleType = new ProjectRoleType({
         name: new LocaleContentAny({
             en: "Board of privacy compliance",

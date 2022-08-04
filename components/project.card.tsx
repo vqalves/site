@@ -73,19 +73,19 @@ function ProjectTechStack({ project } : { project: Project }) {
 export default function ProjectCard({ project }: ProjectCardProps) {
     const { ts } = useDefaultPageElements();
 
-    function _renderProjectLink() {
-        if(project.link) {
-            return <a target="_blank" rel="noreferrer" href={project.link}>{project.link}</a>
+    function _renderProjectLink(company: string, link?: string) {
+        if(link) {
+            return <a target="_blank" rel="noreferrer" href={link}>{company}</a>
         }
 
-        return null;
+        return <p>{company}</p>;
     }
 
     return (
         <div className={styles.project_card}>
             <div>
-                <p className={styles.project_name}>{project.name}</p>
-                {_renderProjectLink()}
+                <p className={styles.project_name}>{project.title}</p>
+                {_renderProjectLink(project.company, project.link)}
                 <p>{ts(project.period)}</p>
 
                 <ProjectTechStack project={project}></ProjectTechStack>
