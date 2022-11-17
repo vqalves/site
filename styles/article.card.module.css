@@ -1,0 +1,25 @@
+.article_card {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.article_date {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.article_title {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.article_tags {
+  margin-top: 8px;
+}
+
+.article_tag { 
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 1px 5px;
+}

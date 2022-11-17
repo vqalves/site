@@ -1,4 +1,5 @@
-import { LocaleContentAny, LocaleContentText } from "../models/locale";
+import LocaleContentAny from "../models/locale/locale.content.any";
+import LocaleContentText from "../models/locale/locale.content.text";
 
 const AboutContent = {
   title: new LocaleContentText({

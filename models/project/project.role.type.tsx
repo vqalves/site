@@ -1,6 +1,6 @@
-import { LocaleContentAny } from "./locale"
+import LocaleContentAny from "../locale/locale.content.any"
 
-export class ProjectRoleType {
+export default class ProjectRoleType {
     static readonly techLead: ProjectRoleType = new ProjectRoleType({
         name: new LocaleContentAny({
             en: "Tech lead",
@@ -47,15 +47,5 @@ export class ProjectRoleType {
 
     constructor({ name } : { name : LocaleContentAny}) {
         this.name = name;
-    }
-}
-
-export default class Role {
-    readonly type: ProjectRoleType;
-    readonly description: LocaleContentAny;
-
-    constructor({ type, description } : { type: ProjectRoleType, description: LocaleContentAny }) {
-        this.type = type;
-        this.description = description;
     }
 }

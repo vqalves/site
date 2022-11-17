@@ -1,4 +1,4 @@
-import { LocaleContentAny } from "./locale";
+import LocaleContentAny from "./locale/locale.content.any";
 
 export default class SiteTheme {
     static light: SiteTheme = new SiteTheme({

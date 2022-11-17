@@ -1,15 +1,16 @@
 import Link from "next/link";
 import React from "react";
-import { GlobalContext } from "../contexts/global.context";
-import { LocaleType } from "../models/locale";
 import LayoutMenu from "../models/menu";
-import { useDefaultPageElements } from "../models/page";
 import SiteTheme from "../models/site.theme";
-import styles from "../styles/layout.module.css";
+import { useDefaultPageElements } from "../models/page";
+import { GlobalContext } from "../contexts/global.context";
+
 import LocaleButton from "./locale.button";
 import ThemeButton from "./theme.button";
+import LocaleType from "../models/locale/locale.type";
 import content from "../contents/layout.content";
-import Head from "next/head";
+
+import styles from "../styles/layout.module.css";
 
 export interface LayoutProps {
     children: React.ReactNode

@@ -1,4 +1,4 @@
-import { LocaleType } from "../models/locale";
+import LocaleType from "../models/locale/locale.type";
 import styles from "../styles/locale.button.module.css";
 
 export interface LocaleButtonProps {

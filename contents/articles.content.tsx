@@ -1,4 +1,5 @@
-import { LocaleContentAny, LocaleContentText } from "../models/locale";
+import LocaleContentAny from "../models/locale/locale.content.any";
+import LocaleContentText from "../models/locale/locale.content.text";
 
 const ArticlesContent = {
     title: new LocaleContentText({
@@ -11,9 +12,9 @@ const ArticlesContent = {
       pt: "Conteúdos e estudos para mim e para outros"
     }),
   
-    presentationText: new LocaleContentAny({
-      en: "A few articles...",
-      pt: "Lista de artigos..."
+    search: new LocaleContentAny({
+      en: "Search",
+      pt: "Procurar"
     })
   };
 

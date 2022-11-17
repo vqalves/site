@@ -1,47 +1,6 @@
-export abstract class LocaleContent<T> {
-    readonly "pt-BR": T;
-    readonly "en-US": T;
+import LocaleContent from "./locale.content";
 
-    constructor({en, pt} : { en: T, pt: T }) {
-        this["pt-BR"] = pt;
-        this["en-US"] = en;
-    }
-
-    getContent(locale: string | undefined) : T {
-        locale ??= "en-US";
-
-        switch(locale) {
-            case "pt-BR": return this["pt-BR"];
-            case "en-US": return this["en-US"];
-        }
-
-        return this.getDefaultValue();
-    }
-
-    abstract getDefaultValue(): T;
-}
-
-export class LocaleContentAny extends LocaleContent<any> {
-    constructor({en, pt} : { en: any, pt: any }) {
-        super({en: en, pt: pt});    
-    }
-
-    getDefaultValue() {
-        return "";
-    }
-}
-
-export class LocaleContentText extends LocaleContent<string> {
-    constructor({en, pt} : { en: string, pt: string }) {
-        super({en: en, pt: pt});    
-    }
-
-    getDefaultValue() {
-        return "";
-    }
-}
-
-export class LocaleType {
+export default class LocaleType {
     static ptBR: LocaleType = new LocaleType({
         code: "pt-BR",
         name: "Ler em português",

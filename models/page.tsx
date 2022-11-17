@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import { LocaleContent, LocaleType } from "./locale";
+import LocaleContent from "./locale/locale.content";
+import LocaleType from "./locale/locale.type";
 
 export function useDefaultPageElements() {
     const router = useRouter();

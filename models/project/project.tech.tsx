@@ -1,37 +1,5 @@
-import { LocaleContentAny } from "./locale"
-
-export class ProjectTechGroup {
-    static readonly backend: ProjectTechGroup = new ProjectTechGroup({
-        name: new LocaleContentAny({
-            en: "Backend",
-            pt: "Backend"
-        })
-    });
-
-    static readonly frontend: ProjectTechGroup = new ProjectTechGroup({
-        name: new LocaleContentAny({
-            en: "Frontend",
-            pt: "Frontend"
-        })
-    });
-
-    static readonly mobile: ProjectTechGroup = new ProjectTechGroup({
-        name: new LocaleContentAny({
-            en: "Mobile",
-            pt: "Mobile"
-        })
-    });
-
-    static listAll(): ProjectTechGroup[] {
-        return [ this.backend, this.frontend, this.mobile ];
-    }
-
-    readonly name: LocaleContentAny;
-
-    constructor({ name } : { name : LocaleContentAny}) {
-        this.name = name;
-    }
-}
+import LocaleContentAny from "../locale/locale.content.any"
+import ProjectTechGroup from "./project.tech.group";
 
 export default class ProjectTech {
     static readonly netFramework: ProjectTech = new ProjectTech({

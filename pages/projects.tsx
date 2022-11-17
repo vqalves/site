@@ -3,8 +3,8 @@ import Layout from "../components/layout";
 import ProjectCard from "../components/project.card";
 import content from "../contents/projects.content";
 import LayoutMenu from "../models/menu";
-import ProjectModels from "../models/project";
 import { useDefaultPageElements } from "../models/page";
+import ProjectSource from "../sources/project.source";
 
 export default function Projects() {
     const { ts } = useDefaultPageElements();
@@ -18,7 +18,7 @@ export default function Projects() {
 
             <Layout selectedMenu={LayoutMenu.projects}>
                 {
-                    ProjectModels
+                    ProjectSource
                         .listAll()
                         .map((project, index) => {
                             return <ProjectCard key={index} project={project}></ProjectCard>

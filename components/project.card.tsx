@@ -1,6 +1,7 @@
 import { useDefaultPageElements } from "../models/page";
-import { Project } from "../models/project";
-import ProjectTech, { ProjectTechGroup } from "../models/project.tech";
+import Project from "../models/project/project";
+import ProjectTech from "../models/project/project.tech";
+import ProjectTechGroup from "../models/project/project.tech.group";
 import styles from "../styles/project.card.module.css";
 
 export interface ProjectCardProps {

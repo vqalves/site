@@ -1,4 +1,4 @@
-import { LocaleContentAny } from "../models/locale";
+import LocaleContentAny from "../models/locale/locale.content.any";
 
 const LayoutContent = {
     language: new LocaleContentAny({
