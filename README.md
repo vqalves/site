@@ -25,3 +25,6 @@ graph TD;
     LocaleContent-.->LocaleContentAny;
     LocaleContent-.->LocaleContentText;
 ```
+
+## References for future updates:
+https://accessibility.digital.gov/product/accessibility-basics/

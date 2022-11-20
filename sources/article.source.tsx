@@ -20,6 +20,16 @@ const ArticleSource = {
         } 
 
         return resultList;
+    },
+
+    findByPermalink(permalink: string | string[] | undefined): Article | undefined {
+        if(!permalink) return;
+
+        var code = (permalink as string).split('-')[0];
+
+        return this.listAll().find((article, index) => {
+            return article.code === code;
+        });
     }
 }
 

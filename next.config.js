@@ -8,4 +8,13 @@ module.exports = {
     defaultLocale: "pt-BR",
     localeDetection: true
   },
+
+  async rewrites() {
+    return [
+      {
+        source: '/',
+        destination: '/about'
+      }
+    ]
+  },
 }

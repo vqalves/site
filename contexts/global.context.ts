@@ -9,13 +9,7 @@ export class GlobalContextHolder {
     data: GlobalContextData;
     update: (newData: GlobalContextData) => void;
 
-    constructor(
-        {data, update} : 
-        { 
-            data: GlobalContextData, 
-            update: (newData: GlobalContextData) => void
-        }
-    ) {
+    constructor({ data, update } : { data: GlobalContextData, update: (newData: GlobalContextData) => void }) {
         this.data = data;
         this.update = update;
     }

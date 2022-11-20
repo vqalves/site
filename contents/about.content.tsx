@@ -7,6 +7,11 @@ const AboutContent = {
     pt: "Sobre mim"
   }),
 
+  photo: new LocaleContentText({
+    en: "My profile",
+    pt: "Minha foto"
+  }),
+
   description: new LocaleContentAny({
     en: "Working as a fullstack developer since 2009, specialized backend in .NET Core and frontend in ReactJS and VanillaJS, and some mobile projects with Android native and Flutter. Check my articles for some code experimentation!",
     pt: "Trabalhando como desenvolvedor fullstack desde 2009, backend especializado em .NET Core e frontend em ReactJS e VanillaJS, e alguns projetos mobile com Android nativo e Flutter. Cheque meus artigos de experimentação de código!"

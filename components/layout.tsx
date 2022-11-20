@@ -58,9 +58,9 @@ export default function Layout(props: LayoutProps) {
                         <div className={`${styles.drawer_title}`}>Menu</div>
 
                         <nav>
-                            <div className={`${styles.drawer_item} top-border`}><Link href="/" locale={router.locale}>{ts(LayoutMenu.aboutMe.name)}</Link></div>
-                            <div className={`${styles.drawer_item} top-border`}><Link href="/articles" locale={router.locale}>{ts(LayoutMenu.articles.name)}</Link></div>
-                            <div className={`${styles.drawer_item} top-border`}><Link href="/projects" locale={router.locale}>{ts(LayoutMenu.projects.name)}</Link></div>
+                            <div className={`${styles.drawer_item} top-border`}><Link href="/">{ts(LayoutMenu.aboutMe.name)}</Link></div>
+                            <div className={`${styles.drawer_item} top-border`}><Link href="/articles">{ts(LayoutMenu.articles.name)}</Link></div>
+                            <div className={`${styles.drawer_item} top-border`}><Link href="/projects">{ts(LayoutMenu.projects.name)}</Link></div>
                         </nav>
 
                         <div className={`${styles.drawer_item} ${styles.drawer_item_subcontent} top-border`}>
@@ -80,10 +80,12 @@ export default function Layout(props: LayoutProps) {
                         <div className={`${styles.drawer_button}`} onClick={handleOpenDrawerClick}>≡</div>
 
                         <nav>
-                            {ts(props.selectedMenu.name)}
+                            <div className={getMenuClass(LayoutMenu.aboutMe)}><Link href="/">{ts(LayoutMenu.aboutMe.name)}</Link></div>
+                            <div className={getMenuClass(LayoutMenu.articles)}><Link href="/articles">{ts(LayoutMenu.articles.name)}</Link></div>
+                            <div className={getMenuClass(LayoutMenu.projects)}><Link href="/projects">{ts(LayoutMenu.projects.name)}</Link></div>
                         </nav>
                     </div>
-                    
+
                     <div className={`${styles.desktop_header} desktop-only`}>
                         <h1>
                             Vinicius Quinafelex Alves
@@ -91,9 +93,9 @@ export default function Layout(props: LayoutProps) {
 
                         <nav>
                             <ul>
-                                <li className={getMenuClass(LayoutMenu.aboutMe)}><Link href="/" locale={router.locale}>{ts(LayoutMenu.aboutMe.name)}</Link></li>
-                                <li className={getMenuClass(LayoutMenu.articles)}><Link href="/articles" locale={router.locale}>{ts(LayoutMenu.articles.name)}</Link></li>
-                                <li className={getMenuClass(LayoutMenu.projects)}><Link href="/projects" locale={router.locale}>{ts(LayoutMenu.projects.name)}</Link></li>
+                                <li className={getMenuClass(LayoutMenu.aboutMe)}><Link href="/">{ts(LayoutMenu.aboutMe.name)}</Link></li>
+                                <li className={getMenuClass(LayoutMenu.articles)}><Link href="/articles">{ts(LayoutMenu.articles.name)}</Link></li>
+                                <li className={getMenuClass(LayoutMenu.projects)}><Link href="/projects">{ts(LayoutMenu.projects.name)}</Link></li>
                             </ul>
                         </nav>
 

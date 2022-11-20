@@ -1,8 +1,7 @@
-.article_filter {
-  margin-bottom: 20px;
+.article_section {
+  margin-top: 20px;
 }
 
-.article_filter input {
-  height: 1.5em;
-  padding: 0px 5px;
+.navigate_to_articles {
+  margin-bottom: 10px;
 }

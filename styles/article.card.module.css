@@ -9,11 +9,11 @@
 }
 
 .article_title {
-  display: inline-block;
   font-weight: bold;
 }
 
 .article_tags {
+  display: inline-block;
   margin-top: 8px;
 }
 

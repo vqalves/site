@@ -19,9 +19,9 @@ export default function About() {
         <Layout selectedMenu={LayoutMenu.aboutMe}>
             <div className={styles.profile_section}>
               <div className={styles.profile_image}>
-                <Image src="/images/profile.jpeg" width={500} height={500} alt="My profile" />
+                <Image src="/images/profile.jpeg" width={500} height={500} alt={ts(content.photo)} />
               </div>
-                
+
               <div className={styles.profile_text}>
                 {ts(content.about)}
               </div>

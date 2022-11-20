@@ -1,7 +1,7 @@
 import LocaleContentAny from "../locale/locale.content.any";
 
 export default class ArticleDate {
-    readonly date: Date;
+    public readonly date: Date;
 
     constructor(year: number, month: number, day: number) {
         this.date = new Date(year, month - 1, day)

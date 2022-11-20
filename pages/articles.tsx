@@ -1,12 +1,12 @@
 import Head from "next/head";
-import { ChangeEvent, ChangeEventHandler, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import ArticleCard from "../components/article.card";
 import Layout from "../components/layout";
 import content from "../contents/articles.content";
 import LayoutMenu from "../models/menu";
 import { useDefaultPageElements } from "../models/page";
 import ArticleSource from "../sources/article.source";
-import styles from "../styles/article.page.module.css";
+import styles from "../styles/articles.page.module.css";
 
 export default function Articles() {
     const { translator, ts } = useDefaultPageElements();

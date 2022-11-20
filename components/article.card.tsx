@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Article from "../models/article/article";
 import ArticleTag from "../models/article/article.tag";
 import { useDefaultPageElements } from "../models/page";
@@ -21,8 +22,13 @@ export default function ArticleCard({ article }: ArticleCardProps) {
 
     return (
         <div className={`bottom-border ${styles.article_card}`}>
+            <div className={styles.article_title}>
+                <Link href={article.getRoute()}>
+                    {ts(article.title)}
+                </Link>
+            </div>
+
             <div className={styles.article_date}>{ts(article.date.formatAsContent())}</div>
-            <div className={styles.article_title}>{ts(article.title)}</div>
             <div className={styles.article_tags}>
                 {
                     article.tags.map((tag, index) => {
