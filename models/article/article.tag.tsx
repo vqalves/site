@@ -43,6 +43,20 @@ export default class ArticleTag {
         })
     });
 
+    static aspnet = new ArticleTag({
+        name: new LocaleContentAny({
+            en: "ASP.NET",
+            pt: "ASP.NET"
+        })
+    });
+
+    static bugfix = new ArticleTag({
+        name: new LocaleContentAny({
+            en: "Bug fix",
+            pt: "Correção de bug"
+        })
+    });
+
     readonly name: LocaleContentAny;
 
     constructor({name} : { name: LocaleContentAny }) {

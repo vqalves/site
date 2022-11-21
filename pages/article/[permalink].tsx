@@ -1,45 +1,40 @@
+import React from "react";
+import Link from "next/link";
 import Head from "next/head";
-import { useRouter } from "next/router";
+
 import Layout from "../../components/layout";
 import LayoutMenu from "../../models/menu";
-import { useDefaultPageElements } from "../../models/page";
 import ArticleSource from "../../sources/article.source";
-import content from "../../contents/article.content";
-import styles from "../../styles/article.page.module.css";
-import Link from "next/link";
 import Time from "../../components/time";
 import LocaleType from "../../models/locale/locale.type";
+import { useDefaultPageElements } from "../../models/page";
 
-export default function Article() {
-    const { translator, ts } = useDefaultPageElements();
+import content from "../../contents/article.content";
+import styles from "../../styles/article.page.module.css";
+import { SiteTitle } from "../../components/site.title";
 
-    const router = useRouter()
-    const { permalink } = router.query;
-    const article = ArticleSource.findByPermalink(permalink);
+class ArticlePageParam {
+    readonly permalink: string;
 
-    if(!article) {
-        return (<>
-            <Head>
-                <title>{ts(content.notFoundTitle)} | Vinicius Quinafelex Alves</title>
-            </Head>
-
-            <Layout selectedMenu={LayoutMenu.articles}>
-                <div>
-                    Article not found!
-                </div>
-            </Layout>
-        </>);
+    constructor(permalink: string) {
+        this.permalink = permalink;
     }
+}
 
+export function ArticlePage(props: ArticlePageParam) {
+    const { ts } = useDefaultPageElements();
+
+    const article = ArticleSource.findByPermalink(props.permalink)!;
+    
     return (
         <>
             <Head>
-                <title>{ts(article.title)} | Vinicius Quinafelex Alves</title>
+                {SiteTitle.format(ts(article.title))}
 
                 {
                     LocaleType.allLocales().map((locale, index) => {
-                        var route = article.getRoute(LocaleType.enUS);
-                        return <link rel="alternate" hrefLang={locale.code} href={locale.formatLink(route)} />;
+                        var route = article.getRoute();
+                        return (<link key={index} rel="alternate" hrefLang={locale.code} href={locale.formatLink(route)} />);
                     })
                 }
                 
@@ -54,11 +49,13 @@ export default function Article() {
                     <h2>{ts(article.title)}</h2>
                     <Time date={article.date.date} content={article.date.formatAsContent()}></Time>
 
-                    <section className={styles.article_section}>
+                    <section className={`${styles.article_section} bottom-top`}>
                         {
                             article.content
                                 .map((content, index) => {
-                                    return <p>{ts(content)}</p>
+                                    return (<React.Fragment key={index}>
+                                        {ts(content)}
+                                    </React.Fragment>);
                                 })
                         }
                     </section>
@@ -67,3 +64,31 @@ export default function Article() {
         </>
     )
 }
+
+export async function getStaticPaths() {
+    const paths = []
+
+    const locales = LocaleType.allLocales();
+
+    for(const article of ArticleSource.listAll()) {
+        var slug = article.getPermalink();
+        var data = new ArticlePageParam(slug);
+
+        for(const locale of locales) {
+            const path = { params: data, locale: locale.code };
+            paths.push(path);
+        }
+    };
+
+    return {
+        paths: paths,
+        fallback: false
+    };
+}
+
+export async function getStaticProps(props: any) {    
+    var params: ArticlePageParam = props.params;
+    return { props: params };
+}
+
+export default ArticlePage;

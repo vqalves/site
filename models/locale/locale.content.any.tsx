@@ -8,4 +8,11 @@ export default class LocaleContentAny extends LocaleContent<any> {
     getDefaultValue() {
         return "";
     }
+
+    static all(content: any): LocaleContentAny {
+        return new LocaleContentAny({
+            en: content,
+            pt: content
+        });
+    }
 }

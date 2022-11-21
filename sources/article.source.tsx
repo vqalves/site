@@ -1,10 +1,16 @@
 import Article from "../models/article/article";
 import LocaleType from "../models/locale/locale.type";
-import { example20221117 } from "./articles/20221117.example";
+import { ParameterNullController20221119 } from "./articles/20221119.parameter.null.controller";
+import { ChangeDotnetJsonConversion20221121 } from "./articles/20221121.change.dotnet.json.conversion";
+
+const articles: Article[] = [
+    ChangeDotnetJsonConversion20221121,
+    ParameterNullController20221119
+];
 
 const ArticleSource = {
     listAll(): Article[] { 
-        return [example20221117];
+        return articles;
     },
 
     filter({ name, translator } : { name: string, translator: LocaleType }): Article[] {

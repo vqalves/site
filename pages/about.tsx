@@ -5,14 +5,15 @@ import content from "../contents/about.content";
 import LayoutMenu from "../models/menu";
 import styles from "../styles/about.module.css";
 import { useDefaultPageElements } from "../models/page";
+import { SiteTitle } from "../components/site.title";
 
-export default function About() {
+export default function AboutPage() {
   const { ts } = useDefaultPageElements();
 
   return (
     <>
         <Head>
-            <title>{ts(content.title)} | Vinicius Quinafelex Alves</title>
+            {SiteTitle.format(ts(content.title))}
             <meta name="description" content={ts(content.description)} />
         </Head>
         

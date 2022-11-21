@@ -42,9 +42,11 @@ export default class LocaleType {
 
     formatLink(route: string): string {
         if(this.isDefault) {
-            return `${window.location.origin}${route}`;
+            // return `${window.location.origin}${route}`;
+            return route;
         } else {
-            return `${window.location.origin}/${this.code}${route}`;
+            // return `${window.location.origin}/${this.code}${route}`;
+            return `/${this.code}${route}`;
         }
     }
 }

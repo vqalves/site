@@ -6,6 +6,7 @@
 body {
   font-family: 'Roboto', sans-serif, Arial;
   margin-top: -5px;
+  font-size: 1.1em;
 }
 
 .display-none {
@@ -29,6 +30,10 @@ body {
   border-color: #000;
 }
 
+span.bold {
+  font-weight: bold;
+}
+
 /* Element "a" */
 a {
   text-decoration: none;
@@ -43,6 +48,11 @@ a {
 .bottom-border {
   border-bottom-width: 1px;
   border-bottom-style: solid;
+}
+
+.bottom-top {
+  border-top-width: 1px;
+  border-top-style: solid;
 }
 
 /* Class "bottom-border" */

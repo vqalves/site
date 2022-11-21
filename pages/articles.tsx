@@ -2,13 +2,14 @@ import Head from "next/head";
 import { ChangeEvent, useState } from "react";
 import ArticleCard from "../components/article.card";
 import Layout from "../components/layout";
+import { SiteTitle } from "../components/site.title";
 import content from "../contents/articles.content";
 import LayoutMenu from "../models/menu";
 import { useDefaultPageElements } from "../models/page";
 import ArticleSource from "../sources/article.source";
 import styles from "../styles/articles.page.module.css";
 
-export default function Articles() {
+export default function ArticlesPage() {
     const { translator, ts } = useDefaultPageElements();
 
     const [nameFilter, setNameFilter] = useState('');
@@ -20,7 +21,7 @@ export default function Articles() {
     return (
         <>
             <Head>
-                <title>{ts(content.title)} | Vinicius Quinafelex Alves</title>
+                {SiteTitle.format(ts(content.title))}
                 <meta name="description" content={ts(content.description)} />
             </Head>
 
