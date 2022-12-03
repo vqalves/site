@@ -3,8 +3,10 @@ import LocaleType from "../models/locale/locale.type";
 import { ParameterNullController20221119 } from "./articles/20221119.parameter.null.controller";
 import { ChangeDotnetJsonConversion20221121 } from "./articles/20221121.change.dotnet.json.conversion";
 import { DeserializeInterfaceWithJsonConverter20221203 } from "./articles/20221203.deserialize.interface.json.converter";
+import { ZoningCoordinatesUsingKmlFiles20221203 } from "./articles/20221203.zoning.coordinates.using.kml.files";
 
 const articles: Article[] = [
+    ZoningCoordinatesUsingKmlFiles20221203,
     DeserializeInterfaceWithJsonConverter20221203,
     ChangeDotnetJsonConversion20221121,
     ParameterNullController20221119

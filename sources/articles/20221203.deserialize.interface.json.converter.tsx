@@ -22,7 +22,7 @@ export const DeserializeInterfaceWithJsonConverter20221203 = new Article({
 
     content: [
         new LocaleContentAny({
-            en: (<p>On C#, interfaces cannot be instantiated directly. To deserializing interfaces, you need to choose a class that implements that interface, so the deserializer can fill the corresponding properties.</p>),
+            en: (<p>On C#, interfaces cannot be instantiated directly. To deserialize interfaces, you need to choose a class that implements that interface, so the deserializer can fill the corresponding properties.</p>),
             pt: (<p>No C#, interfaces não podem ser instanciada diretamente. Para desserializar interfaces, é preciso escolher uma classe que implemente a interface, para que o desserializador consiga alimentar as propriedades correspondentes.</p>)
         }),
 

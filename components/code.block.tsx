@@ -3,6 +3,7 @@ import styles from '../styles/code.block.module.css'
 export class CodeBlockLanguage {
     static csharp: CodeBlockLanguage = new CodeBlockLanguage("csharp");
     static json: CodeBlockLanguage = new CodeBlockLanguage("json");
+    static bash: CodeBlockLanguage = new CodeBlockLanguage("bash");
 
     readonly code: string;
 
