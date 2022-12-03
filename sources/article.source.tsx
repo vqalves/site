@@ -2,8 +2,10 @@ import Article from "../models/article/article";
 import LocaleType from "../models/locale/locale.type";
 import { ParameterNullController20221119 } from "./articles/20221119.parameter.null.controller";
 import { ChangeDotnetJsonConversion20221121 } from "./articles/20221121.change.dotnet.json.conversion";
+import { DeserializeInterfaceWithJsonConverter20221203 } from "./articles/20221203.deserialize.interface.json.converter";
 
 const articles: Article[] = [
+    DeserializeInterfaceWithJsonConverter20221203,
     ChangeDotnetJsonConversion20221121,
     ParameterNullController20221119
 ];
