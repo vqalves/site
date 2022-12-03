@@ -1,3 +1,5 @@
+import styles from '../styles/code.block.module.css'
+
 export class CodeBlockLanguage {
     static csharp: CodeBlockLanguage = new CodeBlockLanguage("csharp");
     static json: CodeBlockLanguage = new CodeBlockLanguage("json");
@@ -27,12 +29,12 @@ export default function CodeBlock({ language, code } : CodeBlockProps) {
     code = htmlEncode(code);
 
     return (
-        <div>
-            <code>
-                <pre dangerouslySetInnerHTML={{__html: code}}>
+        <div className={styles.code_block}>
+            <pre>
+                <code dangerouslySetInnerHTML={{__html: code}}>
 
-                </pre>
-            </code>
+                </code>
+            </pre>
         </div>
     );
 }
