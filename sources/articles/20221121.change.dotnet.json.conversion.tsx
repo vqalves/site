@@ -9,10 +9,16 @@ export const ChangeDotnetJsonConversion20221121 = new Article({
     code: "221121",
     date: new ArticleDate(2022, 11, 21),
     
-    title: new LocaleContentAny({
+    title: new LocaleContentText({
         en: "[ASPNET Core] Change formats of ASPNET JSON serialization and deserialization",
         pt: "[ASPNET Core] Alterar os formatos de serialização e desserialização do JSON no ASPNET"
     }),
+
+    description: new LocaleContentText({
+        en: "How to change specific formats ASPNET Core uses to serialize and desserialize JSONs for requests and responses",
+        pt: "Como alterar a forma padrão que o ASPNET Core serializa e desserializa os JSONs de request e response"
+    }),
+
     slug: new LocaleContentText({
         en: "aspnet-change-json-format",
         pt: "aspnet-alterar-formato-json"

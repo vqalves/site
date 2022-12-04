@@ -9,10 +9,16 @@ export const ZoningCoordinatesUsingKmlFiles20221203 = new Article({
     code: "221203.2",
     date: new ArticleDate(2022, 12, 3),
     
-    title: new LocaleContentAny({
+    title: new LocaleContentText({
         en: "[C#] Discovering corresponding zone of a coordinate using KML file",
         pt: "[C#] Encontrando a zona correspondente a uma coordenada usando arquivo KML"
     }),
+
+    description: new LocaleContentText({
+        en: "How to open a KML file and find the shapes that has an specific coordinate within it's bounds",
+        pt: "Como abrir um arquivo KML e encontrar os shapes que contém uma coordenada dentro de sua área"
+    }),
+
     slug: new LocaleContentText({
         en: "csharp-zoning-coordinates-using-kml-file",
         pt: "csharp-zoneando-coordenadas-com-arquivo-kml"

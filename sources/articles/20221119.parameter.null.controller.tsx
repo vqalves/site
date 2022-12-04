@@ -11,10 +11,16 @@ export const ParameterNullController20221119 = new Article({
     code: "221119",
     date: new ArticleDate(2022, 11, 19),
     
-    title: new LocaleContentAny({
-        en: "[ASPNET] Action parameter is null",
-        pt: "[ASPNET] Parâmetro da action está nulo"
+    title: new LocaleContentText({
+        en: "[ASPNET] Why the action parameter is null",
+        pt: "[ASPNET] Porquê o parâmetro da action está nulo"
     }),
+
+    description: new LocaleContentText({
+        en: "Reasons why an action parameter is being populated with a null value",
+        pt: "Motivos que podem levar ao parâmetro da action estar sendo populado com um valor nulo"
+    }),
+
     slug: new LocaleContentText({
         en: "aspnet-action-parameter-is-null",
         pt: "aspnet-parametro-action-nulo"

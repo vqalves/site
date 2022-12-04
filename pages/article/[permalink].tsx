@@ -31,6 +31,10 @@ export function ArticlePage(props: ArticlePageParam) {
             <Head>
                 {SiteTitle.format(ts(article.title))}
 
+                <meta property="og:title" content={ts(article.title)} />
+                <meta property="og:type" content="article" />
+                <meta property="og:description" content={ts(article.description)} />
+
                 {
                     LocaleType.allLocales().map((locale, index) => {
                         var route = article.getRoute();

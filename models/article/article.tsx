@@ -7,14 +7,16 @@ import ArticleTag from "./article.tag";
 export default class Article {
     readonly code: string;
     readonly title: LocaleContentText;
+    readonly description: LocaleContentText;
     readonly slug: LocaleContentText;
     readonly tags: ArticleTag[];
     readonly content: LocaleContentAny[];
     readonly date: ArticleDate;
 
-    constructor({ code, title, slug, tags, content, date }: { code: string, title: LocaleContentText, slug: LocaleContentText, tags: ArticleTag[], content: LocaleContentAny[], date: ArticleDate }) {
+    constructor({ code, title, description, slug, tags, content, date }: { code: string, title: LocaleContentText, description: LocaleContentText, slug: LocaleContentText, tags: ArticleTag[], content: LocaleContentAny[], date: ArticleDate }) {
         this.code = code;
         this.title = title;
+        this.description = description;
         this.slug = slug;
         this.tags = tags;
         this.content = content;

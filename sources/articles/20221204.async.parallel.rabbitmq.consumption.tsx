@@ -9,10 +9,16 @@ export const AsyncParallelRabbitMQConsumption20221204 = new Article({
     code: "221204",
     date: new ArticleDate(2022, 12, 4),
     
-    title: new LocaleContentAny({
+    title: new LocaleContentText({
         en: "[C#] Consuming a RabbitMQ queue asynchronously and with paralellism",
         pt: "[C#] Consumindo uma fila RabbitMQ com assincronia e paralelismo"
     }),
+
+    description: new LocaleContentText({
+        en: "How to consume a RabbitMQ queue using async methods (async/await) and receiving multiple parallel messages on C#",
+        pt: "Como consumir uma fila do RabbitMQ usando métodos assíncronos (async/await) e recebendo múltiplas mensagens em paralelo em C#"
+    }),
+
     slug: new LocaleContentText({
         en: "csharp-asynchonous-and-parallel-rabbitmq-consumption",
         pt: "csharp-consumindo-rabbitmq-com-assincronia-e-paralelismo"
@@ -41,8 +47,6 @@ export const AsyncParallelRabbitMQConsumption20221204 = new Article({
             en: (<p>The code below configures the connection to allow dispatching 5 messages at the same time.</p>),
             pt: (<p>O código abaixo configura a conexão para que ela possa enviar 5 mensagens ao mesmo tempo.</p>)
         }),
-
-        
 
         LocaleContentAny.all(<CodeBlock
             language={CodeBlockLanguage.csharp}

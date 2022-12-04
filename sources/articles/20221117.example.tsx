@@ -8,10 +8,16 @@ export const example20221117 = new Article({
     code: "221117",
     date: new ArticleDate(2022, 11, 17),
     
-    title: new LocaleContentAny({
+    title: new LocaleContentText({
         en: "Article example",
         pt: "Exemplo de artigo"
     }),
+
+    description: new LocaleContentText({
+        en: "Description example",
+        pt: "Exemplo de descrição"
+    }),
+
     slug: new LocaleContentText({
         en: "article-example",
         pt: "exemplo-de-artigo"

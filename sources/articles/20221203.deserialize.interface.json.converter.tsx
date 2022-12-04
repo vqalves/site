@@ -9,10 +9,16 @@ export const DeserializeInterfaceWithJsonConverter20221203 = new Article({
     code: "221203.1",
     date: new ArticleDate(2022, 12, 3),
     
-    title: new LocaleContentAny({
+    title: new LocaleContentText({
         en: "[C#] Deserialize JSON to an interface with JsonConverter",
         pt: "[C#] Desserializar JSON em uma interface com JsonConverter"
     }),
+
+    description: new LocaleContentText({
+        en: "How to deserialize a JSON into an object with interface-typed properties using JsonConverter",
+        pt: "Como desserializar um JSON em um objeto com propriedades tipada como interface usando JsonConverter"
+    }),
+
     slug: new LocaleContentText({
         en: "csharp-deserialize-json-to-interface",
         pt: "csharp-desserializar-json-em-interface"
