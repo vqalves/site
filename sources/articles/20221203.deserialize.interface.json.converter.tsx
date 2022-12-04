@@ -6,7 +6,7 @@ import LocaleContentAny from "../../models/locale/locale.content.any";
 import LocaleContentText from "../../models/locale/locale.content.text";
 
 export const DeserializeInterfaceWithJsonConverter20221203 = new Article({
-    code: "221203",
+    code: "221203.1",
     date: new ArticleDate(2022, 12, 3),
     
     title: new LocaleContentAny({

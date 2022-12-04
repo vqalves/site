@@ -30,6 +30,11 @@ body {
   border-color: #000;
 }
 
+.code-highlight {
+  font-weight: bold;
+  background-color: rgba(255, 255, 0, 0.4);
+}
+
 span.bold {
   font-weight: bold;
 }

@@ -4,8 +4,10 @@ import { ParameterNullController20221119 } from "./articles/20221119.parameter.n
 import { ChangeDotnetJsonConversion20221121 } from "./articles/20221121.change.dotnet.json.conversion";
 import { DeserializeInterfaceWithJsonConverter20221203 } from "./articles/20221203.deserialize.interface.json.converter";
 import { ZoningCoordinatesUsingKmlFiles20221203 } from "./articles/20221203.zoning.coordinates.using.kml.files";
+import { AsyncParallelRabbitMQConsumption20221204 } from "./articles/20221204.async.parallel.rabbitmq.consumption";
 
 const articles: Article[] = [
+    AsyncParallelRabbitMQConsumption20221204,
     ZoningCoordinatesUsingKmlFiles20221203,
     DeserializeInterfaceWithJsonConverter20221203,
     ChangeDotnetJsonConversion20221121,

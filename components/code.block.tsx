@@ -24,10 +24,13 @@ function htmlEncode(text: string) {
 export interface CodeBlockProps {
     language: CodeBlockLanguage;
     code: string;
+    useEncode?: boolean;
 }
 
-export default function CodeBlock({ language, code } : CodeBlockProps) {
-    code = htmlEncode(code);
+export default function CodeBlock({ language, code, useEncode = true } : CodeBlockProps) {
+    if(useEncode) {
+        code = htmlEncode(code);
+    }
 
     return (
         <div className={styles.code_block}>

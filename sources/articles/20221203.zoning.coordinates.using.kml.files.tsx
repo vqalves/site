@@ -6,7 +6,7 @@ import LocaleContentAny from "../../models/locale/locale.content.any";
 import LocaleContentText from "../../models/locale/locale.content.text";
 
 export const ZoningCoordinatesUsingKmlFiles20221203 = new Article({
-    code: "221203",
+    code: "221203.2",
     date: new ArticleDate(2022, 12, 3),
     
     title: new LocaleContentAny({
@@ -22,18 +22,18 @@ export const ZoningCoordinatesUsingKmlFiles20221203 = new Article({
 
     content: [
         new LocaleContentAny({
-            en: (<p><a href="https://en.wikipedia.org/wiki/Keyhole_Markup_Language">KML</a> files are structured XMLs with geographic data for processing and rendering. Used by Google Maps, this format is considered an international standard by the <a href="https://en.wikipedia.org/wiki/Open_Geospatial_Consortium">OGC, international consortium related to geoprocessing</a>, since 2008.</p>),
+            en: (<p><a href="https://en.wikipedia.org/wiki/Keyhole_Markup_Language">KMLs</a> are structured XMLs files, containing geographic data for processing and rendering. Used by Google Maps, this format is considered an international standard by the <a href="https://en.wikipedia.org/wiki/Open_Geospatial_Consortium">OGC, international consortium related to geoprocessing</a>, since 2008.</p>),
             pt: (<p>Arquivos <a href="https://pt.wikipedia.org/wiki/Keyhole_Markup_Language">KML</a> são XMLs estruturados com dados geográficos para processamento e visualização. Popularmente usada pelo Google Maps, este formato é considerado um padrão internacional pela <a href="https://pt.wikipedia.org/wiki/Open_Geospatial_Consortium">OGC, consórcio internacional vinculado ao geoprocessamento</a>, desde 2008.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Zoning is a method of land division, where the land surface is sliced in non-overlapping polygons (or zones). This is method a common technique for urban planning and certain forms of geoprocessing.</p>),
+            en: (<p>Zoning is a method of land division, where the land surface is sliced in non-overlapping polygons (or zones). This method is frequently used for urban planning and certain forms of geoprocessing.</p>),
             pt: (<p>Zoneamento é um método de divisão territorial, aonde uma superfície é fatiada em polígonos (ou zonas) que não se cruzam. Este método é popular para planejamento urbano e determinados tipos de geoprocessamento.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>To find the zone that contains a specific coordinate, the code must read all the polygons inside the KML, and check each polygon to find which one contains the coordinate. For that, this article uses the <a href="https://www.nuget.org/packages/SharpKml.Core/">SharpKml.Core</a> library, .NET Standard and MIT license, to read the KML file.</p>),
-            pt: (<p>Para encontrar qual a zona correspondente a uma coordenada, o sistema deve ler todos os polígonos do KML, e para cada polígono, verificar se a coordenada está dentro do polígono. Para isso, este artigo usa a bibilioteca <a href="https://www.nuget.org/packages/SharpKml.Core/">SharpKml.Core</a>, .NET Standard e licença MIT, para navegação do arquivo KML.</p>)
+            en: (<p>To find the zone that contains a specific coordinate, the code must read all the polygons inside the KML, and check each polygon to find which one contains the coordinate. For that, this article uses the <a href="https://www.nuget.org/packages/SharpKml.Core/">SharpKml.Core</a> library, implemented in .NET Standard and MIT license, to read the KML file.</p>),
+            pt: (<p>Para encontrar qual a zona correspondente a uma coordenada, o sistema deve ler todos os polígonos do KML, e para cada polígono, verificar se a coordenada está dentro do polígono. Para isso, este artigo usa a bibilioteca <a href="https://www.nuget.org/packages/SharpKml.Core/">SharpKml.Core</a>, implementado em .NET Standard e licença MIT, para navegação do arquivo KML.</p>)
         }),
 
         new LocaleContentAny({
