@@ -69,6 +69,26 @@ consumer.Received += (model, ea) =>
 RabbitChannel.BasicConsume(queue: "queueName", autoAck: false, consumer: consumer);`}></CodeBlock>),
 
         new LocaleContentAny({
+            en: (<p>When the software is using <a href="https://www.rabbitmq.com/consumer-prefetch.html">BasicQos</a>, it is recommended to set the amount of messages <u>at least equal or bigger</u> than the ConsumerDispatchConcurrency configured, otherwise the library will not be able to make use of all the threads configured.</p>),
+            pt: (<p>Quando o sistema usa <a href="https://www.rabbitmq.com/consumer-prefetch.html">BasicQos</a>, é recomendado que a quantidade de mensagens seja <u>no mínimo</u> a quantidade configurada em ConsumerDispatchConcurrency. Caso contrário, a library criará threads que nunca serão utilizadas, pois nunca haverá mensagens o suficiente para ativar elas.</p>)
+        }),
+
+        LocaleContentAny.all(<CodeBlock
+            language={CodeBlockLanguage.csharp}
+            useEncode={false}
+            code={`<span class="code-highlight">int concurrencyLevel = 5;</span>
+            
+var factory = new ConnectionFactory() 
+{ 
+    HostName = "localhost", 
+    ConsumerDispatchConcurrency = <span class="code-highlight">concurrencyLevel</span>
+};
+
+this.RabbitConnection = factory.CreateConnection();
+this.RabbitChannel = RabbitConnection.CreateModel();
+this.RabbitChannel.BasicQos(0, <span class="code-highlight">concurrencyLevel</span>, false);`}></CodeBlock>),
+
+        new LocaleContentAny({
             en: (<p><b>RabbitMQ - Asynchronous and parallel</b></p>),
             pt: (<p><b>RabbitMQ - Assíncrono e paralelo</b></p>)
         }),
@@ -117,15 +137,18 @@ public class ExampleWorker : BackgroundService
 
     public override Task StartAsync(CancellationToken cancellationToken)
     {
+        int concurrencyLevel = 5;
+
         var factory = new ConnectionFactory() 
         { 
             HostName = "localhost",
             DispatchConsumersAsync = true,
-            ConsumerDispatchConcurrency = 5
+            ConsumerDispatchConcurrency = concurrencyLevel
         };
 
         this.RabbitConnection = factory.CreateConnection();
         this.RabbitChannel = RabbitConnection.CreateModel();
+        this.RabbitChannel.BasicQos(0, concurrencyLevel, false);
 
         var consumer = new AsyncEventingBasicConsumer(RabbitChannel);
         consumer.Received += async (model, ea) =>
