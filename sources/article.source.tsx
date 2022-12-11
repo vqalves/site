@@ -1,12 +1,15 @@
 import Article from "../models/article/article";
 import LocaleType from "../models/locale/locale.type";
+
 import { ParameterNullController20221119 } from "./articles/20221119.parameter.null.controller";
 import { ChangeDotnetJsonConversion20221121 } from "./articles/20221121.change.dotnet.json.conversion";
 import { DeserializeInterfaceWithJsonConverter20221203 } from "./articles/20221203.deserialize.interface.json.converter";
 import { ZoningCoordinatesUsingKmlFiles20221203 } from "./articles/20221203.zoning.coordinates.using.kml.files";
 import { AsyncParallelRabbitMQConsumption20221204 } from "./articles/20221204.async.parallel.rabbitmq.consumption";
+import { RedisIntroduction20221211 } from "./articles/20221211.redis.introduction.and.example";
 
 const articles: Article[] = [
+    RedisIntroduction20221211,
     AsyncParallelRabbitMQConsumption20221204,
     ZoningCoordinatesUsingKmlFiles20221203,
     DeserializeInterfaceWithJsonConverter20221203,
