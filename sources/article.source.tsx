@@ -7,8 +7,10 @@ import { DeserializeInterfaceWithJsonConverter20221203 } from "./articles/202212
 import { ZoningCoordinatesUsingKmlFiles20221203 } from "./articles/20221203.zoning.coordinates.using.kml.files";
 import { AsyncParallelRabbitMQConsumption20221204 } from "./articles/20221204.async.parallel.rabbitmq.consumption";
 import { RedisIntroduction20221211 } from "./articles/20221211.redis.introduction.and.example";
+import { RedisRedlockCsharp20221212 } from "./articles/20221212.redis.redlock.csharp";
 
 const articles: Article[] = [
+    RedisRedlockCsharp20221212,
     RedisIntroduction20221211,
     AsyncParallelRabbitMQConsumption20221204,
     ZoningCoordinatesUsingKmlFiles20221203,

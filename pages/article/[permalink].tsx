@@ -55,7 +55,7 @@ export function ArticlePage(props: ArticlePageParam) {
 
                     <section className={`${styles.article_section} bottom-top`}>
                         {
-                            article.content
+                            article.getContent()
                                 .map((content, index) => {
                                     return (<React.Fragment key={index}>
                                         {ts(content)}

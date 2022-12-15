@@ -10,16 +10,16 @@ export default class Article {
     readonly description: LocaleContentText;
     readonly slug: LocaleContentText;
     readonly tags: ArticleTag[];
-    readonly content: LocaleContentAny[];
+    readonly getContent: () => LocaleContentAny[];
     readonly date: ArticleDate;
 
-    constructor({ code, title, description, slug, tags, content, date }: { code: string, title: LocaleContentText, description: LocaleContentText, slug: LocaleContentText, tags: ArticleTag[], content: LocaleContentAny[], date: ArticleDate }) {
+    constructor({ code, title, description, slug, tags, getContent: content, date }: { code: string, title: LocaleContentText, description: LocaleContentText, slug: LocaleContentText, tags: ArticleTag[], getContent: () => LocaleContentAny[], date: ArticleDate }) {
         this.code = code;
         this.title = title;
         this.description = description;
         this.slug = slug;
         this.tags = tags;
-        this.content = content;
+        this.getContent = content;
         this.date = date;
     }
 

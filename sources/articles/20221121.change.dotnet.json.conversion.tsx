@@ -26,7 +26,7 @@ export const ChangeDotnetJsonConversion20221121 = new Article({
 
     tags: [ArticleTag.aspnet],
 
-    content: [
+    getContent: () => [
         new LocaleContentAny({
             en: (<p>Internally, ASPNET Core uses <a target="_blank" href="https://learn.microsoft.com/pt-br/dotnet/api/system.text.json.jsonserializer">System.Text.Json.JsonSerializer</a> to serialize responses and deserialize requests. If an input uses a different format than the default ASPNET configuration, it is possible to change it by registering a <a target="_blank" href="https://learn.microsoft.com/en-us/dotnet/api/system.text.json.serialization.jsonconverter-1">JsonConverter</a>.</p>),
             pt: (<p>Internamente, o ASPNET Core utiliza a biblioteca <a target="_blank" href="https://learn.microsoft.com/pt-br/dotnet/api/system.text.json.jsonserializer">System.Text.Json.JsonSerializer</a> para serializar responses e desserializar requests. Quando o request está em um formato diferente do padrão do ASPNET, é possível alterar o formato registrando um <a target="_blank" href="https://learn.microsoft.com/pt-br/dotnet/api/system.text.json.serialization.jsonconverter-1">JsonConverter</a>.</p>)

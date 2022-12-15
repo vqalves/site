@@ -1,9 +1,11 @@
+import Link from "next/link";
 import CodeBlock, { CodeBlockLanguage } from "../../components/code.block";
 import Article from "../../models/article/article";
 import ArticleDate from "../../models/article/article.date";
 import ArticleTag from "../../models/article/article.tag";
 import LocaleContentAny from "../../models/locale/locale.content.any";
 import LocaleContentText from "../../models/locale/locale.content.text";
+import { RedisRedlockCsharp20221212 } from "./20221212.redis.redlock.csharp";
 
 export const RedisIntroduction20221211 = new Article({
     code: "221211",
@@ -26,10 +28,10 @@ export const RedisIntroduction20221211 = new Article({
 
     tags: [ArticleTag.csharp],
 
-    content: [
+    getContent: () => [
         new LocaleContentAny({
-            en: (<p><a href="https://redis.io/">Redis</a> is an in-memory key/value database that runs as a service and can be accessed by network. In other words, it's like a online Dictionary (or HashMap) structure, lightweight and very fast, but unlike it's competitor <a href="https://www.memcached.org/">memcached</a>, it does have extra database features to make it more versatile.</p>),
-            pt: (<p></p>)
+            en: (<p><a target="_blank" href="https://redis.io/">Redis</a> is an in-memory key/value database that runs as a service and can be accessed by network. In other words, it's like a online Dictionary (or HashMap) structure, lightweight and very fast, but unlike it's competitor <a target="_blank" href="https://www.memcached.org/">memcached</a>, it does have extra database features to make it more versatile.</p>),
+            pt: (<p><a target="_blank" href="https://redis.io/">Redis</a> é um banco de dados chave/valor em memória, instalado como serviço e que pode ser acessado remotamente. Em outras palavras, funciona como uma estrutura online de Dictionary (ou HashMap), leve e rápido, mas diferente de seu concorrente <a target="_blank" href="https://www.memcached.org/">memcached</a>, ele possui funcionalidades de banco de dados que o deixa mais versátil.</p>)
         }),
 
         new LocaleContentAny({
@@ -38,8 +40,8 @@ export const RedisIntroduction20221211 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>Redis does not maintain any official C# library, but it does endorse <a href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</a>.</p>),
-            pt: (<p></p>)
+            en: (<p>Redis does not maintain any official C# library, but it does endorse <a target="_blank" href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</a>.</p>),
+            pt: (<p>Redis não possui bibliotecas C# oficiais, mas apoia a biblioteca <a target="_blank" href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</a>.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
@@ -52,7 +54,8 @@ export const RedisIntroduction20221211 = new Article({
 
 public class RedisRepository
 {
-    // ConnectionMultiplexer should be used as a Singleton - recommended to inject as IConnectionMultiplexer and dispose when the application shuts down
+    // ConnectionMultiplexer should be used as a Singleton
+    // Recommended to inject as IConnectionMultiplexer and dispose when the application shuts down
     private readonly static ConnectionMultiplexer Connection = ConnectionMultiplexer.Connect("localhost");
 
     public async Task<int?> GetValueAsync(string key)
@@ -77,7 +80,7 @@ public class RedisRepository
 
         new LocaleContentAny({
             en: (<p>By default, all values are permanent until manually removed, but Redis implements an <u>expiry</u> parameter, so each value can have a specific time to live and be removed automatically after the set time.</p>),
-            pt: (<p></p>)
+            pt: (<p>Por padrão, todos os valores inseridos são permanentes até que sejam manualmente removidos, mas o Redis implementa um parâmetro <u>expiry</u>, aonde cada valor pode ter seu próprio tempo de vida e é automaticamente removido depois do tempo configurado.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
@@ -88,7 +91,7 @@ await db.StringSetAsync(key, value, <span class="code-highlight">expiry: TimeSpa
 
         new LocaleContentAny({
             en: (<p>Redis does not implement sliding expiration natively, but it's possible to reset the expiry timer using KeyExpireAsync. Use it after every successful get operation to simulate the sliding feature.</p>),
-            pt: (<p></p>)
+            pt: (<p>Redis não possui sliding de tempo de vida, para extender o tempo de vida automaticamente a cada consulta, mas é possível alterar o tempo de vida usando KeyExpireAsync. Ao alterar o valor a cada operação de busca, é possível simular a função de slide.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
@@ -103,115 +106,28 @@ await db.<span class="code-highlight">KeyExpireAsync</span>(key, expiry: TimeSpa
         }),
 
         new LocaleContentAny({
-            en: (<p>Redis can <a href="https://redis.io/docs/getting-started/installation/">be installed on a local machine</a>, but there's no native support for Windows. However, Redis maintains an <a href="https://hub.docker.com/_/redis/">official docker image</a> on Docker HUB, so it's fairly easy to launch an instance on a cloud environment.</p>),
-            pt: (<p></p>)
+            en: (<p>Redis can <a target="_blank" href="https://redis.io/docs/getting-started/installation/">be installed on a local machine</a>, but there's no native support for Windows. However, Redis maintains an <a target="_blank" href="https://hub.docker.com/_/redis/">official docker image</a> on Docker HUB and is supported by the biggest cloud platforms, so it's fairly easy to launch an instance on a cloud environment.</p>),
+            pt: (<p>Redis pode ser <a target="_blank" href="https://redis.io/docs/getting-started/installation/">instalado na máquina local</a>, mas não tem suporte nativo no Windows. Porém, Redis mantém uma <a target="_blank" href="https://hub.docker.com/_/redis/">imagem oficial de docker</a> no Docker HUB e é suportado naturalmente pelas maiores plataformas cloud, então é relativamente fácil de subir uma instância em alguma plataforma cloud.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Redis is <a href="https://redis.io/docs/management/security/">designed for performance, not security</a>, so it should be used on trusted networks with trusted clients and avoid external access. Still, it does offer authentication and a few configuration options, overall is pretty stable and prevents common exploits.</p>),
-            pt: (<p></p>)
+            en: (<p>Redis is <a target="_blank" href="https://redis.io/docs/management/security/">designed for performance, not security</a>, so it should be used on trusted networks with trusted clients and avoid external access. Still, it does offer authentication and a few configuration options, overall is pretty stable and cares about vulnerabilities.</p>),
+            pt: (<p>Redis é <a target="_blank" href="https://redis.io/docs/management/security/">focado em performance, não segurança</a>, então ele deve usado em redes confiáveis com clients confiáveis, evitando acesso externo. Mesmo assim, Redis oferece um mecanismo de autenticação e algumas opções de configurações, e no geral é bastante estável e se preocupa com vulnerabilidades.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Redis persists data as key/value pairs and supports a few <a href="https://redis.io/docs/data-types/">data types</a>. <u>Key</u> accepts only string and byte[]. <u>Value</u> accepts most of the primitives (string, int, float, byte[], etc) and built-in has some complex types, like bitmaps, hashmaps, sets, geospatial data and others.</p>),
-            pt: (<p></p>)
+            en: (<p>Redis persists data as key/value pairs and supports a few <a target="_blank" href="https://redis.io/docs/data-types/">data types</a>. <u>Key</u> accepts only string and byte[]. <u>Value</u> accepts most of the primitives (string, int, float, byte[], etc) and built-in has some complex types, like bitmaps, hashmaps, sets, geospatial data and others.</p>),
+            pt: (<p>Redis mantém dados como pares de chave/valor e suporta alguns <a target="_blank" href="https://redis.io/docs/data-types/">tipos de dados</a>. <u>Chaves</u> podem ser alimentadas apenas com string e byte[]. <u>Valores</u> podem ser alimentados com a maioria dos primitivos (string, int, float, byte[], etc) e algumas estruturas complexas implementadas pelo próprio Redis, como bitmaps, hashmaps, sets, registros geoespaciais e outros.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Some of the extra features Redis provides are <a href="https://redis.io/docs/management/replication/">master/slave data replication</a> for high availability, <a href="https://redis.io/docs/management/persistence/">data persistence strategies and snapshots</a> so the Redis instance can recover from a crash with pre-populated data and <a href="https://redis.io/docs/manual/transactions/">batch command execution</a>, which Redis call "transaction" but does not support rollbacks. It can also <a href="https://redis.io/docs/manual/programmability/eval-intro/">run Lua scripts</a>, which can be used similarly as SQL's stored procedures.</p>),
-            pt: (<p></p>)
+            en: (<p>Some of the extra features Redis provides are <a target="_blank" href="https://redis.io/docs/management/replication/">master/slave data replication</a> for high availability, <a target="_blank" href="https://redis.io/docs/management/persistence/">data persistence strategies and snapshots</a> so the Redis instance can recover from a crash with pre-populated data and <a target="_blank" href="https://redis.io/docs/manual/transactions/">batch command execution</a>, which Redis call "transaction" but does not support rollbacks. It can also <a target="_blank" href="https://redis.io/docs/manual/programmability/eval-intro/">run Lua scripts</a>, which can be used similarly as SQL's stored procedures.</p>),
+            pt: (<p>Algumas das funcionalidades extras que Redis oferece são <a target="_blank" href="https://redis.io/docs/management/replication/">replicação de dados via master/slave</a> para aumento de disponibilidade, <a target="_blank" href="https://redis.io/docs/management/persistence/">estratégias de persistência de dados e snapshots</a> para recuperar instâncias já com dados pré-populados em casos de crashes e <a target="_blank" href="https://redis.io/docs/manual/transactions/">execução de comandos em batch</a>, que o Redis chama de "transação" mas não é possível realizar rollbacks. Também é possível <a target="_blank" href="https://redis.io/docs/manual/programmability/eval-intro/">rodas scripts Lua</a>, que podem simular funcionalidades semelhantes às stored procedures do SQL.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p><b>Using Redis with containerized applications (or with multiple instances)</b></p>),
-            pt: (<p><b>Usando Redis com aplicações em container (ou com múltiplas instâncias)</b></p>)
+            en: (<p>When using a system with multiple instances and a shared Redis instance, it is recommended to use a distribuited lock strategy. <Link href={RedisRedlockCsharp20221212.getRoute()}>This article has an example of a simple implementation.</Link></p>),
+            pt: (<p>Quando um sistema que cria múltiplas instâncias quer utilizar um único Redis compartilhado, é recomendado usar uma estratégia de lock distribuido. <Link href={RedisRedlockCsharp20221212.getRoute()}>Este artigo demonstra uma implementação simplificada.</Link></p>)
         }),
-
-        new LocaleContentAny({
-            en: (<p>A single Redis service can be used in multiple application instances, however it is possible that N instances will look-up a key in Redis at the same time, and by not finding a value, will start processing their own value.</p>),
-            pt: (<p></p>)
-        }),
-
-        new LocaleContentAny({
-            en: (<p>To avoid simultaneous redundant processing, Redis recommends using the <a href="https://redis.com/redis-best-practices/communication-patterns/redlock/">Redlock algorithm</a>, as they call it. In summary, it's a shared <a href="https://en.wikipedia.org/wiki/Semaphore_(programming)">semaphore</a> that can be implemented using Redis itself, and use the timeout feature just in case a consumer crashes while holding a lock.</p>),
-            pt: (<p></p>)
-        }),
-        
-
-        new LocaleContentAny({
-            en: (<p>To implement it, we can use another package endorsed by Redis called <a href="https://www.nuget.org/packages/RedLock.net">RedLock.net</a>. Bear in mind that the library is not notified when the lock is available, so it uses retries and timeout for that purpose and is <u>not fail-proof</u>. It is totally possible the lock stays in use for more time than the process is willing to wait, and the lock is never acquired.</p>),
-            pt: (<p></p>)
-        }),
-
-        new LocaleContentAny({
-            en: (<p>The code below demonstrates how to use the library. The application will look for the value on Redis, and if not found, will reserve a lock and execute the load function, while all other threads or instances wait. It's also recommended to use the <a href="https://en.wikipedia.org/wiki/Double-checked_locking">double-check locking technique</a> to avoid reprocessing on the threads that couldn't find the value at first and are waiting the lock</p>),
-            pt: (<p></p>)
-        }),
-
-        LocaleContentAny.all(<CodeBlock
-            language={CodeBlockLanguage.bash}
-            code={`dotnet add package RedLock.net`}></CodeBlock>),
-
-        LocaleContentAny.all(<CodeBlock
-            language={CodeBlockLanguage.csharp}
-            code={`using RedLockNet.SERedis;
-using RedLockNet.SERedis.Configuration;
-
-public class RedisLockRepository
-{
-    // ConnectionMultiplexer should be used as a Singleton
-    // Recommended to inject as IConnectionMultiplexer and dispose when the application shuts down
-    private readonly static ConnectionMultiplexer Connection = ConnectionMultiplexer.Connect("localhost");
-
-    // RedlockFactory should be used as a Singleton as well
-    // Recommended to inject and dispose when the application shuts down
-    private readonly static RedLockFactory LockFactory = RedLockFactory.Create(new List<RedLockMultiplexer>(){ Connection });
-
-    private string GetLockKey(string key)
-    {
-        return $"lock.{key}";
-    }
-
-    private async Task<IRedLock> CreateLockAsync(string lockKey)
-    {
-        return await LockFactory.CreateLockAsync
-        (
-            lockKey,
-            expiryTime: TimeSpan.FromSeconds(30), // Maximum time a process can hold the lock
-            waitTime: TimeSpan.FromSeconds(10), // How much time this thread can wait for the lock until giving up
-            retryTime: TimeSpan.FromSeconds(1) // How much time between rechecking if the lock is available
-        );
-    }
-
-    public async Task<int> GetValueOrLoadAsync(string key, Func<Task<int>> loadAsync)
-    {
-        var db = Connection.GetDatabase();
-
-        var value = await db.StringGetAsync(key);
-        if(value.IsNull)
-        {
-            var lockKey = GetLockKey(key);
-
-            using(var acquiredLock = await CreateLockAsync(lockKey))
-            {
-                if(acquiredLock.IsAcquired)
-                {
-                    value = await db.StringGetAsync(key);
-                    if(value.IsNull)
-                    {
-                        value = await loadAsync();
-                        await db.StringSetAsync(key, value, expiry: TimeSpan.FromSeconds(30));
-                    }
-                }
-                else
-                {
-                    /* Lock not acquired, decide what to do */
-                }
-            }
-        }
-        
-        return (int)value;
-    }
-}`}></CodeBlock>),
     ]
 });

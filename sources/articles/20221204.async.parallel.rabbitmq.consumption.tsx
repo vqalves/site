@@ -26,7 +26,7 @@ export const AsyncParallelRabbitMQConsumption20221204 = new Article({
 
     tags: [ArticleTag.csharp],
 
-    content: [
+    getContent: () => [
         new LocaleContentAny({
             en: (<p>Asynchronicity and paralellism are great tools in situations where a process spends more time waiting for I/O calls than doing stuff. Using async and parallel, the process is able to handle new requests as soon as the I/O call starts, decreasing how much time the process is idle and increasing the throughtput potential. When this process is a service, it's possible to handle the same amount of messages with less services instances.</p>),
             pt: (<p>Assincronicidade e paralelismo são ótimas ferramentas em situações em que um processo gasta mais tempo esperando retorno de I/O do que fazendo processando. Usando async e paralelismo, o processo pode começar a processar novas requisições assim que a chamada de I/O é iniciada, diminuindo o tempo que ele fica ocioso e aumentando a quantidade de requisições processadas por segundo. Se o processo for um serviço, é possível processar a mesma quantidade de mensagem com uma quantidade menor de instâncias desse serviço.</p>)
@@ -39,8 +39,8 @@ export const AsyncParallelRabbitMQConsumption20221204 = new Article({
 
         
         new LocaleContentAny({
-            en: (<p>RabbitMQ allows a consumer to receive multiple messages to be processed in parallel using the <a href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_ConsumerDispatchConcurrency">ConsumerDispatchConcurrency</a> property. Due to the nature of parallel processing, make sure the message handler is <u>thread-safe</u>.</p>),
-            pt: (<p>RabbitMQ permite que um consumer possa receber várias mensagems para ser processados em paralelo, usando a propriedade <a href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_ConsumerDispatchConcurrency">ConsumerDispatchConcurrency</a>. Como todo processamento paralelo, é importante assegurar que o processamento de cada mensagem seja <u>thread-safe</u>.</p>)
+            en: (<p>RabbitMQ allows a consumer to receive multiple messages to be processed in parallel using the <a target="_blank" href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_ConsumerDispatchConcurrency">ConsumerDispatchConcurrency</a> property. Due to the nature of parallel processing, make sure the message handler is <u>thread-safe</u>.</p>),
+            pt: (<p>RabbitMQ permite que um consumer possa receber várias mensagems para ser processados em paralelo, usando a propriedade <a target="_blank" href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_ConsumerDispatchConcurrency">ConsumerDispatchConcurrency</a>. Como todo processamento paralelo, é importante assegurar que o processamento de cada mensagem seja <u>thread-safe</u>.</p>)
         }),
 
         new LocaleContentAny({
@@ -69,8 +69,8 @@ consumer.Received += (model, ea) =>
 RabbitChannel.BasicConsume(queue: "queueName", autoAck: false, consumer: consumer);`}></CodeBlock>),
 
         new LocaleContentAny({
-            en: (<p>When the software is using <a href="https://www.rabbitmq.com/consumer-prefetch.html">BasicQos</a>, it is recommended to set the amount of messages <u>at least equal or bigger</u> than the ConsumerDispatchConcurrency configured, otherwise the library will not be able to make use of all the threads configured.</p>),
-            pt: (<p>Quando o sistema usa <a href="https://www.rabbitmq.com/consumer-prefetch.html">BasicQos</a>, é recomendado que a quantidade de mensagens seja <u>no mínimo</u> a quantidade configurada em ConsumerDispatchConcurrency. Caso contrário, a library criará threads que nunca serão utilizadas, pois nunca haverá mensagens o suficiente para ativar elas.</p>)
+            en: (<p>When the software is using <a target="_blank" href="https://www.rabbitmq.com/consumer-prefetch.html">BasicQos</a>, it is recommended to set the amount of messages <u>at least equal or bigger</u> than the ConsumerDispatchConcurrency configured, otherwise the library will not be able to make use of all the threads configured.</p>),
+            pt: (<p>Quando o sistema usa <a target="_blank" href="https://www.rabbitmq.com/consumer-prefetch.html">BasicQos</a>, é recomendado que a quantidade de mensagens seja <u>no mínimo</u> a quantidade configurada em ConsumerDispatchConcurrency. Caso contrário, a library criará threads que nunca serão utilizadas, pois nunca haverá mensagens o suficiente para ativar elas.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
@@ -94,8 +94,8 @@ this.RabbitChannel.BasicQos(0, <span class="code-highlight">concurrencyLevel</sp
         }),
 
         new LocaleContentAny({
-            en: (<p>Asynchronous calls work the same way, the difference is that the ConnectionFactory has to configure the <a href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_DispatchConsumersAsync">DispatchConsumersAsync</a> property, and the message consumption should use one of the different implementations of <a href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.IAsyncBasicConsumer.html">IAsyncBasicConsumer</a> that the library provides.</p>),
-            pt: (<p>Chamadas assíncronas funcionam da mesma forma, a diferença é que a ConnectionFactory deve mudar a propriedade <a href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_DispatchConsumersAsync">DispatchConsumersAsync</a>, e o consumo das mensagens deve ser feita usando uma das classes fornecidas pela biblioteca que implementa <a href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.IAsyncBasicConsumer.html">IAsyncBasicConsumer</a>.</p>)
+            en: (<p>Asynchronous calls work the same way, the difference is that the ConnectionFactory has to configure the <a target="_blank" href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_DispatchConsumersAsync">DispatchConsumersAsync</a> property, and the message consumption should use one of the different implementations of <a target="_blank" href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.IAsyncBasicConsumer.html">IAsyncBasicConsumer</a> that the library provides.</p>),
+            pt: (<p>Chamadas assíncronas funcionam da mesma forma, a diferença é que a ConnectionFactory deve mudar a propriedade <a target="_blank" href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_DispatchConsumersAsync">DispatchConsumersAsync</a>, e o consumo das mensagens deve ser feita usando uma das classes fornecidas pela biblioteca que implementa <a target="_blank" href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.IAsyncBasicConsumer.html">IAsyncBasicConsumer</a>.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock

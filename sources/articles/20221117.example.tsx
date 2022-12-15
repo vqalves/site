@@ -25,7 +25,7 @@ export const example20221117 = new Article({
 
     tags: [ArticleTag.csharp],
 
-    content: [
+    getContent: () => [
         new LocaleContentAny({
             en: "Article example",
             pt: "Artigo de exemplo"

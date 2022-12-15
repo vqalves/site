@@ -28,7 +28,7 @@ export const ParameterNullController20221119 = new Article({
 
     tags: [ArticleTag.aspnet, ArticleTag.bugfix],
 
-    content: [
+    getContent: () => [
         new LocaleContentAny({
             en: (<p>In some cases, the action parameter that should be hydrated with the data sent by the user is null. The main reasons are:</p>),
             pt: (<p>Em algumas situações, o parâmetro da action que recebe os dados enviados pelo usuário pode estar vindo nulo. As principais explicações são:</p>)
