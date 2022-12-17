@@ -22,6 +22,13 @@ export default class ArticleTag {
         })
     });
 
+    static database = new ArticleTag({
+        name: new LocaleContentAny({
+            en: "Database",
+            pt: "Banco de dados"
+        })
+    });
+
     static experiment = new ArticleTag({
         name: new LocaleContentAny({
             en: "Experiment",

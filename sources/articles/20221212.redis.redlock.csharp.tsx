@@ -12,8 +12,8 @@ export const RedisRedlockCsharp20221212 = new Article({
     date: new ArticleDate(2022, 12, 12),
     
     title: new LocaleContentText({
-        en: "[C#] Implementing Redis Redlock for distributed locking on C#",
-        pt: "[C#] Implementando Redlock do Redis para lock distribuido no C#"
+        en: "[C#] Implementing Redis Redlock for distributed locking",
+        pt: "[C#] Implementando Redlock do Redis para lock distribuido"
     }),
 
     description: new LocaleContentText({
@@ -30,37 +30,56 @@ export const RedisRedlockCsharp20221212 = new Article({
 
     getContent: () => [
         new LocaleContentAny({
-            en: (<p>Scalable systems can have multiple instances running at the same time, and usually those instances don't talk among eachother. While they can share the same Redis instance, there's a possibility that an uncached data is requested on multiple instances at the same time. When that happens, multiple instances will process data that will ultimately override one another. To avoid wasting processing power, it is recommended to implement a distributed lock strategy, so a specific data will only be processed by an instance at a time. </p>),
-            pt: (<p>Sistemas escaláveis podem rodar múltiplas instâncias ao mesmo tempo, e normalmente estas instâncias não se comunicam diretamente. Quando as instâncias compartilham um mesmo Redis, existe a possibilidade de que múltiplas instâncias precisem trabalhar com um dado ainda não cacheado. Neste cenário, múltimas instâncias irão processar o dado em paralelo, apenas para no fim um sobrescrever o outro. Para evitar desperdício de processamento, é recomendado implementar uma estratégia de lock distribuido, para garantir que cada valor seja processado por apenas uma instância por vez.</p>)
+            en: (<p>Redis can be used on systems with parallel processing, whether it's a multi-thread or multi-instance system. However, there's always the possibility that two or more threads have to cache the same value, and end up executing redundant functions. To avoid this, the system can use a lock mechanism, so a specific data is only processed by one thread at a time, and all other threads can make use of the result.</p>),
+            pt: (<p>É possível usar uma única instância Redis em sistemas com processamento paralelo, seja pelo sistema ser multi-thread ou por executar várias instâncias. Porém, sempre existe a possibilidade de duas ou mais threads precisarem de um mesmo valor ao mesmo tempo, e acabarem executando funções em redundância. Neste cenário, é o sistema pode utilizar um mecanismo de lock, para que cada tipo de dado seja executado por apenas uma thread por vez, e as demais threads poderão aproveitar o resultado.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>For that, Redis recommends using the <a href="https://redis.com/redis-best-practices/communication-patterns/redlock/">Redlock algorithm</a>, as they call it. In summary, it's a shared <a href="https://en.wikipedia.org/wiki/Semaphore_(programming)">semaphore</a> that can be implemented using Redis itself, and use the timeout feature as a fail-safe, just in case a consumer crashes while holding a lock. For a refresher about what is Redis, <Link href={RedisIntroduction20221211.getRoute()}>this article touch on a few introductory concepts</Link>.</p>),
-            pt: (<p>Pra isso, o Redis recomenda utilizar um algoritmo apelidado como <a href="https://redis.com/redis-best-practices/communication-patterns/redlock/">Redlock</a>. Em resumo, ele é um <a href="https://en.wikipedia.org/wiki/Semaphore_(programming)">semáforo</a> compartilhado que pode ser implementado usando o próprio Redis, e usa o timeout como proteção, para os casos que algum sistema consumidor seja derrubado enquanto reservou um lock. Para relembrar dos conceitos gerais do Redis, <Link href={RedisIntroduction20221211.getRoute()}>este artigo introduz os conceitos mais relevantes</Link>.</p>)
+            en: (<p>For that, Redis recommends using the <a href="https://redis.com/redis-best-practices/communication-patterns/redlock/">Redlock algorithm</a>. In summary, it's a <a href="https://en.wikipedia.org/wiki/Semaphore_(programming)">semaphore</a> shared between processes, that can be implemented using Redis itself.</p>),
+            pt: (<p>Pra isso, o Redis recomenda utilizar <a href="https://redis.com/redis-best-practices/communication-patterns/redlock/">Redlock</a>. Em resumo, ele é um <a href="https://en.wikipedia.org/wiki/Semaphore_(programming)">semáforo</a> compartilhado entre processos, que pode ser implementado usando o Redis.</p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>Redlock uses the value timeout as a safe-keep, to avoid infinite locks in cases when a consumer crashes before releasing the lock. As refresher about some basic concepts, <Link href={RedisIntroduction20221211.getRoute()}>this article is an introduction about Redis</Link>.</p>),
+            pt: (<p>Redlock usa o mecanismo de timeout de valores como segurança, para evitar locks intermináveis em situações que algum sistema sofra crash antes de liberar um lock. Para relembrar dos conceitos básicos, <Link href={RedisIntroduction20221211.getRoute()}>este artigo é uma introdução ao Redis</Link>.</p>)
         }),
         
         new LocaleContentAny({
-            en: (<p>To implement it, we can use another package endorsed by Redis called <a href="https://www.nuget.org/packages/RedLock.net">RedLock.net</a>. Bear in mind that the library is not notified when the lock is available, so it uses retries and timeout for that purpose and is <u>not fail-proof</u>. It is totally possible that the lock stays in use for more time than the process is willing to wait, so the library gives up and moves on.</p>),
-            pt: (<p>Para implementar o algoritmo, podemos usar uma biblioteca apoiada pelo Redis chamada <a href="https://www.nuget.org/packages/RedLock.net">RedLock.net</a>. Vale ressaltar que esta biblioteca não é notificada quando um lock é devolvido, e para isso ela usa uma estratégia de timeouts e retentativas, e portanto <u>não é à prova de falhas</u>. É totalmente possível que um lock fique reservado por mais tempo do que um processo foi configurado para esperar, e a biblioteca simplesmente avança com a execução.</p>)
+            en: (<p><a href="https://www.nuget.org/packages/RedLock.net">RedLock.net</a> is one of a few C# libraries endorsed by the Redis company that can help implementing the algorithm. The code uses <a href="https://en.wikipedia.org/wiki/Double-checked_locking">double-check locking</a> to avoid reprocessing when the waiting threads acquire the lock.</p>),
+            pt: (<p><a href="https://www.nuget.org/packages/RedLock.net">RedLock.net</a> é uma das bibliotecas C# apoiadas pela empresa do Redis que nos auxiliam com a implementação desse algoritmo. O código usa a técnica de <a href="https://en.wikipedia.org/wiki/Double-checked_locking">double-check locking</a> para evitar que threads enfileiradas executem um reprocessamento indevido.</p>)
+        }),
+
+
+        new LocaleContentAny({
+            en: (<p><b>Regarding the usage</b></p>),
+            pt: (<p><b>Considerações sobre o uso</b></p>)
+        }),
+
+
+        new LocaleContentAny({
+            en: (<p>When using the Redlock algorithm, there are a few scenarios that need attention. For example, the lock can timeout before the current consumer unlocks it. So it's possible that parallel processing end up happening.</p>),
+            pt: (<p>No algoritmo Redlock, alguns cenários precisam de atenção especial. Por exemplo, o lock pode dar timeout e ser liberado antes do processo ser concluído. Então é possível que mais de uma thread acabe executando o mesmo processo.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>The code below demonstrates one way to use the library. The application will look for the value on Redis, and if not found, will reserve the lock and execute a load function. Any other thread or process that tries to execute concurrently will wait for the lock. The code uses <a href="https://en.wikipedia.org/wiki/Double-checked_locking">double-check locking</a> to avoid reprocessing when the waiting threads acquire the lock.</p>),
-            pt: (<p>O código abaixo demonstra uma forma de utilizar a biblioteca. Primeiro a aplicação buscará o valor no Redis, e se não for encontrado, irá reservar um lock e executar a função de carregamento. Outras threads e processo que precisarem do dado irão aguardar a liberação do lock. O código usa a técnica de <a href="https://en.wikipedia.org/wiki/Double-checked_locking">double-check locking</a> para evitar que threads enfileiradas executem um reprocessamento indevido.</p>)
+            en: (<p>Another thing is that Redlock.net is not notified when the lock becomes available. It manages itself by checking the lock status from time to time, up to a time limit. As there's a time limit, it's also possible that the time limit is reached before the lock becomes available, and the code has to handle it in some way.</p>),
+            pt: (<p>O Redlock.net também não é notificado quando um lock fica disponível. A biblioteca adquire o lock fazendo checagens periódicas no Redis, até um tempo limite. É possível que a thread chegue no tempo limite sem que o lock tenha ficado disponível, então o código deve prever esse tipo de cenário.</p>)
+        }),
+
+
+        new LocaleContentAny({
+            en: (<p><b>Package install</b></p>),
+            pt: (<p><b>Instalação do package</b></p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
             language={CodeBlockLanguage.bash}
             code={`dotnet add package RedLock.net`}></CodeBlock>),
 
-        LocaleContentAny.all(<CodeBlock
-            language={CodeBlockLanguage.csharp}
-            code={`var repository = new RedisLockRepository();
-await repositoryLock.GetValueOrLoadAsync
-(
-    key: valueKey, 
-    loadAsync: async () => { /* Execute value generation */ }
-);`}></CodeBlock>),
+        new LocaleContentAny({
+            en: (<p><b>Redlock in repository</b></p>),
+            pt: (<p><b>Redlock em repositório</b></p>)
+        }),
 
         LocaleContentAny.all(<CodeBlock
             language={CodeBlockLanguage.csharp}
@@ -123,5 +142,24 @@ public class RedisLockRepository
         return (int)value;
     }
 }`}></CodeBlock>),
+
+        new LocaleContentAny({
+            en: (<p><b>Using the repository</b></p>),
+            pt: (<p><b>Usando o repositório</b></p>)
+        }),
+
+        LocaleContentAny.all(<CodeBlock
+            language={CodeBlockLanguage.csharp}
+            code={`var repository = new RedisLockRepository();
+
+await repositoryLock.GetValueOrLoadAsync
+(
+    key: valueKey, 
+    loadAsync: async () => 
+    { 
+        /* Execute value generation */ 
+    }
+);`}></CodeBlock>),
+
     ]
 });

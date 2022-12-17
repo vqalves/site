@@ -8,8 +8,10 @@ import { ZoningCoordinatesUsingKmlFiles20221203 } from "./articles/20221203.zoni
 import { AsyncParallelRabbitMQConsumption20221204 } from "./articles/20221204.async.parallel.rabbitmq.consumption";
 import { RedisIntroduction20221211 } from "./articles/20221211.redis.introduction.and.example";
 import { RedisRedlockCsharp20221212 } from "./articles/20221212.redis.redlock.csharp";
+import { ConsistentHashingIntroduction20221215 } from "./articles/20221215.consistent.hashing.introduction";
 
 const articles: Article[] = [
+    ConsistentHashingIntroduction20221215,
     RedisRedlockCsharp20221212,
     RedisIntroduction20221211,
     AsyncParallelRabbitMQConsumption20221204,

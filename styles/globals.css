@@ -39,6 +39,26 @@ span.bold {
   font-weight: bold;
 }
 
+/* Element "table" */
+table, table tr, table td {
+  margin: 10px 0px;
+  border-width: 1px;
+  border-style: solid;
+  border-collapse: collapse;
+}
+
+table td { 
+  padding: 2px 5px;
+}
+
+.light table, .light table tr, .light table td {
+  border-color: #000;
+}
+
+.dark table, .dark table tr, .dark table td {
+  border-color: #eee;
+}
+
 /* Element "a" */
 a {
   text-decoration: none;

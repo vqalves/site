@@ -12,8 +12,8 @@ export const RedisIntroduction20221211 = new Article({
     date: new ArticleDate(2022, 12, 11),
     
     title: new LocaleContentText({
-        en: "[C#] Redis introduction for C# developers",
-        pt: "[C#] Introdução ao Redis para desenvolvedores C#"
+        en: "[C#] Redis introduction",
+        pt: "[C#] Introdução ao Redis"
     }),
 
     description: new LocaleContentText({
@@ -31,7 +31,7 @@ export const RedisIntroduction20221211 = new Article({
     getContent: () => [
         new LocaleContentAny({
             en: (<p><a target="_blank" href="https://redis.io/">Redis</a> is an in-memory key/value database that runs as a service and can be accessed by network. In other words, it's like a online Dictionary (or HashMap) structure, lightweight and very fast, but unlike it's competitor <a target="_blank" href="https://www.memcached.org/">memcached</a>, it does have extra database features to make it more versatile.</p>),
-            pt: (<p><a target="_blank" href="https://redis.io/">Redis</a> é um banco de dados chave/valor em memória, instalado como serviço e que pode ser acessado remotamente. Em outras palavras, funciona como uma estrutura online de Dictionary (ou HashMap), leve e rápido, mas diferente de seu concorrente <a target="_blank" href="https://www.memcached.org/">memcached</a>, ele possui funcionalidades de banco de dados que o deixa mais versátil.</p>)
+            pt: (<p><a target="_blank" href="https://redis.io/">Redis</a> é um banco de dados chave/valor em memória, instalado como serviço e que pode ser acessado remotamente. Em outras palavras, funciona como uma estrutura online de Dictionary (ou HashMap), leve e rápido. Por ter algumas funcionalidades mais orientadas a banco de dados, é mais versátil que outras ferramentas como <a target="_blank" href="https://www.memcached.org/">memcached</a>.</p>)
         }),
 
         new LocaleContentAny({
@@ -40,8 +40,8 @@ export const RedisIntroduction20221211 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>Redis does not maintain any official C# library, but it does endorse <a target="_blank" href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</a>.</p>),
-            pt: (<p>Redis não possui bibliotecas C# oficiais, mas apoia a biblioteca <a target="_blank" href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</a>.</p>)
+            en: (<p>The Redis company does not maintain any official C# library, but it does endorse <a target="_blank" href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</a>.</p>),
+            pt: (<p>A empresa do Redis não disponibiliza nenhuma biblioteca C# oficial, mas ela apoia a biblioteca <a target="_blank" href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</a>.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
@@ -80,7 +80,7 @@ public class RedisRepository
 
         new LocaleContentAny({
             en: (<p>By default, all values are permanent until manually removed, but Redis implements an <u>expiry</u> parameter, so each value can have a specific time to live and be removed automatically after the set time.</p>),
-            pt: (<p>Por padrão, todos os valores inseridos são permanentes até que sejam manualmente removidos, mas o Redis implementa um parâmetro <u>expiry</u>, aonde cada valor pode ter seu próprio tempo de vida e é automaticamente removido depois do tempo configurado.</p>)
+            pt: (<p>Por padrão, todos os valores inseridos são permanentes até que sejam manualmente removidos, mas na inserção de valores existe um parâmetro opcional chamado <u>expiry</u>, aonde cada valor pode ter um tempo de vida e será automaticamente removido quando o tempo acabar.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
@@ -91,7 +91,7 @@ await db.StringSetAsync(key, value, <span class="code-highlight">expiry: TimeSpa
 
         new LocaleContentAny({
             en: (<p>Redis does not implement sliding expiration natively, but it's possible to reset the expiry timer using KeyExpireAsync. Use it after every successful get operation to simulate the sliding feature.</p>),
-            pt: (<p>Redis não possui sliding de tempo de vida, para extender o tempo de vida automaticamente a cada consulta, mas é possível alterar o tempo de vida usando KeyExpireAsync. Ao alterar o valor a cada operação de busca, é possível simular a função de slide.</p>)
+            pt: (<p>Redis não possui sliding de tempo de vida, para estender o tempo de vida automaticamente a cada consulta, mas é possível alterar o tempo de vida de um valor usando KeyExpireAsync. Ao alterar o valor a cada operação de busca, é possível simular a função de slide.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
@@ -106,18 +106,18 @@ await db.<span class="code-highlight">KeyExpireAsync</span>(key, expiry: TimeSpa
         }),
 
         new LocaleContentAny({
-            en: (<p>Redis can <a target="_blank" href="https://redis.io/docs/getting-started/installation/">be installed on a local machine</a>, but there's no native support for Windows. However, Redis maintains an <a target="_blank" href="https://hub.docker.com/_/redis/">official docker image</a> on Docker HUB and is supported by the biggest cloud platforms, so it's fairly easy to launch an instance on a cloud environment.</p>),
-            pt: (<p>Redis pode ser <a target="_blank" href="https://redis.io/docs/getting-started/installation/">instalado na máquina local</a>, mas não tem suporte nativo no Windows. Porém, Redis mantém uma <a target="_blank" href="https://hub.docker.com/_/redis/">imagem oficial de docker</a> no Docker HUB e é suportado naturalmente pelas maiores plataformas cloud, então é relativamente fácil de subir uma instância em alguma plataforma cloud.</p>)
+            en: (<p>Redis can <a target="_blank" href="https://redis.io/docs/getting-started/installation/">be installed on a local machine</a>, but there's no native support for Windows. However, the company maintains an <a target="_blank" href="https://hub.docker.com/_/redis/">official docker image</a> on Docker HUB and is supported by the biggest cloud platforms, so it's fairly easy to launch an instance on a cloud environment.</p>),
+            pt: (<p>Redis pode ser <a target="_blank" href="https://redis.io/docs/getting-started/installation/">instalado na máquina local</a>, mas não tem suporte nativo no Windows. A empresa mantém uma <a target="_blank" href="https://hub.docker.com/_/redis/">imagem oficial de docker</a> no Docker HUB e é suportado naturalmente pelas maiores plataformas cloud, então é relativamente fácil de subir uma instância em alguma plataforma cloud.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Redis is <a target="_blank" href="https://redis.io/docs/management/security/">designed for performance, not security</a>, so it should be used on trusted networks with trusted clients and avoid external access. Still, it does offer authentication and a few configuration options, overall is pretty stable and cares about vulnerabilities.</p>),
-            pt: (<p>Redis é <a target="_blank" href="https://redis.io/docs/management/security/">focado em performance, não segurança</a>, então ele deve usado em redes confiáveis com clients confiáveis, evitando acesso externo. Mesmo assim, Redis oferece um mecanismo de autenticação e algumas opções de configurações, e no geral é bastante estável e se preocupa com vulnerabilidades.</p>)
+            en: (<p>Redis is <a target="_blank" href="https://redis.io/docs/management/security/">designed for performance, not security</a>, so it should be used on trusted networks with trusted clients and avoid external access. Still, it does offer authentication and a few configuration options, it does care a lot about vulnerabilities and overall is pretty stable.</p>),
+            pt: (<p>Redis é <a target="_blank" href="https://redis.io/docs/management/security/">focado em performance, não segurança</a>, então ele deve usado em redes confiáveis com clients confiáveis, evitando acesso externo. Mesmo assim, Redis oferece um mecanismo de autenticação e algumas opções de configurações, se preocupa com vulnerabilidades e no geral é bastante estável.</p>)
         }),
 
         new LocaleContentAny({
             en: (<p>Redis persists data as key/value pairs and supports a few <a target="_blank" href="https://redis.io/docs/data-types/">data types</a>. <u>Key</u> accepts only string and byte[]. <u>Value</u> accepts most of the primitives (string, int, float, byte[], etc) and built-in has some complex types, like bitmaps, hashmaps, sets, geospatial data and others.</p>),
-            pt: (<p>Redis mantém dados como pares de chave/valor e suporta alguns <a target="_blank" href="https://redis.io/docs/data-types/">tipos de dados</a>. <u>Chaves</u> podem ser alimentadas apenas com string e byte[]. <u>Valores</u> podem ser alimentados com a maioria dos primitivos (string, int, float, byte[], etc) e algumas estruturas complexas implementadas pelo próprio Redis, como bitmaps, hashmaps, sets, registros geoespaciais e outros.</p>)
+            pt: (<p>Redis mantém dados como pares de chave/valor e suporta alguns <a target="_blank" href="https://redis.io/docs/data-types/">tipos de dados</a>. <u>Chaves</u> podem ser alimentadas apenas com string e byte[]. <u>Valores</u> podem ser alimentados com a maioria dos tipos primitivos (string, int, float, byte[], etc) e algumas estruturas complexas implementadas pelo próprio Redis, como bitmaps, hashmaps, sets, registros geoespaciais e outros.</p>)
         }),
 
         new LocaleContentAny({
@@ -126,8 +126,8 @@ await db.<span class="code-highlight">KeyExpireAsync</span>(key, expiry: TimeSpa
         }),
 
         new LocaleContentAny({
-            en: (<p>When using a system with multiple instances and a shared Redis instance, it is recommended to use a distribuited lock strategy. <Link href={RedisRedlockCsharp20221212.getRoute()}>This article has an example of a simple implementation.</Link></p>),
-            pt: (<p>Quando um sistema que cria múltiplas instâncias quer utilizar um único Redis compartilhado, é recomendado usar uma estratégia de lock distribuido. <Link href={RedisRedlockCsharp20221212.getRoute()}>Este artigo demonstra uma implementação simplificada.</Link></p>)
+            en: (<p>When sharing a single Redis instance on a system with parallel processing, whether a multi-thread or multi-instance system, it is recommended to use a lock strategy to avoid redundant processes. <Link href={RedisRedlockCsharp20221212.getRoute()}>This article has an example of a distributed lock implementation</Link>, appropriate for containerized or multi-instance applications.</p>),
+            pt: (<p>Em situações que uma única instância Redis é compartilhada em um sistema com processamento paralelo, seja por ser multi-thread ou multi-instância, é recomendado usar uma estratégia de locks para evitar processamento redundante. <Link href={RedisRedlockCsharp20221212.getRoute()}>Este artigo demonstra uma implementação simplificada de lock distribuido</Link>, que é recomendado para aplicações rodando em containers ou multi-instâncias.</p>)
         }),
     ]
 });
