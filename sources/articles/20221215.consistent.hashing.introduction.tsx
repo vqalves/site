@@ -1,5 +1,3 @@
-import Link from "next/link";
-import CodeBlock, { CodeBlockLanguage } from "../../components/code.block";
 import Article from "../../models/article/article";
 import ArticleDate from "../../models/article/article.date";
 import ArticleTag from "../../models/article/article.tag";
@@ -44,7 +42,7 @@ export const ConsistentHashingIntroduction20221215 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>This article focus specifically on introducing the concept of distributing data on database shards using <a target="_blank" href="https://en.wikipedia.org/wiki/Consistent_hashing">consistent hashing</a>, which makes the data easier to manage than <a target="_blank" href="https://en.wikipedia.org/wiki/Linear_hashing">linear hashing</a>.</p>),
+            en: (<p>This article focus specifically on introducing the concept of distributing data on database shards using <a target="_blank" href="https://en.wikipedia.org/wiki/Consistent_hashing">consistent hashing</a>.</p>),
             pt: (<p></p>)
         }),
 
@@ -60,9 +58,16 @@ export const ConsistentHashingIntroduction20221215 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>Good algorithms for sharding aims for evenly distributed values, where small input changes drasticly changes on the output, and is fast to execute. This demonstration generates values from 0 to 999, but <u>a bigger range of outputs is better</u> for granularity, for example 0 to 2^32.</p>),
+            en: (<p>Good algorithms for sharding aims to evenly distributed values, have fast execution and be built in a way that a small input change will drastically change the output. It is not a problem to generate repeated hash values, but for flexibility <u>it is better to have a big range of outputs</u>.</p>),
             pt: (<p></p>)
         }),
+
+        new LocaleContentAny({
+            en: (<p>For simplicity sake, the demonstration below generates values from 0 to 999, but for a real-life scenario, a range from 0 to 2^32 would be prefered.</p>),
+            pt: (<p></p>)
+        }),
+
+        
 
         new LocaleContentAny({
             en: (<div>
@@ -94,7 +99,7 @@ export const ConsistentHashingIntroduction20221215 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>Each database shard will be responsible for a specific range of the hashing output. The objective is balance the workload, so at first it is recommended to split the data evenly.</p>),
+            en: (<p>Each database shard will be responsible for a specific range of the hashing output. The objective is to balance the workload, so at first it is recommended to split the data evenly.</p>),
             pt: (<p></p>)
         }),
 
@@ -128,34 +133,19 @@ export const ConsistentHashingIntroduction20221215 = new Article({
                 <tbody>
                     <tr><td>"key_1"</td><td>22</td><td>Instance A</td></tr>
                     <tr><td>"key_2"</td><td>894</td><td>Instance D</td></tr>
-                    <tr><td>"key_3"</td><td>379</td><td>Instance B</td></tr>
+                    <tr><td>"key_3"</td><td>380</td><td>Instance B</td></tr>
                 </tbody>
             </table>),
             pt: (<p></p>)
         }),
 
         new LocaleContentAny({
-            en: (<p><b>Why dynamic table instead of modulo</b></p>),
-            pt: (<p><b>Porque tabela dinâmica ao invés de módulo</b></p>)
+            en: (<p><b>Adding an instance</b></p>),
+            pt: (<p><b>Adicionando uma instância</b></p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Adding or removing database shards requires data reallocation one way or another. But using hashing range + dynamic table, the hashing function can stay the same, without impacting the hashing output, so we have much more control on what and how many shards will be affected by the migration.</p>),
-            pt: (<p></p>)
-        }),
-
-        new LocaleContentAny({
-            en: (<p>Since data migration causes slowness or downtime, this lowers the impact on system availability. As demonstrated below:</p>),
-            pt: (<p></p>)
-        }),
-
-        new LocaleContentAny({
-            en: (<p><b>Adding a server</b></p>),
-            pt: (<p><b>Adicionando um servidor</b></p>)
-        }),
-
-        new LocaleContentAny({
-            en: (<p>On situations where a server is getting too big, or became a hotstop and cannot handle all requests, adding a new server will require reallocating data from that server only, while all others will continue operating as normal. For example, if we wanted to split the instance A in half:</p>),
+            en: (<p>On situations where an instance is getting too big, or became a hotstop and cannot handle all requests, adding a new instance will require reallocating data from that instance only, while all others will continue operating as normal. For example, if we wanted to split the instance A in half:</p>),
             pt: (<p></p>)
         }),
 
@@ -177,12 +167,12 @@ export const ConsistentHashingIntroduction20221215 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p><b>Removing a server</b></p>),
-            pt: (<p><b>Removendo um servidor</b></p>)
+            en: (<p><b>Removing an instance</b></p>),
+            pt: (<p><b>Removendo uma instância</b></p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Similarly, if two servers are under-used, it's simple to merge the data into a single instance without affecting the other servers. For exemple, if C and D are under-used, we can elect the instance C absorb all the range and data of the instance D.</p>),
+            en: (<p>Similarly, if two instances are under-used, it's simple to merge the data into a single instance without affecting the other instances. For exemple, if C and D are under-used, we can elect the instance C to absorb all the range and data of the instance D.</p>),
             pt: (<p></p>)
         }),
 
@@ -213,7 +203,7 @@ export const ConsistentHashingIntroduction20221215 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>To help rebalance the servers workload without adding or removing, we can bind multiple ranges into a single physical server instance. In this scenario, it is more appropriate to say the hash ranges are assigned to <u>virtual nodes</u> rather than database instances.</p>),
+            en: (<p>To help rebalance the instances workload without adding or removing, we can bind multiple ranges into a single instance. In this scenario, it is more appropriate to say the hash ranges are assigned to <u>virtual nodes</u> rather than database instances.</p>),
             pt: (<p></p>)
         }),
 
@@ -231,6 +221,205 @@ export const ConsistentHashingIntroduction20221215 = new Article({
                     <tr><td>Instance B</td><td>Node 5</td><td>[800..999]</td></tr>
                 </tbody>
             </table>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p><b>Why consistent hashing is favored over linear hashing</b></p>),
+            pt: (<p><b>Porque é preferível usar consistent hashing ao invés de linear hashing</b></p>)
+        }),
+
+        // Adding or removing database shards requires data reallocation one way or another.
+
+        new LocaleContentAny({
+            en: (<p><a target="_blank" href="https://en.wikipedia.org/wiki/Linear_hashing">Linear hashing</a> is a strategy of distributing values on a fixed amount of data buckets. Since it maps each bucket to a single value, it's a very intuitive and fast strategy.</p>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>A very common way of implementing linear hashing is using the <a target="_blank" href="https://en.wikipedia.org/wiki/Modulo_operation">modulo operation</a> on the hash value, adopting the number of database instances as the divisor. This strategy also splits the data evenly between all the instances.</p>),
+            pt: (<p></p>)
+        }),
+
+        
+
+        new LocaleContentAny({
+            en: (<div>
+                <div>- <u>Input</u>: string</div>
+                <div>- <u>Number of instances</u>: 3</div>
+                <div>- <u>Map function</u>: <i>hashValue</i> mod <i>instanceCount</i></div>
+            </div>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (
+            <table>
+                <thead>
+                    <tr><td><b>Database instance</b></td><td><b>Maps to mod value</b></td></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Instance A</td><td>0</td></tr>
+                    <tr><td>Instance B</td><td>1</td></tr>
+                    <tr><td>Instance C</td><td>2</td></tr>
+                </tbody>
+            </table>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (
+            <table>
+                <thead>
+                    <tr><td><b>Input</b></td><td><b>Hash value</b></td><td><b>Mod value (mod 3)</b></td><td><b>Database</b></td></tr>
+                </thead>
+                <tbody>
+                    <tr><td>"key_1"</td><td>22</td><td>1</td><td>Instance B</td></tr>
+                    <tr><td>"key_2"</td><td>894</td><td>0</td><td>Instance A</td></tr>
+                    <tr><td>"key_3"</td><td>380</td><td>2</td><td>Instance C</td></tr>
+                    <tr><td>"key_4"</td><td>643</td><td>1</td><td>Instance B</td></tr>
+                </tbody>
+            </table>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>However, adding or removing instances will change the modulo divisor, so now any ID can potentially generate a different mod value than the previous function.</p>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>To ensure that every record is saved on the database instance corresponding to it's new mod value, it is necessary to recalculate the mod value of every ID inside the database. If the new value is different than the previous one, the record need be moved to another database instance.</p>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (
+            <table>
+                <thead>
+                    <tr>
+                        <td><b>Input</b></td>
+                        <td><b>Hash value</b></td>
+                        <td><b>Old distribution (mod 3)</b></td>
+                        <td><b>New distribution (mod 4)</b></td>
+                        <td><b>Move data?</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>"key_1"</td>
+                        <td>22</td>
+                        <td>1 = Instance B</td>
+                        <td>2 = Instance C</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>"key_2"</td>
+                        <td>894</td>
+                        <td>0 = Instance A</td>
+                        <td>2 = Instance C</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>"key_3"</td>
+                        <td>380</td>
+                        <td>2 = Instance C</td>
+                        <td>0 = Instance A</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>"key_4"</td>
+                        <td>643</td>
+                        <td>1 = Instance B</td>
+                        <td>3 = Instance D</td>
+                        <td>Yes</td>
+                    </tr>
+                </tbody>
+            </table>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>Considering a properly balanced database, changing the divisor requires moving <u>at least 50% entire database</u>, affecting all the database instances, regardless by much the divisor increased or decreased. On the worst cases, the amount of records that would need to be moved can be close to 100% of the entire database.</p>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>As exemplified on a scenario with three database instances:</p>),
+            pt: (<p></p>)
+        }),
+
+        LocaleContentAny.all(<table>
+            <thead>
+                <tr>
+                    <td><b>Current instance count</b></td>
+                    <td><b>Change</b></td>
+                    <td><b>Result instance count</b></td>
+                    <td><b>% of records moved</b></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3</td>
+                    <td>Remove 2 servers</td>
+                    <td>1</td>
+                    <td>66.6%</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Remove 1 server</td>
+                    <td>2</td>
+                    <td>66.6%</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Add 1 server</td>
+                    <td>4</td>
+                    <td>75.0%</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Add 2 servers</td>
+                    <td>5</td>
+                    <td>80.0%</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Add 3 servers</td>
+                    <td>6</td>
+                    <td>50.0%</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Add 4 servers</td>
+                    <td>7</td>
+                    <td>85.7%</td>
+                </tr>
+            </tbody>
+        </table>),
+
+        new LocaleContentAny({
+            en: (<p>On a real-world scenario, if a database instance A is overloaded, adding a new instance would require moving around records from all the database, not only instance A, which not only is unoptimized, but makes database availability much harder to manage.</p>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>Projecting the outcome is also much harder. There's a possibility that after the data migration, one instance end up with most of the high-request records, potentially becoming more overloaded than the previous hotstop.</p>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p><b>Dynamic table mitigates most problems</b></p>),
+            pt: (<p><b>Dynamic table mitiga a maioria dos problemas</b></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>Using a dynamic table allows to rearrange only specific hash ranges. There's much more control on how many records would need to be analyzed and rellocated, and how many databases instances will be affected at a time.</p>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>On the scenario where an instance is overloaded, even if the range is badly chosen and doesn't alleviate a hotstop, there's no risk of increasing the workload of the instance.</p>),
             pt: (<p></p>)
         }),
     ]
