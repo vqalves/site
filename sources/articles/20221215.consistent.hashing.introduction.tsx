@@ -171,7 +171,7 @@ export const ConsistentHashingIntroduction20221215 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>On situations where an instance is getting too big, or became a hotstop and cannot handle all requests, it's possible to slice that instance hash range and rellocate data from that instance only, while all others will continue operating as normal. For example, if we wanted to split the instance A in half:</p>),
+            en: (<p>On situations where an instance is getting too big, or became a hotspot and cannot handle all requests, it's possible to slice that instance hash range and rellocate data from that instance only, while all others will continue operating as normal. For example, if we wanted to split the instance A in half:</p>),
             pt: (<p>Quando uma das instâncias estiver ficando muito grande, ou se tornar um hotspot com muitas requisições, podemos dividir a faixa de hash e transferir os dados apenas dessa instância, enquanto todas as outras instâncias continuam funcionando normalmente. Por exemplo, se quisermos dividir a instância A no meio:</p>)
         }),
 
@@ -600,7 +600,7 @@ export const ConsistentHashingIntroduction20221215 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>Projecting the outcome is also much harder. There's a possibility that after the data migration, one instance end up with most of the high-request records, potentially becoming more overloaded than the previous hotstop.</p>),
+            en: (<p>Projecting the outcome is also much harder. There's a possibility that after the data migration, one instance end up with most of the high-request records, potentially becoming more overloaded than the previous hotspot.</p>),
             pt: (<p>Estimar o resultado da distribuição também é difícil. Existe a possibilidade de depois dos dados terem sido redistribuidos, alguma instância acabe com um grande volume de registros acessados com alta frequência, potencialmente ficando mais sobrecarregado do que a instância anterior.</p>)
         }),
 
@@ -615,7 +615,7 @@ export const ConsistentHashingIntroduction20221215 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>On the scenario where an instance is overloaded, even if the range is badly chosen and doesn't alleviate a hotstop, there's no risk of increasing the workload of the instance.</p>),
+            en: (<p>On the scenario where an instance is overloaded, even if the range is badly chosen and doesn't alleviate a hotspot, there's no risk of increasing the workload of the instance.</p>),
             pt: (<p>Na situação em que uma instância esteja sobrecarregada, mesmo se não escolhermos uma faixa que iria distribuir devidamente o nível de processamento, não haverá o risco de aumentar a sobrecarga da instância.</p>)
         }),
     ]

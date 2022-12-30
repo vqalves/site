@@ -111,6 +111,25 @@ export default function Layout(props: LayoutProps) {
                         {props.children}
                     </div>    
                 </main>
+
+                <footer className="top-border">
+                    <div className="external-profiles">
+                        <div className="external-profile">
+                            {/*<img className="logo" src="https://brand.linkedin.com/content/dam/me/brand/en-us/brand-home/logos/In-Blue-Logo.png.original.png" alt="" aria-hidden="true"></img>*/}
+                            <a target="_blank" href="https://www.linkedin.com/in/viniciusquinafelex/">Linkedin</a>
+                        </div>
+                        
+                        <div className="external-profile">
+                            {/*<img className="logo" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="" aria-hidden="true"></img>*/}
+                            <a target="_blank" href="https://github.com/vqalves">Github</a>
+                        </div>
+
+                        <div className="external-profile">
+                            {/*<img className="logo" src="https://www.dropbox.com/s/fg1x3ekgvsn1h7q/Logo.zip?dl=0&file_subpath=%2FLogo%2F01_Black%2FSymbol%2FPNG%2FRGB%2FMedium-Symbol-Black-RGB%401x.png" alt="" aria-hidden="true"></img>*/}
+                            <a target="_blank" href="https://vqalves.medium.com/">Medium</a>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </>
     )

@@ -21,7 +21,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
     const { ts } = useDefaultPageElements();
 
     return (
-        <div className={`bottom-border ${styles.article_card}`}>
+        <div className={`top-border ${styles.article_card}`}>
             <div className={styles.article_title}>
                 <Link href={article.getRoute()}>
                     {ts(article.title)}

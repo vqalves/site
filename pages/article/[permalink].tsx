@@ -53,7 +53,7 @@ export function ArticlePage(props: ArticlePageParam) {
                     <h2>{ts(article.title)}</h2>
                     <Time date={article.date.date} content={article.date.formatAsContent()}></Time>
 
-                    <section className={`${styles.article_section} bottom-top`}>
+                    <section className={`${styles.article_section} top-border`}>
                         {
                             article.getContent()
                                 .map((content, index) => {
