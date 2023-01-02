@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CodeBlock, { CodeBlockLanguage } from "../../components/code.block";
+import ExternalLink from "../../components/external.link";
 import Article from "../../models/article/article";
 import ArticleDate from "../../models/article/article.date";
 import ArticleTag from "../../models/article/article.tag";
@@ -35,8 +36,8 @@ export const RedisRedlockCsharp20221212 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>For that, Redis recommends using the <a href="https://redis.com/redis-best-practices/communication-patterns/redlock/">Redlock algorithm</a>. In summary, it's a <a href="https://en.wikipedia.org/wiki/Semaphore_(programming)">semaphore</a> shared between processes, that can be implemented using Redis itself.</p>),
-            pt: (<p>Pra isso, o Redis recomenda utilizar <a href="https://redis.com/redis-best-practices/communication-patterns/redlock/">Redlock</a>. Em resumo, ele é um <a href="https://en.wikipedia.org/wiki/Semaphore_(programming)">semáforo</a> compartilhado entre processos, que pode ser implementado usando o Redis.</p>)
+            en: (<p>For that, Redis recommends using the <ExternalLink href="https://redis.com/redis-best-practices/communication-patterns/redlock/">Redlock algorithm</ExternalLink>. In summary, it's a <ExternalLink href="https://en.wikipedia.org/wiki/Semaphore_(programming)">semaphore</ExternalLink> shared between processes, that can be implemented using Redis itself.</p>),
+            pt: (<p>Pra isso, o Redis recomenda utilizar <ExternalLink href="https://redis.com/redis-best-practices/communication-patterns/redlock/">Redlock</ExternalLink>. Em resumo, ele é um <ExternalLink href="https://en.wikipedia.org/wiki/Semaphore_(programming)">semáforo</ExternalLink> compartilhado entre processos, que pode ser implementado usando o Redis.</p>)
         }),
 
         new LocaleContentAny({
@@ -45,8 +46,8 @@ export const RedisRedlockCsharp20221212 = new Article({
         }),
         
         new LocaleContentAny({
-            en: (<p><a href="https://www.nuget.org/packages/RedLock.net">RedLock.net</a> is one of a few C# libraries endorsed by the Redis company that can help implementing the algorithm. The code uses <a href="https://en.wikipedia.org/wiki/Double-checked_locking">double-check locking</a> to avoid reprocessing when the waiting threads acquire the lock.</p>),
-            pt: (<p><a href="https://www.nuget.org/packages/RedLock.net">RedLock.net</a> é uma das bibliotecas C# apoiadas pela empresa do Redis que nos auxiliam com a implementação desse algoritmo. O código usa a técnica de <a href="https://en.wikipedia.org/wiki/Double-checked_locking">double-check locking</a> para evitar que threads enfileiradas executem um reprocessamento indevido.</p>)
+            en: (<p><ExternalLink href="https://www.nuget.org/packages/RedLock.net">RedLock.net</ExternalLink> is one of a few C# libraries endorsed by the Redis company that can help implementing the algorithm. The code uses <ExternalLink href="https://en.wikipedia.org/wiki/Double-checked_locking">double-check locking</ExternalLink> to avoid reprocessing when the waiting threads acquire the lock.</p>),
+            pt: (<p><ExternalLink href="https://www.nuget.org/packages/RedLock.net">RedLock.net</ExternalLink> é uma das bibliotecas C# apoiadas pela empresa do Redis que nos auxiliam com a implementação desse algoritmo. O código usa a técnica de <ExternalLink href="https://en.wikipedia.org/wiki/Double-checked_locking">double-check locking</ExternalLink> para evitar que threads enfileiradas executem um reprocessamento indevido.</p>)
         }),
 
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CodeBlock, { CodeBlockLanguage } from "../../components/code.block";
+import ExternalLink from "../../components/external.link";
 import Article from "../../models/article/article";
 import ArticleDate from "../../models/article/article.date";
 import ArticleTag from "../../models/article/article.tag";
@@ -42,7 +43,7 @@ export const ParameterNullController20221119 = new Article({
 
         new LocaleContentAny({
             en: (<section>
-                <p>It's more common for the server to trigger a <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/415">HTTP 415 error</a>, but on some old dotnet versions such error is not triggered and the parameter is simply null.</p>
+                <p>It's more common for the server to trigger a <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/415">HTTP 415 error</ExternalLink>, but on some old dotnet versions such error is not triggered and the parameter is simply null.</p>
 
                 <p>Use <span className="bold">[FromForm]</span> for {"<form>"}, Multipart Form and Form URL Encoded POSTs</p>
                 <p>Use <span className="bold">[FromBody]</span> for raw JSON POSTs</p>
@@ -50,7 +51,7 @@ export const ParameterNullController20221119 = new Article({
                 <p>Use <span className="bold">[FromQuery]</span> to get data passed on the URL query (after the question mark "?" on the URL)</p>
             </section>),
             pt: (<section>
-                <p>O comum seria que o servidor devolvesse o erro <a target="_blank" href="https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/415">HTTP 415</a>, mas algumas versões antigas do dotnet não disparam esse erro e simplesmente alimentam o parâmetro com nulo.</p>
+                <p>O comum seria que o servidor devolvesse o erro <ExternalLink href="https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/415">HTTP 415</ExternalLink>, mas algumas versões antigas do dotnet não disparam esse erro e simplesmente alimentam o parâmetro com nulo.</p>
 
                 <p>Use <span className="bold">[FromForm]</span> para tags {"<form>"}, Multipart Form e Form URL Encoded POSTs.</p>
                 <p>Use <span className="bold">[FromBody]</span> para POSTs JSON.</p>
@@ -74,10 +75,10 @@ public IActionResult Example([FromForm]DataModel data)
 
         new LocaleContentAny({
             en: (<section>
-                <p>Non-nullable properties cannot be hydrated if the data is null or not properly formatted. For example, Guid variables by default has to have dashes "-" and DateTime is much more predictable using the <a target="_blank" href="https://en.wikipedia.org/wiki/ISO_8601">ISO format</a>.</p>
+                <p>Non-nullable properties cannot be hydrated if the data is null or not properly formatted. For example, Guid variables by default has to have dashes "-" and DateTime is much more predictable using the <ExternalLink href="https://en.wikipedia.org/wiki/ISO_8601">ISO format</ExternalLink>.</p>
             </section>),
             pt: (<section>
-                <p>Propriedades não-anuláveis não podem ser hidratados se o dado enviado for nulo ou não estiver em um formato correto. Por exemplo, variáveis tipo Guid por padrão só podem ser hidratados se estiverem com traços (-), e variáveis tipo DateTime terão menos problemas se os dados estiverem no <a target="_blank" href="https://pt.wikipedia.org/wiki/ISO_8601">formato ISO</a>.</p>
+                <p>Propriedades não-anuláveis não podem ser hidratados se o dado enviado for nulo ou não estiver em um formato correto. Por exemplo, variáveis tipo Guid por padrão só podem ser hidratados se estiverem com traços (-), e variáveis tipo DateTime terão menos problemas se os dados estiverem no <ExternalLink href="https://pt.wikipedia.org/wiki/ISO_8601">formato ISO</ExternalLink>.</p>
             </section>)
         }),
 

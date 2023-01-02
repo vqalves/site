@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CodeBlock, { CodeBlockLanguage } from "../../components/code.block";
+import ExternalLink from "../../components/external.link";
 import Article from "../../models/article/article";
 import ArticleDate from "../../models/article/article.date";
 import ArticleTag from "../../models/article/article.tag";
@@ -30,8 +31,8 @@ export const RedisIntroduction20221211 = new Article({
 
     getContent: () => [
         new LocaleContentAny({
-            en: (<p><a target="_blank" href="https://redis.io/">Redis</a> is an in-memory key/value database that runs as a service and can be accessed by network. In other words, it's like a online Dictionary (or HashMap) structure, lightweight and very fast, but unlike it's competitor <a target="_blank" href="https://www.memcached.org/">memcached</a>, it does have extra database features to make it more versatile.</p>),
-            pt: (<p><a target="_blank" href="https://redis.io/">Redis</a> é um banco de dados chave/valor em memória, instalado como serviço e que pode ser acessado remotamente. Em outras palavras, funciona como uma estrutura online de Dictionary (ou HashMap), leve e rápido. Por ter algumas funcionalidades mais orientadas a banco de dados, é mais versátil que outras ferramentas como <a target="_blank" href="https://www.memcached.org/">memcached</a>.</p>)
+            en: (<p><ExternalLink href="https://redis.io/">Redis</ExternalLink> is an in-memory key/value database that runs as a service and can be accessed by network. In other words, it's like a online Dictionary (or HashMap) structure, lightweight and very fast, but unlike it's competitor <ExternalLink href="https://www.memcached.org/">memcached</ExternalLink>, it does have extra database features to make it more versatile.</p>),
+            pt: (<p><ExternalLink href="https://redis.io/">Redis</ExternalLink> é um banco de dados chave/valor em memória, instalado como serviço e que pode ser acessado remotamente. Em outras palavras, funciona como uma estrutura online de Dictionary (ou HashMap), leve e rápido. Por ter algumas funcionalidades mais orientadas a banco de dados, é mais versátil que outras ferramentas como <ExternalLink href="https://www.memcached.org/">memcached</ExternalLink>.</p>)
         }),
 
         new LocaleContentAny({
@@ -40,8 +41,8 @@ export const RedisIntroduction20221211 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>The Redis company does not maintain any official C# library, but it does endorse <a target="_blank" href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</a>.</p>),
-            pt: (<p>A empresa do Redis não disponibiliza nenhuma biblioteca C# oficial, mas ela apoia a biblioteca <a target="_blank" href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</a>.</p>)
+            en: (<p>The Redis company does not maintain any official C# library, but it does endorse <ExternalLink href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</ExternalLink>.</p>),
+            pt: (<p>A empresa do Redis não disponibiliza nenhuma biblioteca C# oficial, mas ela apoia a biblioteca <ExternalLink href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</ExternalLink>.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
@@ -106,23 +107,23 @@ await db.<span class="code-highlight">KeyExpireAsync</span>(key, expiry: TimeSpa
         }),
 
         new LocaleContentAny({
-            en: (<p>Redis can <a target="_blank" href="https://redis.io/docs/getting-started/installation/">be installed on a local machine</a>, but there's no native support for Windows. However, the company maintains an <a target="_blank" href="https://hub.docker.com/_/redis/">official docker image</a> on Docker HUB and is supported by the biggest cloud platforms, so it's fairly easy to launch an instance on a cloud environment.</p>),
-            pt: (<p>Redis pode ser <a target="_blank" href="https://redis.io/docs/getting-started/installation/">instalado na máquina local</a>, mas não tem suporte nativo no Windows. A empresa mantém uma <a target="_blank" href="https://hub.docker.com/_/redis/">imagem oficial de docker</a> no Docker HUB e é suportado naturalmente pelas maiores plataformas cloud, então é relativamente fácil de subir uma instância em alguma plataforma cloud.</p>)
+            en: (<p>Redis can <ExternalLink href="https://redis.io/docs/getting-started/installation/">be installed on a local machine</ExternalLink>, but there's no native support for Windows. However, the company maintains an <ExternalLink href="https://hub.docker.com/_/redis/">official docker image</ExternalLink> on Docker HUB and is supported by the biggest cloud platforms, so it's fairly easy to launch an instance on a cloud environment.</p>),
+            pt: (<p>Redis pode ser <ExternalLink href="https://redis.io/docs/getting-started/installation/">instalado na máquina local</ExternalLink>, mas não tem suporte nativo no Windows. A empresa mantém uma <ExternalLink href="https://hub.docker.com/_/redis/">imagem oficial de docker</ExternalLink> no Docker HUB e é suportado naturalmente pelas maiores plataformas cloud, então é relativamente fácil de subir uma instância em alguma plataforma cloud.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Redis is <a target="_blank" href="https://redis.io/docs/management/security/">designed for performance, not security</a>, so it should be used on trusted networks with trusted clients and avoid external access. Still, it does offer authentication and a few configuration options, it does care a lot about vulnerabilities and overall is pretty stable.</p>),
-            pt: (<p>Redis é <a target="_blank" href="https://redis.io/docs/management/security/">focado em performance, não segurança</a>, então ele deve usado em redes confiáveis com clients confiáveis, evitando acesso externo. Mesmo assim, Redis oferece um mecanismo de autenticação e algumas opções de configurações, se preocupa com vulnerabilidades e no geral é bastante estável.</p>)
+            en: (<p>Redis is <ExternalLink href="https://redis.io/docs/management/security/">designed for performance, not security</ExternalLink>, so it should be used on trusted networks with trusted clients and avoid external access. Still, it does offer authentication and a few configuration options, it does care a lot about vulnerabilities and overall is pretty stable.</p>),
+            pt: (<p>Redis é <ExternalLink href="https://redis.io/docs/management/security/">focado em performance, não segurança</ExternalLink>, então ele deve usado em redes confiáveis com clients confiáveis, evitando acesso externo. Mesmo assim, Redis oferece um mecanismo de autenticação e algumas opções de configurações, se preocupa com vulnerabilidades e no geral é bastante estável.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Redis persists data as key/value pairs and supports a few <a target="_blank" href="https://redis.io/docs/data-types/">data types</a>. <u>Key</u> accepts only string and byte[]. <u>Value</u> accepts most of the primitives (string, int, float, byte[], etc) and built-in has some complex types, like bitmaps, hashmaps, sets, geospatial data and others.</p>),
-            pt: (<p>Redis mantém dados como pares de chave/valor e suporta alguns <a target="_blank" href="https://redis.io/docs/data-types/">tipos de dados</a>. <u>Chaves</u> podem ser alimentadas apenas com string e byte[]. <u>Valores</u> podem ser alimentados com a maioria dos tipos primitivos (string, int, float, byte[], etc) e algumas estruturas complexas implementadas pelo próprio Redis, como bitmaps, hashmaps, sets, registros geoespaciais e outros.</p>)
+            en: (<p>Redis persists data as key/value pairs and supports a few <ExternalLink href="https://redis.io/docs/data-types/">data types</ExternalLink>. <u>Key</u> accepts only string and byte[]. <u>Value</u> accepts most of the primitives (string, int, float, byte[], etc) and built-in has some complex types, like bitmaps, hashmaps, sets, geospatial data and others.</p>),
+            pt: (<p>Redis mantém dados como pares de chave/valor e suporta alguns <ExternalLink href="https://redis.io/docs/data-types/">tipos de dados</ExternalLink>. <u>Chaves</u> podem ser alimentadas apenas com string e byte[]. <u>Valores</u> podem ser alimentados com a maioria dos tipos primitivos (string, int, float, byte[], etc) e algumas estruturas complexas implementadas pelo próprio Redis, como bitmaps, hashmaps, sets, registros geoespaciais e outros.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Some of the extra features Redis provides are <a target="_blank" href="https://redis.io/docs/management/replication/">master/slave data replication</a> for high availability, <a target="_blank" href="https://redis.io/docs/management/persistence/">data persistence strategies and snapshots</a> so the Redis instance can recover from a crash with pre-populated data and <a target="_blank" href="https://redis.io/docs/manual/transactions/">batch command execution</a>, which Redis call "transaction" but does not support rollbacks. It can also <a target="_blank" href="https://redis.io/docs/manual/programmability/eval-intro/">run Lua scripts</a>, which can be used similarly as SQL's stored procedures.</p>),
-            pt: (<p>Algumas das funcionalidades extras que Redis oferece são <a target="_blank" href="https://redis.io/docs/management/replication/">replicação de dados via master/slave</a> para aumento de disponibilidade, <a target="_blank" href="https://redis.io/docs/management/persistence/">estratégias de persistência de dados e snapshots</a> para recuperar instâncias já com dados pré-populados em casos de crashes e <a target="_blank" href="https://redis.io/docs/manual/transactions/">execução de comandos em batch</a>, que o Redis chama de "transação" mas não é possível realizar rollbacks. Também é possível <a target="_blank" href="https://redis.io/docs/manual/programmability/eval-intro/">rodas scripts Lua</a>, que podem simular funcionalidades semelhantes às stored procedures do SQL.</p>)
+            en: (<p>Some of the extra features Redis provides are <ExternalLink href="https://redis.io/docs/management/replication/">master/slave data replication</ExternalLink> for high availability, <ExternalLink href="https://redis.io/docs/management/persistence/">data persistence strategies and snapshots</ExternalLink> so the Redis instance can recover from a crash with pre-populated data and <ExternalLink href="https://redis.io/docs/manual/transactions/">batch command execution</ExternalLink>, which Redis call "transaction" but does not support rollbacks. It can also <ExternalLink href="https://redis.io/docs/manual/programmability/eval-intro/">run Lua scripts</ExternalLink>, which can be used similarly as SQL's stored procedures.</p>),
+            pt: (<p>Algumas das funcionalidades extras que Redis oferece são <ExternalLink href="https://redis.io/docs/management/replication/">replicação de dados via master/slave</ExternalLink> para aumento de disponibilidade, <ExternalLink href="https://redis.io/docs/management/persistence/">estratégias de persistência de dados e snapshots</ExternalLink> para recuperar instâncias já com dados pré-populados em casos de crashes e <ExternalLink href="https://redis.io/docs/manual/transactions/">execução de comandos em batch</ExternalLink>, que o Redis chama de "transação" mas não é possível realizar rollbacks. Também é possível <ExternalLink href="https://redis.io/docs/manual/programmability/eval-intro/">rodas scripts Lua</ExternalLink>, que podem simular funcionalidades semelhantes às stored procedures do SQL.</p>)
         }),
 
         new LocaleContentAny({

@@ -1,0 +1,68 @@
+.execution_cell_title {
+    margin-right: 5px;
+    min-width: 4em;
+}
+
+.execution_cell {
+    overflow: hidden;
+}
+
+.thread_line {
+    display: flex;
+}
+
+.handler_title {
+    margin-top: 20px;
+}
+
+.handler_assignment_line {
+    margin-left: -3px;
+}
+
+.handler_assignment_line, .handler_assignment_line_reverse {
+    width: 2px;
+}
+
+.handler_assignment_line_reverse {
+    transform: rotate(180deg);
+}
+
+.handler_assignment_line_body {
+    position: absolute;
+    width: 6px;
+}
+
+.handler_assignment_line_segment {
+    background-color: #000;
+    display: block;
+    margin-left: 2px;
+    width: 2px;
+    height: 5em;
+}
+
+.handler_assignment_line_arrow { 
+    display: block;
+    margin-top: -1em;
+    margin-left: -5px;
+}
+
+.execution_cell_content {
+    padding: 0px 5px;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    display: block;
+    width: calc(100% - 12px);
+
+}
+
+.green_cell {
+    background-color: #b4f8c8;
+}
+
+.blue_cell {
+    background-color: #a0e7e5;
+}
+
+.red_cell {
+    background-color: #ffaebc;
+}

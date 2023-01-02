@@ -1,3 +1,4 @@
+import ExternalLink from "../../components/external.link";
 import Article from "../../models/article/article";
 import ArticleDate from "../../models/article/article.date";
 import ArticleTag from "../../models/article/article.tag";
@@ -27,13 +28,13 @@ export const ConsistentHashingIntroduction20221215 = new Article({
 
     getContent: () => [
         new LocaleContentAny({
-            en: (<p>When a database table starts to grow over gigabytes of data or billions of records, managing the data availability and workload on a single database instance becomes very challenging. For those scenarios, <a target="_blank" href="https://en.wikipedia.org/wiki/Partition_(database)">partitioning the table</a> is recommended to make all the data easier to manage and process.</p>),
-            pt: (<p>No banco de dados, quando uma tabela cresce a ponto de chegar a gigabytes de dados ou bilhões de registros, gerenciar a disponibilidade e sobrecarga de uma única instância de banco de dados fica bastante desafiador. Nestes cenários, é recomendado <a target="_blank" href="https://pt.wikipedia.org/wiki/Parti%C3%A7%C3%A3o_(banco_de_dados)">particionar a tabela</a> para facilitar a gestão e processamento dos dados.</p>)
+            en: (<p>When a database table starts to grow over gigabytes of data or billions of records, managing the data availability and workload on a single database instance becomes very challenging. For those scenarios, <ExternalLink href="https://en.wikipedia.org/wiki/Partition_(database)">partitioning the table</ExternalLink> is recommended to make all the data easier to manage and process.</p>),
+            pt: (<p>No banco de dados, quando uma tabela cresce a ponto de chegar a gigabytes de dados ou bilhões de registros, gerenciar a disponibilidade e sobrecarga de uma única instância de banco de dados fica bastante desafiador. Nestes cenários, é recomendado <ExternalLink target="_blank" href="https://pt.wikipedia.org/wiki/Parti%C3%A7%C3%A3o_(banco_de_dados)">particionar a tabela</ExternalLink> para facilitar a gestão e processamento dos dados.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>One of the most drastic approaches to partitioning is <a target="_blank" href="https://en.wikipedia.org/wiki/Shard_(database_architecture)">sharding the database</a>, which splits the data and workload into different database instances, allowing the use of multiple servers and increasing the processing power and storage potential.</p>),
-            pt: (<p>Uma das formas mais drásticas de particionamento é a <a target="_blank" href="https://pt.wikipedia.org/wiki/Shard_(arquitetura_de_banco_de_dados)">fragmentação do banco de dados, ou sharding</a>, que divide os registros e processamento em instâncias de banco de dados diferentes. Isso permite que sejam usados vários servidores físicos diferentes, aumentando o potencial de armazenamento e processamento.</p>)
+            en: (<p>One of the most drastic approaches to partitioning is <ExternalLink href="https://en.wikipedia.org/wiki/Shard_(database_architecture)">sharding the database</ExternalLink>, which splits the data and workload into different database instances, allowing the use of multiple servers and increasing the processing power and storage potential.</p>),
+            pt: (<p>Uma das formas mais drásticas de particionamento é a <ExternalLink href="https://pt.wikipedia.org/wiki/Shard_(arquitetura_de_banco_de_dados)">fragmentação do banco de dados, ou sharding</ExternalLink>, que divide os registros e processamento em instâncias de banco de dados diferentes. Isso permite que sejam usados vários servidores físicos diferentes, aumentando o potencial de armazenamento e processamento.</p>)
         }),
 
         new LocaleContentAny({
@@ -42,8 +43,8 @@ export const ConsistentHashingIntroduction20221215 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>This article focus specifically on introducing the concept of distributing data on database shards using <a target="_blank" href="https://en.wikipedia.org/wiki/Consistent_hashing">consistent hashing</a>.</p>),
-            pt: (<p>Este artigo introduz o conceito de distribuição de registros de banco de dados em shards usando <a target="_blank" href="https://en.wikipedia.org/wiki/Consistent_hashing">consistent hashing</a>.</p>)
+            en: (<p>This article focus specifically on introducing the concept of distributing data on database shards using <ExternalLink href="https://en.wikipedia.org/wiki/Consistent_hashing">consistent hashing</ExternalLink>.</p>),
+            pt: (<p>Este artigo introduz o conceito de distribuição de registros de banco de dados em shards usando <ExternalLink href="https://en.wikipedia.org/wiki/Consistent_hashing">consistent hashing</ExternalLink>.</p>)
         }),
 
 
@@ -298,13 +299,13 @@ export const ConsistentHashingIntroduction20221215 = new Article({
         // Adding or removing database shards requires data reallocation one way or another.
 
         new LocaleContentAny({
-            en: (<p><a target="_blank" href="https://en.wikipedia.org/wiki/Linear_hashing">Linear hashing</a> is a strategy of distributing values on a fixed amount of data buckets. Since each bucket has a single value that represents it, it's a very intuitive and fast strategy.</p>),
-            pt: (<p><a target="_blank" href="https://en.wikipedia.org/wiki/Linear_hashing">Linear hashing</a> é uma estratégia para distribuir registros em uma quantidade fixa de repositórios. Já que cada repositório possui um único valor de representação, é uma estratégia bastante intuitiva e rápida.</p>)
+            en: (<p><ExternalLink href="https://en.wikipedia.org/wiki/Linear_hashing">Linear hashing</ExternalLink> is a strategy of distributing values on a fixed amount of data buckets. Since each bucket has a single value that represents it, it's a very intuitive and fast strategy.</p>),
+            pt: (<p><ExternalLink href="https://en.wikipedia.org/wiki/Linear_hashing">Linear hashing</ExternalLink> é uma estratégia para distribuir registros em uma quantidade fixa de repositórios. Já que cada repositório possui um único valor de representação, é uma estratégia bastante intuitiva e rápida.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>A very common way of implementing linear hashing is using the <a target="_blank" href="https://en.wikipedia.org/wiki/Modulo_operation">modulo operation</a> on the hash value, adopting the number of database instances as the divisor. This strategy also splits the data evenly between all the instances.</p>),
-            pt: (<p>A forma mais comum de implementar linear hashing é usando a <a target="_blank" href="https://pt.wikipedia.org/wiki/Opera%C3%A7%C3%A3o_m%C3%B3dulo">operação de módulo (mod)</a> nos valores de saída do hash, utilizando a quantidade de instâncias de banco de dados como divisor. Isso funciona para distribuir is registros igualmente nas instâncias de banco de dados.</p>)
+            en: (<p>A very common way of implementing linear hashing is using the <ExternalLink href="https://en.wikipedia.org/wiki/Modulo_operation">modulo operation</ExternalLink> on the hash value, adopting the number of database instances as the divisor. This strategy also splits the data evenly between all the instances.</p>),
+            pt: (<p>A forma mais comum de implementar linear hashing é usando a <ExternalLink href="https://pt.wikipedia.org/wiki/Opera%C3%A7%C3%A3o_m%C3%B3dulo">operação de módulo (mod)</ExternalLink> nos valores de saída do hash, utilizando a quantidade de instâncias de banco de dados como divisor. Isso funciona para distribuir is registros igualmente nas instâncias de banco de dados.</p>)
         }),
 
         

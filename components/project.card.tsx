@@ -3,6 +3,7 @@ import Project from "../models/project/project";
 import ProjectTech from "../models/project/project.tech";
 import ProjectTechGroup from "../models/project/project.tech.group";
 import styles from "../styles/project.card.module.css";
+import ExternalLink from "./external.link";
 
 export interface ProjectCardProps {
     project: Project;
@@ -76,7 +77,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
     function _renderProjectLink(company: string, link?: string) {
         if(link) {
-            return <a target="_blank" rel="noreferrer" href={link}>{company}</a>
+            return <ExternalLink href={link}>{company}</ExternalLink>
         }
 
         return <p>{company}</p>;

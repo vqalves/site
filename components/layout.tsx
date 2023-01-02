@@ -11,6 +11,7 @@ import LocaleType from "../models/locale/locale.type";
 import content from "../contents/layout.content";
 
 import styles from "../styles/layout.module.css";
+import ExternalLink from "./external.link";
 
 export interface LayoutProps {
     children: React.ReactNode
@@ -116,17 +117,17 @@ export default function Layout(props: LayoutProps) {
                     <div className="external-profiles">
                         <div className="external-profile">
                             {/*<img className="logo" src="https://brand.linkedin.com/content/dam/me/brand/en-us/brand-home/logos/In-Blue-Logo.png.original.png" alt="" aria-hidden="true"></img>*/}
-                            <a target="_blank" href="https://www.linkedin.com/in/viniciusquinafelex/">Linkedin</a>
+                            <ExternalLink href="https://www.linkedin.com/in/viniciusquinafelex/">Linkedin</ExternalLink>
                         </div>
                         
                         <div className="external-profile">
                             {/*<img className="logo" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="" aria-hidden="true"></img>*/}
-                            <a target="_blank" href="https://github.com/vqalves">Github</a>
+                            <ExternalLink href="https://github.com/vqalves">Github</ExternalLink>
                         </div>
 
                         <div className="external-profile">
                             {/*<img className="logo" src="https://www.dropbox.com/s/fg1x3ekgvsn1h7q/Logo.zip?dl=0&file_subpath=%2FLogo%2F01_Black%2FSymbol%2FPNG%2FRGB%2FMedium-Symbol-Black-RGB%401x.png" alt="" aria-hidden="true"></img>*/}
-                            <a target="_blank" href="https://vqalves.medium.com/">Medium</a>
+                            <ExternalLink href="https://vqalves.medium.com/">Medium</ExternalLink>
                         </div>
                     </div>
                 </footer>

@@ -1,4 +1,5 @@
 import CodeBlock, { CodeBlockLanguage } from "../../components/code.block";
+import ExternalLink from "../../components/external.link";
 import Article from "../../models/article/article";
 import ArticleDate from "../../models/article/article.date";
 import ArticleTag from "../../models/article/article.tag";
@@ -28,8 +29,8 @@ export const ZoningCoordinatesUsingKmlFiles20221203 = new Article({
 
     getContent: () => [
         new LocaleContentAny({
-            en: (<p><a target="_blank" href="https://en.wikipedia.org/wiki/Keyhole_Markup_Language">KMLs</a> are structured XMLs files, containing geographic data for processing and rendering. Used by Google Maps, this format is considered an international standard by the <a target="_blank" href="https://en.wikipedia.org/wiki/Open_Geospatial_Consortium">OGC, international consortium related to geoprocessing</a>, since 2008.</p>),
-            pt: (<p>Arquivos <a target="_blank" href="https://pt.wikipedia.org/wiki/Keyhole_Markup_Language">KML</a> são XMLs estruturados com dados geográficos para processamento e visualização. Popularmente usada pelo Google Maps, este formato é considerado um padrão internacional pela <a target="_blank" href="https://pt.wikipedia.org/wiki/Open_Geospatial_Consortium">OGC, consórcio internacional vinculado ao geoprocessamento</a>, desde 2008.</p>)
+            en: (<p><ExternalLink href="https://en.wikipedia.org/wiki/Keyhole_Markup_Language">KMLs</ExternalLink> are structured XMLs files, containing geographic data for processing and rendering. Used by Google Maps, this format is considered an international standard by the <ExternalLink href="https://en.wikipedia.org/wiki/Open_Geospatial_Consortium">OGC, international consortium related to geoprocessing</ExternalLink>, since 2008.</p>),
+            pt: (<p>Arquivos <ExternalLink href="https://pt.wikipedia.org/wiki/Keyhole_Markup_Language">KML</ExternalLink> são XMLs estruturados com dados geográficos para processamento e visualização. Popularmente usada pelo Google Maps, este formato é considerado um padrão internacional pela <ExternalLink href="https://pt.wikipedia.org/wiki/Open_Geospatial_Consortium">OGC, consórcio internacional vinculado ao geoprocessamento</ExternalLink>, desde 2008.</p>)
         }),
 
         new LocaleContentAny({
@@ -38,13 +39,13 @@ export const ZoningCoordinatesUsingKmlFiles20221203 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>To find the zone that contains a specific coordinate, the code must read all the polygons inside the KML, and check each polygon to find which one contains the coordinate. For that, this article uses the <a target="_blank" href="https://www.nuget.org/packages/SharpKml.Core/">SharpKml.Core</a> library, implemented in .NET Standard and MIT license, to read the KML file.</p>),
-            pt: (<p>Para encontrar qual a zona correspondente a uma coordenada, o sistema deve ler todos os polígonos do KML, e para cada polígono, verificar se a coordenada está dentro do polígono. Para isso, este artigo usa a bibilioteca <a target="_blank" href="https://www.nuget.org/packages/SharpKml.Core/">SharpKml.Core</a>, implementado em .NET Standard e licença MIT, para navegação do arquivo KML.</p>)
+            en: (<p>To find the zone that contains a specific coordinate, the code must read all the polygons inside the KML, and check each polygon to find which one contains the coordinate. For that, this article uses the <ExternalLink href="https://www.nuget.org/packages/SharpKml.Core/">SharpKml.Core</ExternalLink> library, implemented in .NET Standard and MIT license, to read the KML file.</p>),
+            pt: (<p>Para encontrar qual a zona correspondente a uma coordenada, o sistema deve ler todos os polígonos do KML, e para cada polígono, verificar se a coordenada está dentro do polígono. Para isso, este artigo usa a bibilioteca <ExternalLink href="https://www.nuget.org/packages/SharpKml.Core/">SharpKml.Core</ExternalLink>, implementado em .NET Standard e licença MIT, para navegação do arquivo KML.</p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>The library does not implement a method to check if a coordinate is within a polygon, so this article make use of an <a target="_blank" href="https://stackoverflow.com/a/14998816">external algorithm</a>. This algorithm projects a line based on one of the coordinate axis, and declares a flag that alternates between "inside" and "outside" everytime the line crosses one of the polygon vertices.</p>),
-            pt: (<p>No momento esta biblioteca não possui um método para verificar se um ponto está contido em um polígono, então estamos usando um <a target="_blank" href="https://stackoverflow.com/a/14998816">algoritmo externo</a>. Este algoritmo projeta uma linha baseado em um dos eixos da coordenada, e usa uma flag que alterna entre "dentro" e "fora" toda vez que a linha cruza com um dos vértices do polígono.</p>)
+            en: (<p>The library does not implement a method to check if a coordinate is within a polygon, so this article make use of an <ExternalLink href="https://stackoverflow.com/a/14998816">external algorithm</ExternalLink>. This algorithm projects a line based on one of the coordinate axis, and declares a flag that alternates between "inside" and "outside" everytime the line crosses one of the polygon vertices.</p>),
+            pt: (<p>No momento esta biblioteca não possui um método para verificar se um ponto está contido em um polígono, então estamos usando um <ExternalLink href="https://stackoverflow.com/a/14998816">algoritmo externo</ExternalLink>. Este algoritmo projeta uma linha baseado em um dos eixos da coordenada, e usa uma flag que alterna entre "dentro" e "fora" toda vez que a linha cruza com um dos vértices do polígono.</p>)
         }),
 
         new LocaleContentAny({

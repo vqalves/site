@@ -1,4 +1,5 @@
 import CodeBlock, { CodeBlockLanguage } from "../../components/code.block";
+import ExternalLink from "../../components/external.link";
 import Article from "../../models/article/article";
 import ArticleDate from "../../models/article/article.date";
 import ArticleTag from "../../models/article/article.tag";
@@ -39,8 +40,8 @@ export const AsyncParallelRabbitMQConsumption20221204 = new Article({
 
         
         new LocaleContentAny({
-            en: (<p>RabbitMQ allows a consumer to receive multiple messages to be processed in parallel using the <a target="_blank" href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_ConsumerDispatchConcurrency">ConsumerDispatchConcurrency</a> property. Due to the nature of parallel processing, make sure the message handler is <u>thread-safe</u>.</p>),
-            pt: (<p>RabbitMQ permite que um consumer possa receber várias mensagems para ser processados em paralelo, usando a propriedade <a target="_blank" href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_ConsumerDispatchConcurrency">ConsumerDispatchConcurrency</a>. Como todo processamento paralelo, é importante assegurar que o processamento de cada mensagem seja <u>thread-safe</u>.</p>)
+            en: (<p>RabbitMQ allows a consumer to receive multiple messages to be processed in parallel using the <ExternalLink href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_ConsumerDispatchConcurrency">ConsumerDispatchConcurrency</ExternalLink> property. Due to the nature of parallel processing, make sure the message handler is <u>thread-safe</u>.</p>),
+            pt: (<p>RabbitMQ permite que um consumer possa receber várias mensagems para ser processados em paralelo, usando a propriedade <ExternalLink href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_ConsumerDispatchConcurrency">ConsumerDispatchConcurrency</ExternalLink>. Como todo processamento paralelo, é importante assegurar que o processamento de cada mensagem seja <u>thread-safe</u>.</p>)
         }),
 
         new LocaleContentAny({
@@ -69,8 +70,8 @@ consumer.Received += (model, ea) =>
 RabbitChannel.BasicConsume(queue: "queueName", autoAck: false, consumer: consumer);`}></CodeBlock>),
 
         new LocaleContentAny({
-            en: (<p>When the software is using <a target="_blank" href="https://www.rabbitmq.com/consumer-prefetch.html">BasicQos</a>, it is recommended to set the amount of messages <u>at least equal or bigger</u> than the ConsumerDispatchConcurrency configured, otherwise the library will not be able to make use of all the threads configured.</p>),
-            pt: (<p>Quando o sistema usa <a target="_blank" href="https://www.rabbitmq.com/consumer-prefetch.html">BasicQos</a>, é recomendado que a quantidade de mensagens seja <u>no mínimo</u> a quantidade configurada em ConsumerDispatchConcurrency. Caso contrário, a library criará threads que nunca serão utilizadas, pois nunca haverá mensagens o suficiente para ativar elas.</p>)
+            en: (<p>When the software is using <ExternalLink href="https://www.rabbitmq.com/consumer-prefetch.html">BasicQos</ExternalLink>, it is recommended to set the amount of messages <u>at least equal or bigger</u> than the ConsumerDispatchConcurrency configured, otherwise the library will not be able to make use of all the threads configured.</p>),
+            pt: (<p>Quando o sistema usa <ExternalLink href="https://www.rabbitmq.com/consumer-prefetch.html">BasicQos</ExternalLink>, é recomendado que a quantidade de mensagens seja <u>no mínimo</u> a quantidade configurada em ConsumerDispatchConcurrency. Caso contrário, a library criará threads que nunca serão utilizadas, pois nunca haverá mensagens o suficiente para ativar elas.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
@@ -94,8 +95,8 @@ this.RabbitChannel.BasicQos(0, <span class="code-highlight">concurrencyLevel</sp
         }),
 
         new LocaleContentAny({
-            en: (<p>Asynchronous calls work the same way, the difference is that the ConnectionFactory has to configure the <a target="_blank" href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_DispatchConsumersAsync">DispatchConsumersAsync</a> property, and the message consumption should use one of the different implementations of <a target="_blank" href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.IAsyncBasicConsumer.html">IAsyncBasicConsumer</a> that the library provides.</p>),
-            pt: (<p>Chamadas assíncronas funcionam da mesma forma, a diferença é que a ConnectionFactory deve mudar a propriedade <a target="_blank" href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_DispatchConsumersAsync">DispatchConsumersAsync</a>, e o consumo das mensagens deve ser feita usando uma das classes fornecidas pela biblioteca que implementa <a target="_blank" href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.IAsyncBasicConsumer.html">IAsyncBasicConsumer</a>.</p>)
+            en: (<p>Asynchronous calls work the same way, the difference is that the ConnectionFactory has to configure the <ExternalLink href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_DispatchConsumersAsync">DispatchConsumersAsync</ExternalLink> property, and the message consumption should use one of the different implementations of <ExternalLink href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.IAsyncBasicConsumer.html">IAsyncBasicConsumer</ExternalLink> that the library provides.</p>),
+            pt: (<p>Chamadas assíncronas funcionam da mesma forma, a diferença é que a ConnectionFactory deve mudar a propriedade <ExternalLink href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.ConnectionFactory.html#RabbitMQ_Client_ConnectionFactory_DispatchConsumersAsync">DispatchConsumersAsync</ExternalLink>, e o consumo das mensagens deve ser feita usando uma das classes fornecidas pela biblioteca que implementa <ExternalLink href="https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.IAsyncBasicConsumer.html">IAsyncBasicConsumer</ExternalLink>.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
