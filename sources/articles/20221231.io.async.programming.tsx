@@ -54,31 +54,43 @@ export const IOAsyncProgramming20221231 = new Article({
 
     getContent: () => [
         new LocaleContentAny({
-            en: (<p>Asynchronous programming is a technique that optimizes the usage of a thread. Operations that take too long can be assigned to another handler, while the main threads are used to execute the main operations. It's a staple for languages like NodeJS.</p>),
+            en: (<p>Asynchronous programming is a technique applied on a process so it's main <ExternalLink href="https://en.wikipedia.org/wiki/Thread_(computing)">threads</ExternalLink> do not execute long-running operations. Instead, those operations are assigned to external handlers to be executed in parallel, so the main threads become free to execute other operations.</p>),
             pt: (<p></p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>This technique shines on I/O operations, because they rely on external resources and the thread has to wait for a response while doing nothing. Examples of I/O operations are: sending a command to a database, executing HTTP requests and opening files on the HDD</p>),
+            en: (<p>It's often implemented with <ExternalLink href="https://en.wikipedia.org/wiki/Interrupt">interrupts</ExternalLink>, so a thread is freed when an asynchronous operation starts and a thread is requested when the asynchronous operation ends. That way, the process can ensure the execution continues with the same context, such as variables values and resources.</p>),
             pt: (<p></p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>The example below demonstrates what happens when a single thread that has to handle multiple simultaneous method calls.</p>),
+            en: (<p>It's a foundation for platforms like <ExternalLink href="https://nodejs.org/en/">NodeJS</ExternalLink>, that runs only a single main thread.</p>),
             pt: (<p></p>)
         }),
+
+        new LocaleContentAny({
+            en: (<p><b>Synchronous program</b></p>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>Without asynchrony, a single thread could only handle multiple calls in sequence, as demonstrated below. Each call takes 10 seconds, so 3 calls require 30 seconds to be completed.</p>),
+            pt: (<p></p>)
+        }),
+
+        
 
         LocaleContentAny.all(<CodeBlock
             language={CodeBlockLanguage.csharp}
             code={`public Result Execute(string input)
 {
-    // A - CPU-bound runs in 2 seconds
+    // Operation A - CPU-only - 2 seconds
     var value = TransformInput(input);
 
-    // B - I/O-bound runs in 6 seconds
+    // Operation B - I/O - 6 seconds
     var saveResult = SaveToDatabase(value);
 
-    // C - CPU-bound runs in 2 second
+    // Operation C - CPU-only - 2 second
     return TransformOutput(saveResult);
 }`}></CodeBlock>),
 
@@ -119,17 +131,32 @@ export const IOAsyncProgramming20221231 = new Article({
         </div>),
 
         new LocaleContentAny({
-            en: (<p>This thread can only handle the synchronous method calls in sequence. As every call takes 10 seconds, 3 calls requires 30 seconds to be completed. As a result, the thread ran commands only 40% of the time, and the other 60% was spent waiting.</p>),
+            en: (<p><b>I/O operations</b></p>),
             pt: (<p></p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>The I/O operation can be rewriten to use the <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/">async/await library</ExternalLink> and make use of it's asynchronous capabilities.</p>),
+            en: (<p>Operation B only communicates with an external resource and do not require CPU, making it an I/O operation. During I/O operations, the thread only waits for a result, but is still flagged as busy.</p>),
             pt: (<p></p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>When the thread hits an <u>await</u>, the operation will be forwarded to a dedicated handler, and the thread becomes free to process something else. When the assigned handler receives a response, the process will be notified and can assign a free thread to continue the execution.</p>),
+            en: (<p>Some of the most common I/O operations are connecting and sending commands to a database, reading/writing files on a hard disk, and communicating with external systems using through the network, such as third-party APIs.</p>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p><b>Asynchronous program</b></p>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>On C#, some operations, including I/O operations, can be rewriten to be run asynchronously using the <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/">async/await library</ExternalLink>.</p>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>When a thread finds an <u>await</u> keyword, the operation will be forwarded to a handler, and the thread is freed to execute something else. The process will be notified when the operation is completed, so it can assign a free thread to continue executing the method.</p>),
             pt: (<p></p>)
         }),
 
@@ -137,13 +164,13 @@ export const IOAsyncProgramming20221231 = new Article({
             language={CodeBlockLanguage.csharp}
             code={`public async Task<Result> ExecuteAsync(string input)
 {
-    // A - CPU-bound runs in 2 seconds
+    // Operation A - CPU-only - 2 seconds
     var value = TransformInput(input);
 
-    // B - I/O-bound runs in 6 seconds
+    // Operation B - I/O - 6 seconds
     var saveResult = await SaveToDatabaseAsync(value);
 
-    // C - CPU-bound runs in 2 second
+    // Operation C - CPU-only - 2 second
     return TransformOutput(saveResult);
 }`}></CodeBlock>),
 
@@ -213,12 +240,7 @@ export const IOAsyncProgramming20221231 = new Article({
         </div>),
 
         new LocaleContentAny({
-            en: (<p>Using asynchronous calls, the thread forwards the waiting time of operation B to a handler and starts executing the next call imediatelly. When the handler receives the result, the process is called to assign an available thread to handle the response.</p>),
-            pt: (<p></p>)
-        }),
-
-        new LocaleContentAny({
-            en: (<p>So the 3 calls that previously took 30 seconds now are executed in 16 seconds, without requiring the process to create new threads or changing the hardware capabilities.</p>),
+            en: (<p>With asynchrony, the I/O operation is forwarded to a handler, and the freed thread immediatelly starts executing the next call. So the 3 calls that previously took 30 seconds now are executed in 14 seconds, without requiring additional threads or upgrading the hardware.</p>),
             pt: (<p></p>)
         }),
     ]
