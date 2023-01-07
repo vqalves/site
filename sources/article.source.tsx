@@ -10,8 +10,10 @@ import { RedisIntroduction20221211 } from "./articles/20221211.redis.introductio
 import { RedisRedlockCsharp20221212 } from "./articles/20221212.redis.redlock.csharp";
 import { ConsistentHashingIntroduction20221215 } from "./articles/20221215.consistent.hashing.introduction";
 import { IOAsyncProgramming20221231 } from "./articles/20221231.io.async.programming";
+import { UnitTestIntroduction230108 } from "./articles/20230108.unit.test.introduction";
 
 const articles: Article[] = [
+    UnitTestIntroduction230108,
     IOAsyncProgramming20221231,
     ConsistentHashingIntroduction20221215,
     RedisRedlockCsharp20221212,
