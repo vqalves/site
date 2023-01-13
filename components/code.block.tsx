@@ -34,11 +34,11 @@ export default function CodeBlock({ language, code, useEncode = true } : CodeBlo
 
     return (
         <div className={styles.code_block}>
-            <pre>
-                <code dangerouslySetInnerHTML={{__html: code}}>
-
-                </code>
-            </pre>
+            <code>
+                <pre dangerouslySetInnerHTML={{__html: code}}>
+                    
+                </pre>
+            </code>
         </div>
     );
 }
