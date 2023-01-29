@@ -11,8 +11,10 @@ import { RedisRedlockCsharp20221212 } from "./articles/20221212.redis.redlock.cs
 import { ConsistentHashingIntroduction20221215 } from "./articles/20221215.consistent.hashing.introduction";
 import { IOAsyncProgramming20221231 } from "./articles/20221231.io.async.programming";
 import { UnitTestIntroduction230108 } from "./articles/20230108.unit.test.introduction";
+import { ConcurrencyUpdatesToken230121 } from "./articles/20230121.concurrency.updates.token";
 
 const articles: Article[] = [
+    ConcurrencyUpdatesToken230121,
     UnitTestIntroduction230108,
     IOAsyncProgramming20221231,
     ConsistentHashingIntroduction20221215,
