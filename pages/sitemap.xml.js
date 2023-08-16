@@ -2,13 +2,13 @@ import ArticleSource from "../sources/article.source";
 
 const Sitemap = () => {};
 
-const createSitemap = (urls: string[]) => 
+const createSitemap = (urls) => 
   `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((url) => `<url><loc>${url}</loc></url>`).join("")}
 </urlset>`;
 	
-export async function getServerSideProps({ res:any, req:any }) {      
+export async function getServerSideProps({ res }) {      
 	// const siteMapJson = await fetch(`https://www.exampleapi.com/getsitemap`);
 	// const urlList = await siteMapJson.json();
 
