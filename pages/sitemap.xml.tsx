@@ -8,7 +8,7 @@ const createSitemap = (urls: string[]) =>
 ${urls.map((url) => `<url><loc>${url}</loc></url>`).join("")}
 </urlset>`;
 	
-export async function getServerSideProps({ res, req }) {      
+export async function getServerSideProps({ res:any, req:any }) {      
 	// const siteMapJson = await fetch(`https://www.exampleapi.com/getsitemap`);
 	// const urlList = await siteMapJson.json();
 
