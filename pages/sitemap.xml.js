@@ -2,12 +2,10 @@ import ArticleSource from "../sources/article.source";
 
 const Sitemap = () => {};
 
-const domain = "https://www.vinafelex.com.br";
-
 const createSitemap = (urls) => 
   `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((url) => `<url><loc>${domain}${url}</loc><changefreq>daily</changefreq></url>`).join("")}
+${urls.map((url) => `<url><loc>${Configuration.domain}${url}</loc><changefreq>daily</changefreq></url>`).join("")}
 </urlset>`;
 	
 export async function getServerSideProps({ res }) {      

@@ -6,6 +6,7 @@ import LayoutMenu from "../models/menu";
 import styles from "../styles/about.module.css";
 import { useDefaultPageElements } from "../models/page";
 import { SiteTitle } from "../components/site.title";
+import Configuration from "../sources/configuration";
 
 export default function AboutPage() {
   const { ts } = useDefaultPageElements();
@@ -15,6 +16,8 @@ export default function AboutPage() {
         <Head>
             {SiteTitle.format(ts(content.title))}
             <meta name="description" content={ts(content.description)} />
+            
+            <link rel="canonical" href={`${Configuration.domain}/about`} />
         </Head>
         
         <Layout selectedMenu={LayoutMenu.aboutMe}>
