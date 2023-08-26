@@ -11,8 +11,8 @@ export const AsyncParallelRabbitMQConsumption20221204 = new Article({
     date: new ArticleDate(2022, 12, 4),
     
     title: new LocaleContentText({
-        en: "[C#] Consuming a RabbitMQ queue asynchronously and with paralellism",
-        pt: "[C#] Consumindo uma fila RabbitMQ com assincronia e paralelismo"
+        en: "[C#] Consuming RabbitMQ queue with async and parallelism",
+        pt: "[C#] Consumir fila RabbitMQ com assincronia e paralelismo"
     }),
 
     description: new LocaleContentText({

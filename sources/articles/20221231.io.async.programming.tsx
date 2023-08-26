@@ -36,8 +36,8 @@ export const IOAsyncProgramming20221231 = new Article({
     date: new ArticleDate(2022, 12, 31),
     
     title: new LocaleContentText({
-        en: "[Concept] Async programming, I/O commands and scalability",
-        pt: "[Conceito] Programação assíncrona, comandos de I/O e escalabilidade"
+        en: "[C#] Async programming, I/O and scalability",
+        pt: "[C#] Programação assíncrona, I/O e escalabilidade"
     }),
 
     description: new LocaleContentText({

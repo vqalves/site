@@ -11,8 +11,8 @@ export const ZoningCoordinatesUsingKmlFiles20221203 = new Article({
     date: new ArticleDate(2022, 12, 3),
     
     title: new LocaleContentText({
-        en: "[C#] Discovering corresponding zone of a coordinate using KML file",
-        pt: "[C#] Encontrando a zona correspondente a uma coordenada usando arquivo KML"
+        en: "[C#] Zone of a coordinate in a KML file",
+        pt: "[C#] Zona de uma coordenada em arquivo KML"
     }),
 
     description: new LocaleContentText({
