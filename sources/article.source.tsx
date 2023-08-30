@@ -12,8 +12,10 @@ import { ConsistentHashingIntroduction20221215 } from "./articles/20221215.consi
 import { IOAsyncProgramming20221231 } from "./articles/20221231.io.async.programming";
 import { UnitTestIntroduction230108 } from "./articles/20230108.unit.test.introduction";
 import { ConcurrencyUpdatesToken230121 } from "./articles/20230121.concurrency.updates.token";
+import { YieldIEnumerable20230826 } from "./articles/20230826.yield.ienumerable";
 
 const articles: Article[] = [
+    YieldIEnumerable20230826,
     ConcurrencyUpdatesToken230121,
     UnitTestIntroduction230108,
     IOAsyncProgramming20221231,
