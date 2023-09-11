@@ -13,8 +13,10 @@ import { IOAsyncProgramming20221231 } from "./articles/20221231.io.async.program
 import { UnitTestIntroduction230108 } from "./articles/20230108.unit.test.introduction";
 import { ConcurrencyUpdatesToken230121 } from "./articles/20230121.concurrency.updates.token";
 import { YieldIEnumerable20230826 } from "./articles/20230826.yield.ienumerable";
+import { PrefetchingAsync20230901 } from "./articles/20230901.prefetching.async";
 
 const articles: Article[] = [
+    PrefetchingAsync20230901,
     YieldIEnumerable20230826,
     ConcurrencyUpdatesToken230121,
     UnitTestIntroduction230108,
