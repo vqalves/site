@@ -44,7 +44,7 @@ export const PrefetchingAsync20230901 = new Article({
     getContent: () => [
         new LocaleContentAny({
             en: (<p><ExternalLink href="https://en.wikipedia.org/wiki/Prefetching">Prefetching</ExternalLink> is a technique that starts loading data before it is needed, reducing total runtime at the risk of loading unnecessary data.</p>),
-            pt: (<p><ExternalLink href="https://pt.wikipedia.org/wiki/Busca_antecipada_de_instru%C3%A7%C3%B5es">Prefetching</ExternalLink> (ou pré-carregamento) é uma técnica de iniciar o carregamento de dados antes deles serem necessários, diminuindo o tempo total de execução, mas com o risco de carregar dados desnecessariamente.</p>)
+            pt: (<p><ExternalLink href="https://pt.wikipedia.org/wiki/Busca_antecipada_de_instru%C3%A7%C3%B5es">Prefetching</ExternalLink> (ou pré-carregamento) é uma técnica que inicia o carregamento de dados antes deles serem necessários, diminuindo o tempo total de execução, mas com o risco de carregar dados desnecessariamente.</p>)
         }),
 
         new LocaleContentAny({
@@ -55,6 +55,21 @@ export const PrefetchingAsync20230901 = new Article({
         new LocaleContentAny({
             en: (<p>On C#, using <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/async-scenarios">async</ExternalLink> and <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task?view=net-7.0">tasks</ExternalLink> allow fetching data without interrupting the flow of code. This way, by prefetching data, the algorithm can dilute the downtime of I/O operations by working on other operations while waiting for the I/O result.</p>),
             pt: (<p>No C#, usar <ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/csharp/asynchronous-programming/async-scenarios">async</ExternalLink> e <ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.task?view=net-7.0">tasks</ExternalLink> permite iniciar o carregamento de dados sem interromper o fluxo do código. Isso ajuda a diluir o tempo que o algoritmo ficará esperando pelo resultado de operações de I/O, pois ele estará trabalhando em outros comandos enquanto espera o resultado.</p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>Below are some examples of prefetching with asynchony:</p>),
+            pt: (<p>Exemplos de pré-carregamento com assincronia abaixo:</p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<h3>Prefetching one result</h3>),
+            pt: (<h3>Pré-carregando um resultado</h3>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>Calling an async method will immediately start its execution without interrupting the code flow. By holding the reference of an async task, it is possible to <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/await">await</ExternalLink> the data only when it is actually needed.</p>),
+            pt: (<p>Executar um método assíncrono imediatamente inicia a execução do método sem interromper o fluxo de código. Ao guardar referência à task retornada, é possível utilizar <ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/operators/await">await</ExternalLink> para aguardar o carregamento apenas quando ele será necessário.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
@@ -81,8 +96,8 @@ CodeWithHtml(html);`}></CodeBlock>),
         }),
 
         new LocaleContentAny({
-            en: (<p>Multiple prefetches can be started in sequence.</p>),
-            pt: (<p>Múltiplos pré-carregamentos podem ser iniciados em sequência.</p>)
+            en: (<p>Calling async methods in sequence without awaiting them is enough to fetch their data in parallel, without interrupting code flow, until an await is executed.</p>),
+            pt: (<p>Invocar métodos assíncronos sem await em sequência é o suficiente para buscar os dados múltiplos dados em paralelo, sem gerar interrupções de código. O fluxo só será interrompido na presença de um await.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
@@ -98,13 +113,18 @@ var html2 = await taskHtml2;
 var html3 = await taskHtml3;`}></CodeBlock>),
 
         new LocaleContentAny({
-            en: (<h3>Chained prefetching</h3>),
-            pt: (<h3>Encadeamento de prefetching</h3>)
+            en: (<h3>Chaining prefetching</h3>),
+            pt: (<h3>Encadeamento de pré-carregamentos</h3>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Tasks can also be chained through the use of <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.continuewith?view=net-7.0">ContinueWith()</ExternalLink>, which invokes a method that starts executing as soon as a task is completed, and <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskextensions.unwrap?view=net-7.0">Unwrap()</ExternalLink>, which will expose the chained task being executed inside ContinueWith. Note that, since ContinueWith will only start when the task is completed, calling <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1.result?view=net-7.0">.Result</ExternalLink> property will not block the thread.</p>),
-            pt: (<p>Tasks também podem ser encadeadas usando <ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.task.continuewith?view=net-7.0">ContinueWith()</ExternalLink>, que invocará um método qualquer assim que a task for concluída, e <ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.taskextensions.unwrap?view=net-7.0">Unwrap()</ExternalLink>, que expõe a task interna sendo executada no ContinueWith. Considerando que o ContinueWith só é executado depois que a task foi concluída, não há bloqueio de thread quando é chamado diretamente o <ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.task-1.result?view=net-7.0">.Result</ExternalLink> da task.</p>)
+            en: (<p>There are situations where an async method requires the result of another async method, creating a chain of fetches.</p>),
+            pt: (<p>Existem situações em que um método assíncrono precisa de um dado carregado por outro método assíncrono, criando uma corrente de carregamentos.</p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>Tasks can be chained through the use of <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.continuewith?view=net-7.0">ContinueWith()</ExternalLink>, which invokes a method that starts executing as soon as a task is completed, and <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskextensions.unwrap?view=net-7.0">Unwrap()</ExternalLink>, which will expose the chained task being executed inside ContinueWith. Note that, since ContinueWith will only start when the task is completed, calling <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1.result?view=net-7.0">.Result</ExternalLink> property will not block the thread.</p>),
+            pt: (<p>Tasks podem ser encadeadas usando <ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.task.continuewith?view=net-7.0">ContinueWith()</ExternalLink>, que invocará um método qualquer assim que a task for concluída, e <ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.taskextensions.unwrap?view=net-7.0">Unwrap()</ExternalLink>, que expõe a task interna sendo executada no ContinueWith. Considerando que o ContinueWith só é executado depois que a task foi concluída, não há bloqueio de thread quando é chamado diretamente o <ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.task-1.result?view=net-7.0">.Result</ExternalLink> da task.</p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
@@ -117,18 +137,18 @@ var taskStatusCode = taskUrl.ContinueWith(async (task) =>
     return await GetStatusCodeAsync(task.Result);
 }).Unwrap();
 
-var taskFavicon = taskUrl.ContinueWith(task => 
+var taskFavicon = taskUrl.ContinueWith(async (task) => 
 {
-    return HasFaviconAsync(task.Result);
+    return await HasFaviconAsync(task.Result);
 }).Unwrap();
 
 // Await results
 var statusCode = await taskStatusCode;
-var hasFavIcon = await taskFavicon;`}></CodeBlock>),
+var hasFavicon = await taskFavicon;`}></CodeBlock>),
 
         new LocaleContentAny({
-            en: (<h3>IAsyncEnumerable</h3>),
-            pt: (<h3>IAsyncEnumerable</h3>)
+            en: (<h3>Prefetching with IAsyncEnumerable</h3>),
+            pt: (<h3>Pré-carregamento com IAsyncEnumerable</h3>)
         }),
 
         new LocaleContentAny({
