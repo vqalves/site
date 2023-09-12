@@ -48,7 +48,12 @@ export const PrefetchingAsync20230901 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>Through the use of <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task?view=net-7.0">Tasks</ExternalLink>, it is fairly simple to start a prefetch an execute codes before reaching a point where the data is required.</p>),
+            en: (<p>In coding, since there is more knowledge over what is needed to execute a method, it is easier to control when certain data should be loaded or not.</p>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>On C#, using <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/async-scenarios">asynchrony</ExternalLink> and <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task?view=net-7.0">Task</ExternalLink> allows fetching data without interrupting the flow of code. This way, by prefetching data, the algorithm can dilute the downtime of I/O operations by working on other operations while waiting for the I/O result.</p>),
             pt: (<p></p>)
         }),
 
@@ -64,51 +69,82 @@ export const PrefetchingAsync20230901 = new Article({
             language={CodeBlockLanguage.csharp}
             code={`// Start prefetching
 var taskHtml = GetHtmlAsync("https://domain.com");
+CodeWithoutHtml();
 
-// Code that doesn't require the result
-ExecuteCodeWithoutHtml();
-
-// Load the result
-var html = await taskHtml;`}></CodeBlock>),
+// Await and consume the result
+var html = await taskHtml
+CodeWithHtml(html);`}></CodeBlock>),
 
         new LocaleContentAny({
-            en: (<p>Once a task is completed, the result is kept within the object and reused any time the task is awaited. This can simplify data flow when multiple methods require the same information.</p>),
+            en: (<p>Multiple prefetches can be started in sequence.</p>),
             pt: (<p></p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
             language={CodeBlockLanguage.csharp}
-            code={`var taskFetchHtml = GetHtmlAsync("https://domain.com");
+            code={`// Start pre-fetching
+var taskHtml1 = GetHtmlAsync("https://domain1.com");
+var taskHtml2 = GetHtmlAsync("https://domain2.com");
+var taskHtml3 = GetHtmlAsync("https://domain3.com");
 
-// Await until the task is completed for the first time
-var hasDiv = (await taskFetchHtml).Contains("<div")
-
-// Task was already completed, so the result is immediate
-var length = (await taskFetchHtml).Length;`}></CodeBlock>),
+// Await results
+var html1 = await taskHtml1;
+var html2 = await taskHtml2;
+var html3 = await taskHtml3;`}></CodeBlock>),
 
         new LocaleContentAny({
-            en: (<p>When there are multiple asynchronous calls producing the same result type, all tasks can be started upfront and consolidated with <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.whenany?view=net-7.0">WhenAny()</ExternalLink> as they are completed.</p>),
+            en: (<p>Tasks can also be chained through the use of <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.continuewith?view=net-7.0">ContinueWith()</ExternalLink>, which invokes a method that starts executing as soon as a task is completed, and <ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.taskextensions.unwrap?view=net-7.0">Unwrap()</ExternalLink>, which will expose the chained task being executed inside ContinueWith. Note that, since ContinueWith will only start when the task is completed, calling <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1.result?view=net-7.0">.Result</ExternalLink> property will not block the thread.</p>),
             pt: (<p></p>)
         }),
 
         LocaleContentAny.all(<CodeBlock
             language={CodeBlockLanguage.csharp}
-            code={`var tasks = new[]
+            code={`// Start pre-fetching
+var taskUrl = RetrieveUrlAsync();
+
+var taskStatusCode = taskUrl.ContinueWith(async (task) => 
 {
-    GetHtmlAsync("https://site1.com"),
-    GetHtmlAsync("https://site2.com"),
-    GetHtmlAsync("https://site3.com"),
-}.ToList();
+    return await GetStatusCodeAsync(task.Result);
+}).Unwrap();
 
-List<string> results = new List<string>();
-
-while(tasks.Any())
+var taskFavicon = taskUrl.ContinueWith(task => 
 {
-    var completedTask = await Task.WhenAny(tasks);
-    tasks.Remove(completedTask);
+    return HasFaviconAsync(task.Result);
+}).Unwrap();
 
-    var result = await completedTask;
-    results.Add(result);
-}`}></CodeBlock>), 
+// Await results
+var statusCode = await taskStatusCode;
+var hasFavIcon = await taskFavicon;`}></CodeBlock>),
+
+        new LocaleContentAny({
+            en: (<p>When using <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerable-1?view=net-7.0">IAsyncEnumerable</ExternalLink>, it is also possible to prefetch the next result by manipulating the <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.ienumerator?view=net-7.0">IEnumerable</ExternalLink>, as demonstrated by the following <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods">extension method</ExternalLink>:</p>),
+            pt: (<p></p>)
+        }),
+
+        LocaleContentAny.all(<CodeBlock
+            language={CodeBlockLanguage.csharp}
+            code={`public static async IAsyncEnumerable<T> WithPrefetch<T>(this IAsyncEnumerable<T> enumerable)
+{
+    await using(var enumerator = enumerable.GetAsyncEnumerator())
+    {
+        ValueTask<bool> hasNextTask = enumerator.MoveNextAsync();
+
+        while(await hasNextTask)
+        {
+            T data = enumerator.Current;
+            hasNextTask = enumerator.MoveNextAsync();
+            yield return data;
+        }
+    }
+}`}></CodeBlock>),
+
+LocaleContentAny.all(<CodeBlock
+    language={CodeBlockLanguage.csharp}
+    code={`// WithPrefetch() example
+await foreach(var item in EnumerateAsync().WithPrefetch())
+{
+    Process(item);
+}`}></CodeBlock>),
+
     ]
 });
