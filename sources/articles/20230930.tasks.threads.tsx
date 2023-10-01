@@ -44,12 +44,17 @@ export const TasksAndThreads20230930 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>By awaiting an incomplete task, the currently running thread will released until the operation is completed, and another thread will be the allocated to continue the execution from where it stopped.</p>),
+            en: (<p>By awaiting an incomplete task, the currently running thread is freed and execution is halted. When the operation is completed, another thread will be allocated to continue the execution from where it stopped.</p>),
             pt: (<p></p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>If a task is completed, awaiting it will not rerun the operation and only retrieve the result, if any. The current thread will work synchronously and will not be released.</p>),
+            en: (<p>If a completed task is awaited, the only thing that happens is retrieveing the produced results synchronously, if any result is available. Awaiting a completed task will not rerun it, and the currently running thread will not be released.</p>),
+            pt: (<p></p>)
+        }),
+
+        new LocaleContentAny({
+            en: (<p>Awaiting a task that threw an exception internally will bring the exception to the main execution.</p>),
             pt: (<p></p>)
         }),
 
@@ -59,7 +64,7 @@ export const TasksAndThreads20230930 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>.NET applications have a ThreadPool feature, which contains pre-created threads for fast thread allocation. Those threads are generally used by the .NET process and the pool size is limited, so its recommended to not use them for operations that take too much time to execute, otherwise the pool might eventually be empty and the system will suffer with slowness or errors.</p>),
+            en: (<p>.NET applications have a ThreadPool feature, which contains pre-created threads for fast thread allocation. Those threads are generally used by the .NET process and its pool size is limited, so its recommended to not use them for operations that take too much time to execute, otherwise the pool might eventually become empty and the system will suffer with slowness or errors.</p>),
             pt: (<p></p>)
         }),
 
@@ -69,7 +74,7 @@ export const TasksAndThreads20230930 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>Note that a single task can have multiple internal asynchronous operations, and for it to be completed, there could be multiple thread allocations and deallocations. So even if the task ifself takes a while, each thread is allocated just for a short time until the next async operation releases it, so using the ThreadPool might not be a problem.</p>),
+            en: (<p>Note that a single task can have multiple internal asynchronous operations. In such cases, a thread will be allocated when an async operation is completed and released when it is required to await the next operation. So, even if the task itself might take a while to complete, each allocation time can be short enough to safely use the ThreadPool.</p>),
             pt: (<p></p>)
         }),
 
@@ -77,13 +82,6 @@ export const TasksAndThreads20230930 = new Article({
             en: (<p>The way tasks interact with threads can change depending on how they are created, as specified below.</p>),
             pt: (<p></p>)
         }),
-
-        /*
-        <div>There are three main ways of creating tasks, which relate to threads in different ways:</div>
-        <div>- manully calling a <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.-ctor?view=net-7.0">constructor</ExternalLink> or a task preset</div>
-        <div>- calling a task starter method, like <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.run?view=net-7.0">Task.Run()</ExternalLink></div>
-        <div>- calling an <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/async">asynchronous function</ExternalLink></div>
-        */
 
         new LocaleContentAny({
             en: (<p><h3><ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.-ctor?view=net-7.0">Calling the constructor</ExternalLink></h3></p>),
@@ -101,7 +99,7 @@ export const TasksAndThreads20230930 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>Static methods such as <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.completedtask?view=net-7.0">Task.CompletedTask</ExternalLink> or <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.fromresult?view=net-7.0">Task.FromResult()</ExternalLink> create instances of Tasks without executing any asynchonous code.</p>),
+            en: (<p>Static methods like <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.fromresult?view=net-7.0">Task.FromResult()</ExternalLink> and properties like <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.completedtask?view=net-7.0">Task.CompletedTask</ExternalLink> return instances of Tasks without executing any asynchonous code.</p>),
             pt: (<p></p>)
         }),
 
@@ -111,7 +109,7 @@ export const TasksAndThreads20230930 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>When a task is created this way, it is instanciated with a <u>RanToCompletion</u> state. Note that awaiting completed tasks execute the algorithm the same way as a synchronous evaluation.</p>),
+            en: (<p>When a task is generated this way, it comes with a <u>RanToCompletion</u> state. Note that awaiting completed tasks is run synchronously.</p>),
             pt: (<p></p>)
         }),
 
@@ -141,11 +139,11 @@ public async Task ExecuteAsync()
 
         LocaleContentAny.all(<CodeBlock
             language={CodeBlockLanguage.csharp}
-            code={`Task<int> task = Task.Run(() => 1+1);
+            code={`Task<int> task = Task.Run(() => 1 + 1);
 var value = await task;`}></CodeBlock>),
 
         new LocaleContentAny({
-            en: (<p>Be very careful when using an asynchonous method or lambda as a parameter, because it might match with the synchronous overload and lead to an unpredictable behaviour.</p>),
+            en: (<p>Be very careful when using an asynchonous method or lambda as a parameter, because it might match with the synchronous overload and generate a task that is not related to the execution of the parameter.</p>),
             pt: (<p></p>)
         }),
 
@@ -175,7 +173,7 @@ var value = await asyncFunction();`}></CodeBlock>),
         }),
 
         new LocaleContentAny({
-            en: (<p>Creating new threads are not recommended for short running operations, because just creating a thread might be more expensive than executing the operation itself. For such scenarios, using the ThreadPool might be a better option.</p>),
+            en: (<p>Creating new threads are not recommended for short running operations, because the effort of creating a new thread might be more expensive than executing the operation itself. For such scenarios, using the ThreadPool might be a better option.</p>),
             pt: (<p></p>)
         }),
 
@@ -195,12 +193,12 @@ var value = await task;`}></CodeBlock>),
         }),
 
         new LocaleContentAny({
-            en: (<p>When an asynchronous function is called, the currently running thread will run the algorithm synchronously until it is forced to await an operation that cannot run synchronously, such as an I/O operation or an task already running.</p>),
+            en: (<p>When an asynchronous function is called, the currently running thread will run the algorithm synchronously until it is forced to await an operation that cannot run synchronously, such as an I/O operation or a task already running.</p>),
             pt: (<p></p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Then, the execution is paused and the thread is freed until the underlying task is completed. After the underlying task is completed, a thread from the ThreadPool is allocated to continue running from where the task stopped.</p>),
+            en: (<p>When the thread has to await the asynchronous task, the execution is halted and the thread is released. After the asynchronous task is completed, a thread from the ThreadPool is allocated to continue running from where the task stopped.</p>),
             pt: (<p></p>)
         }),
 
@@ -216,7 +214,7 @@ var value = await task;`}></CodeBlock>),
     // Run synchronously by the main thread
     var value = 1 + 1;
 
-    // Free thread until the task is completed
+    // Release the thread until the task is completed
     await File.WriteLineAsync("path", value.ToString());
 
     // Executed by a thread from the ThreadPool
@@ -240,35 +238,36 @@ var value = await task;`}></CodeBlock>),
 
         LocaleContentAny.all(<CodeBlock
             language={CodeBlockLanguage.csharp}
-            code={`public async Task ExecuteAsync()
+            code={`public async Task<int> ExampleAsync()
 {
-    // Initiate the task without awaiting
-    var task = ExampleAsync();
+    /*
+    Since the task was not awaited yet, 
+    the main thread exits this method
+    to continue running the 
+    next lines of code
+    */
 
-    // Run stuff slower than the task
-    MethodThatTakesLongerThanTheTask();
-
-    // At this point, the task is already completed
-    // So the result is retrieved synchronously
-    var result = await task;
-}
-
-public async Task<int> ExampleAsync()
-{
-    // Since this task was not initially awaited, 
-    // the main thread exits this method
-    // to continue running the next lines of code
     await Task.Sleep(1_000);
     
-    // Will be handled by a thread from the ThreadPool
+    /*
+    After the asynchronous operation 
+    completes, the task will be handled
+    by a thread from the ThreadPool
+    */
+
     return 1 + 1;
 
-    // At this point, the main context is not awaiting the result yet
-    // So the allocated thread from the ThreadPool is released
+    /*
+    At this point, is the program is 
+    halted awaiting this result,
+    the thread allocated before becomes
+    the main thread. Otherwise, the 
+    thread returns to the pool.
+    */
 }`}></CodeBlock>),
 
         new LocaleContentAny({
-            en: (<p>When calling multiple asynchronous functions without awaiting, all the operations after the awaited line are executed by threads of the ThreadPool, and multiple threads may ended up being used at the same time.</p>),
+            en: (<p>When calling multiple asynchronous functions without awaiting, all the operations after the awaited line are executed by threads of the ThreadPool, and multiple threads may end up being used at the same time.</p>),
             pt: (<p></p>)
         }),
 
