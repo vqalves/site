@@ -29,7 +29,7 @@ export const ScalabilityTips20231009 = new Article({
 
     getContent: () => [
         new LocaleContentAny({
-            en: (<p>In computing, <ExternalLink href="https://en.wikipedia.org/wiki/Scalability">scalability</ExternalLink> is the capability of a system to handle a increasing workload gracefully. In other words, as the user base, amount of requests or amount of data grows, how well does the software handle the workload and how easy and cheap it is to increase its throughput.</p>),
+            en: (<p>In computing, <ExternalLink href="https://en.wikipedia.org/wiki/Scalability">scalability</ExternalLink> is the capability of a system to handle an increasing workload gracefully. In other words, how well the system behaves when there are more users, more requests or more data, and how easy and cheap it is to increase the system throughput.</p>),
             pt: (<p></p>)
         }),
 
@@ -44,7 +44,7 @@ export const ScalabilityTips20231009 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>Below are a few insights on how to increate and maintain the scalability of a system:</p>),
+            en: (<p>Below are a few insights on how to increase and maintain the scalability of a system:</p>),
             pt: (<p></p>)
         }),
 
@@ -99,17 +99,17 @@ export const ScalabilityTips20231009 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p>Cache data or results that changes infrequently. They are relatively easy to manage, and cached results not only avoid consuming resources from the infrastructure to generate the same data everytime, but also speed up processing time. This is specially useful when caching results of non-scalable resources.</p>),
+            en: (<p>It is good to cache data or results that changes infrequently. They are relatively easy to manage, and cached results not only avoid consuming resources from the infrastructure to generate the same data everytime, but also speed up processing time. This is specially useful when caching results of non-scalable resources.</p>),
             pt: (<p></p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Apply request coalescing in non-mutable and frequently called functions. Request coalescing means that different function calls that predictably return the same result do not need to be executed twice - attach the second request to the first and return the same data to both. I created a thread-safe C# library that allows both request coallescing and in-memory cache, called <ExternalLink href="https://www.nuget.org/packages/TimedDictionary">TimedDictionary</ExternalLink>.</p>),
+            en: (<p>Apply request coalescing in non-mutable and frequently called functions. Request coalescing means that different function calls that predictably return the same result do not need to be executed twice - attach the second request to the first and return the same data to both. I created a thread-safe C# library that allows both request coalescing and in-memory cache, called <ExternalLink href="https://www.nuget.org/packages/TimedDictionary">TimedDictionary</ExternalLink>.</p>),
             pt: (<p></p>)
         }),
 
         new LocaleContentAny({
-            en: (<p>Execute only what is necessary, and avoid using generic functions that generate and return much more data than is required to fulfill the request. Try to keep a balance between practicallity and optimization.</p>),
+            en: (<p>Execute only what is necessary, and avoid using generic functions that generate and return much more data than is required to fulfill the request. Try to keep a balance between practicality and optimization.</p>),
             pt: (<p></p>)
         })
     ]
