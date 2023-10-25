@@ -14,12 +14,12 @@ export const ScalabilityTips20231009 = new Article({
     date: new ArticleDate(2023, 10, 9),
     
     title: new LocaleContentText({
-        en: "[C#] Scalability tips",
-        pt: "[C#] Dicas de escalabilidade"
+        en: "Scalability tips",
+        pt: "Dicas de escalabilidade"
     }),
 
     description: new LocaleContentText({
-        en: "Systems with bad scalability may hinder the business growth. Here are a few tips to help systems to scale better.",
+        en: "Systems with bad scalability may hinder the business growth. Here are a few tips to help systems scale better.",
         pt: "Sistemas com baixa escalabilidade podem travar o crescimento da empresa. Veja algumas dicas que ajudará sistemas a escalar mais"
     }),
 
