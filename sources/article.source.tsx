@@ -15,8 +15,10 @@ import { ConcurrencyUpdatesToken230121 } from "./articles/20230121.concurrency.u
 import { YieldIEnumerable20230826 } from "./articles/20230826.yield.ienumerable";
 import { PrefetchingAsync20230912 } from "./articles/20230912.prefetching.async";
 import { TasksAndThreads20230930 } from "./articles/20230930.tasks.threads";
+import { ScalabilityTips20231009 } from "./articles/20231009.scalability.tips";
 
 const articles: Article[] = [
+    ScalabilityTips20231009,
     TasksAndThreads20230930,
     PrefetchingAsync20230912,
     YieldIEnumerable20230826,
