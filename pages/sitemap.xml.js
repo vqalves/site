@@ -1,4 +1,5 @@
 import ArticleSource from "../sources/article.source";
+import Configuration from "../sources/configuration";
 
 const Sitemap = () => {};
 
