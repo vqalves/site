@@ -59,8 +59,8 @@ export const TasksAndThreads20230930 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p><h3>Relationship with <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.threadpool?view=net-7.0">ThreadPool</ExternalLink></h3></p>),
-            pt: (<p><h3>Relacionamento com <ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.threadpool?view=net-7.0">ThreadPool</ExternalLink></h3></p>)
+            en: (<h3>Relationship with <ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.threadpool?view=net-7.0">ThreadPool</ExternalLink></h3>),
+            pt: (<h3>Relacionamento com <ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.threadpool?view=net-7.0">ThreadPool</ExternalLink></h3>)
         }),
 
         new LocaleContentAny({
@@ -113,8 +113,8 @@ export const TasksAndThreads20230930 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p><h3><ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.-ctor?view=net-7.0">Calling the constructor</ExternalLink></h3></p>),
-            pt: (<p><h3><ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.task.-ctor?view=net-7.0">Instanciação via construtor</ExternalLink></h3></p>)
+            en: (<h3><ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.-ctor?view=net-7.0">Calling the constructor</ExternalLink></h3>),
+            pt: (<h3><ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.task.-ctor?view=net-7.0">Instanciação via construtor</ExternalLink></h3>)
         }),
 
         new LocaleContentAny({
@@ -123,8 +123,8 @@ export const TasksAndThreads20230930 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p><h3><ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.fromresult?view=net-7.0">Task.FromResult</ExternalLink> and other presets</h3></p>),
-            pt: (<p><h3><ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.task.fromresult?view=net-7.0">Task.FromResult</ExternalLink></h3></p>)
+            en: (<h3><ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.fromresult?view=net-7.0">Task.FromResult</ExternalLink> and other presets</h3>),
+            pt: (<h3><ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.task.fromresult?view=net-7.0">Task.FromResult</ExternalLink></h3>)
         }),
 
         new LocaleContentAny({
@@ -157,8 +157,8 @@ public async Task ExecuteAsync()
 `}></CodeBlock>),
 
         new LocaleContentAny({
-            en: (<p><h3><ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.run?view=net-7.0">Task.Run()</ExternalLink></h3></p>),
-            pt: (<p><h3><ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.task.run?view=net-7.0">Task.Run()</ExternalLink></h3></p>)
+            en: (<h3><ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.run?view=net-7.0">Task.Run()</ExternalLink></h3>),
+            pt: (<h3><ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.task.run?view=net-7.0">Task.Run()</ExternalLink></h3>)
         }),
 
         new LocaleContentAny({
@@ -187,8 +187,8 @@ var value = await task;`}></CodeBlock>),
 var value = await asyncFunction();`}></CodeBlock>),
 
         new LocaleContentAny({
-            en: (<p><h3><ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskfactory.startnew?view=net-7.0">Task.Factory.StartNew()</ExternalLink></h3></p>),
-            pt: (<p><h3><ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.taskfactory.startnew?view=net-7.0">Task.Factory.StartNew()</ExternalLink></h3></p>)
+            en: (<h3><ExternalLink href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskfactory.startnew?view=net-7.0">Task.Factory.StartNew()</ExternalLink></h3>),
+            pt: (<h3><ExternalLink href="https://learn.microsoft.com/pt-br/dotnet/api/system.threading.tasks.taskfactory.startnew?view=net-7.0">Task.Factory.StartNew()</ExternalLink></h3>)
         }),
 
         new LocaleContentAny({
@@ -217,8 +217,8 @@ var value = await asyncFunction();`}></CodeBlock>),
 var value = await task;`}></CodeBlock>),
 
         new LocaleContentAny({
-            en: (<p><h3>Asynchronous functions</h3></p>),
-            pt: (<p><h3>Funções assíncronas</h3></p>)
+            en: (<h3>Asynchronous functions</h3>),
+            pt: (<h3>Funções assíncronas</h3>)
         }),
 
         new LocaleContentAny({

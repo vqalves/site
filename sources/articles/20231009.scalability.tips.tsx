@@ -52,8 +52,8 @@ export const ScalabilityTips20231009 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p><h3>Enable horizontal scaling whenever possible</h3></p>),
-            pt: (<p><h3>Use ferramentas com escalabilidade horizontal</h3></p>)
+            en: (<h3>Enable horizontal scaling whenever possible</h3>),
+            pt: (<h3>Use ferramentas com escalabilidade horizontal</h3>)
         }),
 
         new LocaleContentAny({
@@ -67,8 +67,8 @@ export const ScalabilityTips20231009 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p><h3>Use your resources wisely</h3></p>),
-            pt: (<p><h3>Use recursos com sabedoria</h3></p>)
+            en: (<h3>Use your resources wisely</h3>),
+            pt: (<h3>Use recursos com sabedoria</h3>)
         }),
 
         new LocaleContentAny({
@@ -97,8 +97,8 @@ export const ScalabilityTips20231009 = new Article({
         }),
 
         new LocaleContentAny({
-            en: (<p><h3>Use infrastructure in your favor</h3></p>),
-            pt: (<p><h3>Infraestrutura a seu favor</h3></p>)
+            en: (<h3>Use infrastructure in your favor</h3>),
+            pt: (<h3>Infraestrutura a seu favor</h3>)
         }),
 
         new LocaleContentAny({
