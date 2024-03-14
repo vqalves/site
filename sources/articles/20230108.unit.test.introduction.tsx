@@ -45,16 +45,16 @@ export const UnitTestIntroduction230108 = new Article({
 
         new LocaleContentAny({
             en: (<p>
-                    <div>An unit test can be expressed in three parts:</div>
-                    <div>- <u>Setup</u>: Initialize objects, resources and variables required to execute the test</div>
-                    <div>- <u>Execution</u>: Execute the function tested</div>
-                    <div>- <u>Assertion</u>: Verify if the execution produced the expected results</div>
+                    <div>An unit test can be expressed in three parts, also known as triple A:</div>
+                    <div>- <u>Arrange</u>: Initialize objects, resources and variables required to execute the test</div>
+                    <div>- <u>Act</u>: Execute the function tested</div>
+                    <div>- <u>Assert</u>: Verify if the execution produced the expected results</div>
                 </p>),
             pt: (<p>
-                <div>Um teste unitário pode ser expressado em três partes:</div>
-                <div>- <u>Setup</u>: Inicialização de objetos, recursos e variáveis necessárias para executar o teste</div>
-                <div>- <u>Execução</u>: Execução da função testada</div>
-                <div>- <u>Asserção</u>: Verificar se a função testada gerou os resultados esperados</div>
+                <div>Um teste unitário pode ser expressado em três partes, também chamado de triplo A:</div>
+                <div>- <u>Arranjar (<i>arrange</i>)</u>: Inicialização de objetos, recursos e variáveis necessárias para executar o teste</div>
+                <div>- <u>Agir (<i>act</i>)</u>: Execução da função testada</div>
+                <div>- <u>Assertar (<i>assert</i>)</u>: Verificar se a função testada gerou os resultados esperados</div>
             </p>)
         }),
 
@@ -78,10 +78,10 @@ export const UnitTestIntroduction230108 = new Article({
             code={`[Test]
 public void StandardDeviation_CorrectValue()
 {
-    // Setup
+    // Arrange
     var values = new int[] { 1, 1, 1, 2 };
     
-    // Execute
+    // Act
     var result = values.StandardDeviation();
 
     // Assert
@@ -111,10 +111,10 @@ public void StandardDeviation_CorrectValue()
 [TestCase(new int[] { 0, 1 }, 2)]
 public void DistinctList_AddDuplicated_ChangesCount(int[] values, int expectedCount)
 {
-    // Setup
+    // Arrange
     var list = new DistinctList<int>();
     
-    // Execute
+    // Act
     foreach(var value in values)
         list.Add(value);
 
@@ -144,14 +144,14 @@ public void DistinctList_AddDuplicated_ChangesCount(int[] values, int expectedCo
 [TestCase("test@test.com", 1)]
 public void DistinctList_AddDuplicated_ChangesCount(string? email, int emailsSent)
 {
-    // Setup
+    // Arrange
     var mockService = new EmailServiceCount();
     var user = new User(email);
 
     IEmailService emailService = mockService;
     var authService = new AuthenticationService(emailService);
 
-    // Execute
+    // Act
     authService.Approve(user);
 
     // Assert
