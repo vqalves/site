@@ -16,8 +16,10 @@ import { YieldIEnumerable20230826 } from "./articles/20230826.yield.ienumerable"
 import { PrefetchingAsync20230912 } from "./articles/20230912.prefetching.async";
 import { TasksAndThreads20230930 } from "./articles/20230930.tasks.threads";
 import { ScalabilityTips20231009 } from "./articles/20231009.scalability.tips";
+import { MockingApiManagement20240414 } from "./articles/20240322.mocking.azure.api.management";
 
 const articles: Article[] = [
+    MockingApiManagement20240414,
     ScalabilityTips20231009,
     TasksAndThreads20230930,
     PrefetchingAsync20230912,

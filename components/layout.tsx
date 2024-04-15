@@ -12,6 +12,7 @@ import content from "../contents/layout.content";
 
 import styles from "../styles/layout.module.css";
 import ExternalLink from "./external.link";
+import Configuration from "../sources/configuration";
 
 export interface LayoutProps {
     children: React.ReactNode
@@ -117,7 +118,7 @@ export default function Layout(props: LayoutProps) {
                     <div className="external-profiles">
                         <div className="external-profile">
                             {/*<img className="logo" src="https://brand.linkedin.com/content/dam/me/brand/en-us/brand-home/logos/In-Blue-Logo.png.original.png" alt="" aria-hidden="true"></img>*/}
-                            <ExternalLink href="https://www.linkedin.com/in/viniciusquinafelex/">Linkedin</ExternalLink>
+                            <ExternalLink href={Configuration.linkedin}>Linkedin</ExternalLink>
                         </div>
                         
                         <div className="external-profile">
