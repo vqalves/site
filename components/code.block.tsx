@@ -5,6 +5,7 @@ export class CodeBlockLanguage {
     static json: CodeBlockLanguage = new CodeBlockLanguage("json");
     static xml: CodeBlockLanguage = new CodeBlockLanguage("xml");
     static bash: CodeBlockLanguage = new CodeBlockLanguage("bash");
+    static dockerfile: CodeBlockLanguage = new CodeBlockLanguage("dockerfile");
 
     readonly code: string;
 
