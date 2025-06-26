@@ -5,7 +5,6 @@ import ArticleTag from "../../models/article/article.tag";
 import LocaleContentAny from "../../models/locale/locale.content.any";
 import LocaleContentText from "../../models/locale/locale.content.text";
 import CodeBlock, { CodeBlockLanguage } from "../../components/code.block";
-import Configuration from "../configuration";
 
 export const PublishingAspnetWithDocker20250107 = new Article({
     code: "250107",

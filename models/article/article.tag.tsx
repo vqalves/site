@@ -57,6 +57,13 @@ export default class ArticleTag {
         })
     });
 
+    static web = new ArticleTag({
+        name: new LocaleContentAny({
+            en: "Web",
+            pt: "Web"
+        })
+    });
+
     static bugfix = new ArticleTag({
         name: new LocaleContentAny({
             en: "Bug fix",

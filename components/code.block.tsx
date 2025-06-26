@@ -3,8 +3,12 @@ import styles from '../styles/code.block.module.css'
 export class CodeBlockLanguage {
     static csharp: CodeBlockLanguage = new CodeBlockLanguage("csharp");
     static json: CodeBlockLanguage = new CodeBlockLanguage("json");
+    static js: CodeBlockLanguage = new CodeBlockLanguage("js");
+    static css: CodeBlockLanguage = new CodeBlockLanguage("css");
     static xml: CodeBlockLanguage = new CodeBlockLanguage("xml");
+    static html: CodeBlockLanguage = new CodeBlockLanguage("html");
     static bash: CodeBlockLanguage = new CodeBlockLanguage("bash");
+    static text: CodeBlockLanguage = new CodeBlockLanguage("text");
     static dockerfile: CodeBlockLanguage = new CodeBlockLanguage("dockerfile");
 
     readonly code: string;
