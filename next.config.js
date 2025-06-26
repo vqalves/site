@@ -2,11 +2,11 @@
 
 module.exports = {
   reactStrictMode: true,
-  swcMinify: true,
+  // swcMinify: true,
   i18n: {
     locales: ["en-US", "pt-BR"],
     defaultLocale: "pt-BR",
-    localeDetection: true
+    // localeDetection: true
   },
 
   async rewrites() {
