@@ -18,9 +18,11 @@ import { TasksAndThreads20230930 } from "./articles/20230930.tasks.threads";
 import { ScalabilityTips20231009 } from "./articles/20231009.scalability.tips";
 import { MockingApiManagement20240414 } from "./articles/20240322.mocking.azure.api.management";
 import { PublishingAspnetWithDocker20250107 } from "./articles/20250107.publishing.aspnet.with.docker";
+import { RegexNamedGroup20250626 } from "./articles/20250626.regex.named.group";
 import { WebContentReductionTechniques20250626 } from "./articles/20250626.web.content.reduction.techniques";
 
 const articles: Article[] = [
+    RegexNamedGroup20250626,
     WebContentReductionTechniques20250626,
     PublishingAspnetWithDocker20250107,
     MockingApiManagement20240414,
