@@ -29,14 +29,13 @@ const AboutContent = {
       <p>Feel free to contact me or add me on social media!</p>
     </>),
     pt: (<>
-      <p>Olá! Meu nome é Vinicius, e bem-vindo ao meu site pessoal!</p>,
-      <p>Criei este site para registrar descobertas, referências e pensamentos sobre tecnologia, programação e comunicação. Mesmo sendo primariamente para uso pessoal, espero que quem ler meus artigos considere o conteúdo útil e interessante.</p>,
-      <p>Atuo como desenvolvedor full-stack desde 2009, e às vezes me aventuro como líder técnico e arquiteto corporativo.</p>,
-      <p>Minha especialidade é desenvolvimento web com .NET Core e ASP.NET. Também desenvolvi aplicativos mobile em Android nativo e Flutter, interfaces web com ReactJS e NextJS (como este site), e aplicativos desktop para Windows.</p>,
-      <p>Acredito que soluções de tech devem ser feitas para facilitar a vida — quanto fácil, melhor.</p>,
-      <p>Ser mais simples é melhor. Soluções não devem ser mais complexas que os problemas que tentam resolver.</p>,
-      <p>Gosto de sinceridade com tato e clareza, tanto na comunicação quanto no código.</p>,
-      <p>E às vezes, creio que criar sua própria solução é mais fácil e eficiente do que degladiar com uma ferramenta generalista.</p>,
+      <p>Olá! Meu nome é Vinicius, e bem-vindo ao meu site pessoal!</p>
+      <p>Criei este site para registrar descobertas, referências e pensamentos sobre tecnologia, programação e comunicação. Mesmo sendo primariamente para uso pessoal, espero que quem ler meus artigos considere o conteúdo útil e interessante.</p>
+      <p>Atuo como desenvolvedor full-stack desde 2009, e às vezes me aventuro como líder técnico e arquiteto corporativo.</p>
+      <p>Minha especialidade é desenvolvimento web com .NET Core e ASP.NET. Também desenvolvi aplicativos mobile em Android nativo e Flutter, interfaces web com ReactJS e NextJS (como este site), e aplicativos desktop para Windows.</p>
+      <p>Acredito que soluções de tech devem ser feitas para facilitar a vida, e melhor ainda se forem simples. Soluções não devem ser mais complexas que os problemas que tentam resolver.</p>
+      <p>Gosto de sinceridade, com tato e clareza, tanto na comunicação quanto no código.</p>
+      <p>E às vezes, criar sua própria solução é mais fácil e eficiente do que degladiar com uma ferramenta generalista.</p>
       <p>Fique à vontade para entrar em contato comigo ou me adicionar nas redes sociais!</p>
     </>)
   })
