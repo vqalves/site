@@ -6,9 +6,9 @@ import LocaleContentAny from "../../models/locale/locale.content.any";
 import LocaleContentText from "../../models/locale/locale.content.text";
 import CodeBlock, { CodeBlockLanguage } from "../../components/code.block";
 
-export const RegexNamedGroup20250626 = new Article({
-    code: "250626",
-    date: new ArticleDate(2025, 6, 26),
+export const RegexNamedGroup20250627 = new Article({
+    code: "250627",
+    date: new ArticleDate(2025, 6, 27),
     
     title: new LocaleContentText({
         en: "[C#] Regex named group",
@@ -16,7 +16,7 @@ export const RegexNamedGroup20250626 = new Article({
     }),
 
     description: new LocaleContentText({
-        en: "",
+        en: "Using named groups to increase code legibility",
         pt: "Utilizando grupo nomeado para aumentar a legibilidade do código"
     }),
 
@@ -28,15 +28,6 @@ export const RegexNamedGroup20250626 = new Article({
     tags: [ArticleTag.csharp, ArticleTag.codeSnippet],
 
     getContent: () => [
-/*
-
-
-
-
-
-
-*/
-
         new LocaleContentAny({
             en: (<p><ExternalLink href="https://www.regular-expressions.info/tutorial.html">Regex</ExternalLink> is a pattern that describes a certain amount of text, and can be used to locate substrings matching a pattern within a text. For example, it can be used to locate numbers, email addresses, links, or any other pattern of characters.</p>),
             pt: (<p><ExternalLink href="https://www.regular-expressions.info/tutorial.html">Regex</ExternalLink> é um padrão usado para descrever parte de um texto, e pode ser utilizado para localizar substrings que correspondam a um padrão dentro de um texto. Por exemplo, pode ser usado para encontrar números, e-mails, links ou qualquer outro padrão de caracteres.</p>)
